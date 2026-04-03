@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Huur of Koop? - De Nederlandse calculator voor kopen vs huren. Vergelijk financiële resultaten met hypotheekrenteaftrek en eigenwoningforfait.">
+    <meta name="keywords" content="huur, koop, calculator, hypotheek, eigenwoningforfait, Nederland">
+    <meta name="author" content="Huur of Koop Check">
+    <title>Huur of Koop? - Nederlandse Huisvestings Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Fraunces:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
+            background: #F8F7F4;
+            color: #1A1A1A;
+            line-height: 1.6;
+        }
+
+        :root {
+            --bg: #F8F7F4;
+            --card: #FFFFFF;
+            --card-alt: #F2F0EB;
+            --border: #E5E2DA;
+            --text-primary: #1A1A1A;
+            --text-secondary: #6B6560;
+            --accent: #0066FF;
+            --accent-light: #E8F0FE;
+            --success: #10B981;
+            --success-light: #ECFDF5;
+            --danger: #EF4444;
+            --danger-light: #FEF2F2;
+            --muted: #F0EDE8;
+            --input-bg: #FAFAF8;
+        }
+
+        /* Header Navigation */
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            font-family: 'Fraunces', Georgia, serif;
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #001A3D 0%, #003380 40%, #0055CC 100%);
+            color: white;
+            padding: 60px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: 30%;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tagline {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 48px);
+            font-weight: 900;
+            font-family: 'Fraunces', Georgia, serif;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            opacity: 0.85;
+            max-width: 560px;
+            margin: 0 auto 28px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0052CC;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 24px;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 800;
+            font-family: 'Fraunces', Georgia, serif;
+            margin-bottom: 48px;
+            color: var(--text-primary);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .feature-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px 24px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+            border-color: var(--accent);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Calculator Section */
+        .calculator-section {
+            background: white;
+            padding: 60px 24px;
+            margin: 60px 0;
+        }
+
+        .calculator-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .calculator-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .calculator-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            font-family: 'Fraunces', Georgia, serif;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .calculator-header p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #001A3D 0%, #003380 40%, #0055CC 100%);
+            color: white;
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            font-weight: 800;
+            font-family: 'Fraunces', Georgia, serif;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: #1A1A1A;
+            color: white;
+            padding: 48px 24px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-section h4 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #999;
+            text-decoration: none;
+            font-size: 13px;
+            line-height: 2;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 24px;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+
+        /* App Container */
+        #app-container {
+            background: var(--bg);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 16px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .features h2 {
+                font-size: 28px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav .container {
+                height: 60px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            nav, .hero, .features, .cta-section, footer {
+                display: none;
+            }
+            #app-container {
+                background: white;
+            }
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            opacity: 1;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">🏠 HuurOfKoop</div>
+            <ul>
+                <li><a href="#calculator">Calculator</a></li>
+                <li><a href="#features">Kenmerken</a></li>
+                <li><a href="#faq">Veelgestelde vragen</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-tagline">🇳🇱 Nederlandse Huisvestings Calculator</div>
+            <h1>Kopen of Huren?</h1>
+            <p>Vergelijk de financiële gevolgen van kopen versus huren met ingebouwde Nederlandse belastingvoordelen (hypotheekrenteaftrek, eigenwoningforfait).</p>
+            <div class="hero-buttons">
+                <a href="#calculator" class="btn btn-primary">Start Calculator ↓</a>
+                <button class="btn btn-secondary" onclick="document.getElementById('help-modal').style.display='flex'">Hoe werkt het? ℹ️</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features" id="features">
+        <h2>Waarom deze calculator?</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Gedetailleerde analyse</h3>
+                <p>Jaar-voor-jaar vergelijking van alle kosten en voordelen voor beide scenario's.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🇳🇱</div>
+                <h3>Nederlandse belastingen</h3>
+                <p>Ingebouwde hypotheekrenteaftrek, eigenwoningforfait, OZB en overdrachtsbelasting.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Beleggingsgroei</h3>
+                <p>Voor huurders: modelleer het beleggingsrendement op het spaargeld.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Scenario's vergelijken</h3>
+                <p>Sla meerdere scenario's op en vergelijk ze naast elkaar.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Interactieve grafieken</h3>
+                <p>Visualiseer je vermogen, maandlasten en voordelen over de jaren.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📥</div>
+                <h3>Exporteren</h3>
+                <p>Download je gegevens als CSV voor verdere analyse in Excel.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculator Section -->
+    <div class="calculator-section" id="calculator">
+        <div class="calculator-container">
+            <div class="calculator-header">
+                <h2>Calculeren</h2>
+                <p>Vul je gegevens in en zien hoe kopen zich verhoudt tot huren in je situatie.</p>
+            </div>
+            <div id="app-container"></div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div style="max-width: 1000px; margin: 80px auto; padding: 0 24px;" id="faq">
+        <h2 style="font-size: 32px; font-weight: 800; font-family: 'Fraunces', Georgia, serif; margin-bottom: 40px; text-align: center;">Veelgestelde vragen</h2>
+        
+        <div style="display: grid; gap: 20px;">
+            <details style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer;">
+                <summary style="font-weight: 700; font-size: 16px; color: var(--text-primary);">Hoe nauwkeurig is deze calculator?</summary>
+                <p style="margin-top: 12px; color: var(--text-secondary); line-height: 1.7;">
+                    Deze calculator biedt realistische schattingen op basis van Nederlands belastingwetgeving en huisvestingskosten. Echter, werkelijke uitkomsten variëren. Het is geen vervanging voor persoonlijk financieel advies.
+                </p>
+            </details>
+
+            <details style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer;">
+                <summary style="font-weight: 700; font-size: 16px; color: var(--text-primary);">Wat is hypotheekrenteaftrek?</summary>
+                <p style="margin-top: 12px; color: var(--text-secondary); line-height: 1.7;">
+                    Dit is een belastingaftrek in Nederland waarmee je de betaalde hypotheekrente van je belastbaar inkomen aftrekt. Dit verlaagt je inkomstenbelasting aanzienlijk. De calculator past dit automatisch toe op basis van jouw marginale belastingtarief.
+                </p>
+            </details>
+
+            <details style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer;">
+                <summary style="font-weight: 700; font-size: 16px; color: var(--text-primary);">Wat is eigenwoningforfait?</summary>
+                <p style="margin-top: 12px; color: var(--text-secondary); line-height: 1.7;">
+                    Dit is een fictieve huuropbrengst die de Belastingdienst toevoegt aan je belastbare inkomen, ongeacht of je je huis verhuurt. In 2025 is dit 0,35% van de WOZ-waarde. Dit vermindert je netto belastingvoordeel.
+                </p>
+            </details>
+
+            <details style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer;">
+                <summary style="font-weight: 700; font-size: 16px; color: var(--text-primary);">Hoe worden beleggingsrendementen belast?</summary>
+                <p style="margin-top: 12px; color: var(--text-secondary); line-height: 1.7;">
+                    De calculator gebruikt een vereenvoudigde benadering voor Box 3 berekeningen (sparen en beleggen). In werkelijkheid is Nederlands belastingrecht complexer. Raadpleeg de Belastingdienst of een adviseur voor details.
+                </p>
+            </details>
+
+            <details style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer;">
+                <summary style="font-weight: 700; font-size: 16px; color: var(--text-primary);">Kan ik meerdere scenario's opslaan en vergelijken?</summary>
+                <p style="margin-top: 12px; color: var(--text-secondary); line-height: 1.7;">
+                    Ja! Vul verschillende parameters in (bijv. verschillende hypotheekrentes of huisprijzen), klik op "Opslaan" in het Scenario's-tabblad, en vergelijk ze naast elkaar. Dit helpt je verschillende situaties te onderzoeken.
+                </p>
+            </details>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="cta-content">
+            <h2>Klaar om je beslissing te nemen?</h2>
+            <p>Maak gebruik van de interactieve calculator om précies te zien hoe kopen versus huren voor jouw situatie uitpakt over de komende jaren.</p>
+            <a href="#calculator" class="btn btn-primary" style="justify-content: center; width: fit-content; margin: 0 auto;">Bereken nu</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Over</h4>
+                    <p style="color: #999; font-size: 13px; line-height: 1.7; margin: 0;">
+                        HuurOfKoop is een gratis calculator die huizenkopers en huurders helpt een weloverwogen financiële beslissing te nemen.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#calculator">Calculator</a></li>
+                        <li><a href="#features">Kenmerken</a></li>
+                        <li><a href="#faq">Veelgestelde vragen</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Bronnen</h4>
+                    <ul>
+                        <li><a href="https://www.belastingdienst.nl/" target="_blank">Belastingdienst</a></li>
+                        <li><a href="https://www.cbs.nl/" target="_blank">CBS (Centraal Bureau voor de Statistiek)</a></li>
+                        <li><a href="https://www.nvm.nl/" target="_blank">NVM (Makelaarvereniging)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Juridisch</h4>
+                    <ul>
+                        <li><a href="#" onclick="alert('Privacybeleid: Deze site slaat geen persoonlijke gegevens op.')">Privacybeleid</a></li>
+                        <li><a href="#" onclick="alert('Disclaimer: Dit is educatief materiaal, geen financieel advies.')">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 HuurOfKoop. Alle rechten voorbehouden. | <a href="#" style="color: #666; text-decoration: none;">info@huurofkoop.nl</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Help Modal -->
+    <div id="help-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; padding: 20px;">
+        <div style="background: white; border-radius: 14px; max-width: 600px; max-height: 80vh; overflow-y: auto; padding: 32px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="font-size: 20px; font-weight: 700;">Hoe werkt de calculator?</h3>
+                <button onclick="document.getElementById('help-modal').style.display='none'" style="background: none; border: none; font-size: 24px; cursor: pointer;">✕</button>
+            </div>
+            <div style="color: var(--text-secondary); line-height: 1.8; font-size: 14px;">
+                <p style="margin-bottom: 14px;">
+                    <strong style="color: var(--text-primary);">Twee scenario's parallel:</strong> De calculator modelleert je twee parallelle scenario's over je gekozen tijdshorizon: <strong>een huis kopen met hypotheek</strong> versus <strong>huren en het verschil beleggen</strong>.
+                </p>
+                <p style="margin-bottom: 14px;">
+                    <strong style="color: var(--text-primary);">Voor de koper:</strong> We berekenen je annuïteitshypotheek, trekken de hypotheekrenteaftrek af, voegen het eigenwoningforfait toe, en nemen OZB, verzekering en onderhoud in rekening. Je huis bouwt equity op terwijl je de hypotheek afbetaalt en het pand waardeert.
+                </p>
+                <p style="margin-bottom: 14px;">
+                    <strong style="color: var(--text-primary);">Voor de huurder:</strong> Je initiële kosten (aanbetaling + sluitingskosten + overdrachtsbelasting) worden belegd. Wanneer huren goedkoper is dan kopen, worden de besparingen ook belegd. De rendementen groeien tegen je gekozen beleggingsrendement.
+                </p>
+                <p style="margin-bottom: 14px;">
+                    <strong style="color: var(--text-primary);">De vergelijking:</strong> Vermogen koper = home equity + extra beleggde besparingen. Vermogen huurder = totale beleggingsportefeuille. Het break-even-jaar is wanneer kopen inhaalt.
+                </p>
+                <p style="font-style: italic; opacity: 0.8;">
+                    ⚠️ Dit is een vereenvoudigd model. Werkelijke uitkomsten hangen af van veel factoren. Raadpleeg een financieel adviseur voor persoonlijk advies. Dit is geen financieel advies.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- React & Dependencies -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/recharts@2.12.0/dist/Recharts.js"></script>
+    
+    <!-- Main App Script -->
+    <script>
+        const { useState, useEffect, useCallback, useRef } = React;
+        const { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine } = Recharts;
+
+        // Constants & Defaults
+        const DEFAULTS = {
+            purchasePrice: 400000,
+            downPayment: 40000,
+            mortgageRate: 3.8,
+            mortgageTerm: 30,
+            closingCosts: 2.0,
+            overdrachtsbelasting: 2.0,
+            propertyTax: 0.1,
+            homeInsurance: 1200,
+            maintenancePct: 1.0,
+            monthlyRent: 1500,
+            renterInsurance: 15,
+            marginalTaxRate: 37.07,
+            capitalGainsTaxRate: 0,
+            investmentReturn: 7.0,
+            yearsInHome: 30,
+            homeAppreciation: 2.5,
+            rentIncrease: 3.0,
+            eigenwoningforfait: 0.35,
+            hypotheekrenteaftrekPct: 37.07,
+        };
+
+        const LABELS = {
+            purchasePrice: "Purchase Price",
+            downPayment: "Down Payment",
+            mortgageRate: "Mortgage Interest Rate",
+            mortgageTerm: "Mortgage Term (years)",
+            closingCosts: "Closing Costs (notary, etc.)",
+            overdrachtsbelasting: "Overdrachtsbelasting",
+            propertyTax: "Annual Property Tax (OZB)",
+            homeInsurance: "Annual Home Insurance",
+            maintenancePct: "Annual Maintenance",
+            monthlyRent: "Monthly Rent",
+            renterInsurance: "Monthly Renter's Insurance",
+            marginalTaxRate: "Marginal Income Tax Rate",
+            capitalGainsTaxRate: "Capital Gains Tax (investments)",
+            investmentReturn: "Expected Investment Return",
+            yearsInHome: "Time Horizon",
+            homeAppreciation: "Annual Home Price Appreciation",
+            rentIncrease: "Annual Rent Increase",
+            eigenwoningforfait: "Eigenwoningforfait Rate",
+            hypotheekrenteaftrekPct: "Hypotheekrenteaftrek Tax Rate",
+        };
+
+        const UNITS = {
+            purchasePrice: "€", downPayment: "€", mortgageRate: "%",
+            mortgageTerm: "yr", closingCosts: "%", overdrachtsbelasting: "%",
+            propertyTax: "%", homeInsurance: "€/yr", maintenancePct: "%",
+            monthlyRent: "€/mo", renterInsurance: "€/mo", marginalTaxRate: "%",
+            capitalGainsTaxRate: "%", investmentReturn: "%", yearsInHome: "yr",
+            homeAppreciation: "%", rentIncrease: "%", eigenwoningforfait: "%",
+            hypotheekrenteaftrekPct: "%",
+        };
+
+        const TOOLTIPS = {
+            purchasePrice: "The total purchase price of the property.",
+            downPayment: "Amount paid upfront. In NL, 100% mortgages are possible but a down payment lowers monthly costs.",
+            mortgageRate: "Annual mortgage interest rate. NL average is currently around 3.5–4.5%.",
+            mortgageTerm: "Duration of the mortgage. Standard in NL is 30 years with annuity repayment.",
+            closingCosts: "Notary fees, valuation report (taxatierapport), mortgage advisor, etc. Typically 1–3% of purchase price.",
+            overdrachtsbelasting: "Transfer tax: 2% for primary residences (0% for buyers under 35 on homes up to €510,000 in 2025).",
+            propertyTax: "OZB (Onroerendezaakbelasting) – municipal property tax, varies by gemeente.",
+            homeInsurance: "Opstalverzekering – required by most mortgage lenders.",
+            maintenancePct: "Annual upkeep budget. Rule of thumb: 1% of home value per year.",
+            monthlyRent: "Current monthly rent (kale huur + servicekosten).",
+            renterInsurance: "Inboedelverzekering – contents insurance for renters.",
+            marginalTaxRate: "Your income tax bracket rate. Box 1 rates: 36.97% (up to ~€75k) or 49.50%.",
+            capitalGainsTaxRate: "NL taxes investment returns in Box 3 (fictitious yield). Set to 0 if below vrijstelling.",
+            investmentReturn: "Expected annual return if you invest instead of buying. Historical stock market avg ~7%.",
+            yearsInHome: "How many years you plan to stay. Buying becomes better the longer you stay.",
+            homeAppreciation: "Expected annual increase in property value. NL long-term average ~2–3%.",
+            rentIncrease: "Expected annual rent increase. NL averages 3–4% in recent years.",
+            eigenwoningforfait: "Notional rental value added to taxable income. 2025 rate: 0.35% of WOZ value.",
+            hypotheekrenteaftrekPct: "Tax rate at which mortgage interest is deductible. Capped at 37.07% in 2025.",
+        };
+
+        const INPUT_GROUPS = [
+            {
+                title: "Property & Purchase",
+                icon: "🏠",
+                keys: ["purchasePrice", "downPayment", "closingCosts", "overdrachtsbelasting"],
+            },
+            {
+                title: "Mortgage",
+                icon: "🏦",
+                keys: ["mortgageRate", "mortgageTerm"],
+            },
+            {
+                title: "Homeowner Costs",
+                icon: "🔧",
+                keys: ["propertyTax", "homeInsurance", "maintenancePct"],
+            },
+            {
+                title: "Renting",
+                icon: "🔑",
+                keys: ["monthlyRent", "renterInsurance"],
+            },
+            {
+                title: "Market & Growth",
+                icon: "📈",
+                keys: ["homeAppreciation", "rentIncrease", "investmentReturn"],
+            },
+            {
+                title: "Tax (Netherlands)",
+                icon: "🇳🇱",
+                keys: ["marginalTaxRate", "capitalGainsTaxRate", "eigenwoningforfait", "hypotheekrenteaftrekPct"],
+            },
+            {
+                title: "Time Horizon",
+                icon: "⏱️",
+                keys: ["yearsInHome"],
+            },
+        ];
+
+        // Helpers
+        const fmt = (n) => new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
+        const fmtK = (n) => {
+            if (Math.abs(n) >= 1000000) return `€${(n / 1000000).toFixed(1)}M`;
+            if (Math.abs(n) >= 1000) return `€${(n / 1000).toFixed(0)}k`;
+            return fmt(n);
+        };
+        const pct = (n) => `${n.toFixed(2)}%`;
+
+        function calculateMonthlyMortgage(principal, annualRate, termYears) {
+            const r = annualRate / 100 / 12;
+            const n = termYears * 12;
+            if (r === 0) return principal / n;
+            return (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+        }
+
+        function runModel(inputs) {
+            const {
+                purchasePrice, downPayment, mortgageRate, mortgageTerm,
+                closingCosts, overdrachtsbelasting, propertyTax, homeInsurance,
+                maintenancePct, monthlyRent, renterInsurance, marginalTaxRate,
+                investmentReturn, yearsInHome, homeAppreciation, rentIncrease,
+                eigenwoningforfait, hypotheekrenteaftrekPct, capitalGainsTaxRate,
+            } = inputs;
+
+            const loanAmount = purchasePrice - downPayment;
+            const totalClosing = purchasePrice * (closingCosts / 100);
+            const transferTax = purchasePrice * (overdrachtsbelasting / 100);
+            const totalUpfront = downPayment + totalClosing + transferTax;
+            const monthlyMortgage = calculateMonthlyMortgage(loanAmount, mortgageRate, mortgageTerm);
+
+            const monthlyRate = mortgageRate / 100 / 12;
+            const totalMonths = mortgageTerm * 12;
+
+            let balance = loanAmount;
+            const yearlyData = [];
+            let buyerNetWorth = -totalUpfront;
+            let renterInvestments = totalUpfront;
+            let cumulativeBuyCost = totalUpfront;
+            let cumulativeRentCost = 0;
+            let breakEvenYear = null;
+
+            for (let year = 1; year <= yearsInHome; year++) {
+                let yearInterest = 0;
+                let yearPrincipal = 0;
+
+                for (let m = 0; m < 12; m++) {
+                    if (balance > 0) {
+                        const interestPayment = balance * monthlyRate;
+                        const principalPayment = Math.min(monthlyMortgage - interestPayment, balance);
+                        yearInterest += interestPayment;
+                        yearPrincipal += principalPayment;
+                        balance -= principalPayment;
+                    }
+                }
+
+                const homeValue = purchasePrice * Math.pow(1 + homeAppreciation / 100, year);
+                const equity = homeValue - Math.max(balance, 0);
+
+                const ewfIncome = homeValue * (eigenwoningforfait / 100);
+                const taxDeduction = yearInterest * (hypotheekrenteaftrekPct / 100);
+                const netTaxBenefit = taxDeduction - ewfIncome * (marginalTaxRate / 100);
+
+                const annualPropertyTax = homeValue * (propertyTax / 100);
+                const annualMaintenance = homeValue * (maintenancePct / 100);
+                const totalBuyAnnual = (monthlyMortgage * 12) + annualPropertyTax + homeInsurance + annualMaintenance - netTaxBenefit;
+
+                const currentRent = monthlyRent * Math.pow(1 + rentIncrease / 100, year - 1);
+                const totalRentAnnual = (currentRent + renterInsurance) * 12;
+
+                const invReturn = investmentReturn / 100;
+                renterInvestments = renterInvestments * (1 + invReturn);
+                if (totalBuyAnnual > totalRentAnnual) {
+                    renterInvestments += (totalBuyAnnual - totalRentAnnual);
+                }
+
+                let buyerExtraInvestments = 0;
+                if (year > 1 && yearlyData[year - 2]) {
+                    buyerExtraInvestments = yearlyData[year - 2].buyerExtraInvestments * (1 + invReturn);
+                }
+                if (totalRentAnnual > totalBuyAnnual) {
+                    buyerExtraInvestments += (totalRentAnnual - totalBuyAnnual);
+                }
+
+                const buyerTotal = equity + buyerExtraInvestments;
+                const renterTotal = renterInvestments;
+
+                const renterTaxed = renterTotal * (1 - capitalGainsTaxRate / 100 * 0.3);
+
+                cumulativeBuyCost += totalBuyAnnual;
+                cumulativeRentCost += totalRentAnnual;
+
+                if (!breakEvenYear && buyerTotal >= renterTotal) {
+                    breakEvenYear = year;
+                }
+
+                yearlyData.push({
+                    year,
+                    homeValue,
+                    equity,
+                    balance: Math.max(balance, 0),
+                    yearInterest,
+                    yearPrincipal,
+                    netTaxBenefit,
+                    totalBuyAnnual,
+                    totalBuyMonthly: totalBuyAnnual / 12,
+                    totalRentAnnual,
+                    totalRentMonthly: totalRentAnnual / 12,
+                    currentRent,
+                    renterInvestments: renterTotal,
+                    buyerTotal,
+                    renterTotal,
+                    advantage: buyerTotal - renterTotal,
+                    cumulativeBuyCost,
+                    cumulativeRentCost,
+                    buyerExtraInvestments,
+                    annualPropertyTax,
+                    annualMaintenance,
+                });
+            }
+
+            return {
+                loanAmount,
+                totalUpfront,
+                totalClosing,
+                transferTax,
+                monthlyMortgage,
+                yearlyData,
+                breakEvenYear,
+                finalAdvantage: yearlyData.length > 0 ? yearlyData[yearlyData.length - 1].advantage : 0,
+            };
+        }
+
+        // Components
+        function TooltipIcon({ text }) {
+            const [show, setShow] = useState(false);
+            return React.createElement('span', {
+                style: { position: "relative", display: "inline-block", marginLeft: 6, cursor: "help" },
+                onMouseEnter: () => setShow(true),
+                onMouseLeave: () => setShow(false),
+                onClick: () => setShow(!show)
+            },
+                React.createElement('span', {
+                    style: {
+                        display: "inline-flex", alignItems: "center", justifyContent: "center",
+                        width: 16, height: 16, borderRadius: "50%", fontSize: 10, fontWeight: 700,
+                        background: "var(--muted)", color: "var(--text-secondary)",
+                    }
+                }, '?'),
+                show && React.createElement('span', {
+                    style: {
+                        position: "absolute", bottom: "calc(100% + 8px)", left: "50%", transform: "translateX(-50%)",
+                        background: "var(--card)", border: "1px solid var(--border)", borderRadius: 8,
+                        padding: "10px 14px", fontSize: 12, lineHeight: 1.5, width: 260, zIndex: 100,
+                        boxShadow: "0 8px 30px rgba(0,0,0,0.12)", color: "var(--text-primary)",
+                        pointerEvents: "none",
+                    }
+                }, text)
+            );
+        }
+
+        function InputField({ name, value, onChange, error }) {
+            const unit = UNITS[name];
+            const isEuro = unit === "€" || unit === "€/yr" || unit === "€/mo";
+            const isPct = unit === "%";
+            const isYr = unit === "yr";
+
+            return React.createElement('div', { style: { marginBottom: 14 } },
+                React.createElement('div', { style: { display: "flex", alignItems: "center", marginBottom: 4 } },
+                    React.createElement('label', { style: { fontSize: 13, fontWeight: 500, color: "var(--text-secondary)" } }, LABELS[name]),
+                    TOOLTIPS[name] && React.createElement(TooltipIcon, { text: TOOLTIPS[name] })
+                ),
+                React.createElement('div', {
+                    style: {
+                        display: "flex", alignItems: "center", background: "var(--input-bg)",
+                        border: `1.5px solid ${error ? "var(--danger)" : "var(--border)"}`,
+                        borderRadius: 8, overflow: "hidden", transition: "border-color 0.2s",
+                    }
+                },
+                    isEuro && React.createElement('span', { style: { padding: "0 0 0 12px", fontSize: 14, color: "var(--text-secondary)", fontWeight: 600 } }, '€'),
+                    React.createElement('input', {
+                        type: "number",
+                        value: value,
+                        onChange: (e) => onChange(name, e.target.value),
+                        step: isPct ? 0.01 : isYr ? 1 : 100,
+                        style: {
+                            flex: 1, border: "none", outline: "none", padding: "10px 12px",
+                            fontSize: 14, fontWeight: 600, background: "transparent", color: "var(--text-primary)",
+                            fontFamily: "'DM Mono', monospace", width: "100%",
+                        }
+                    }),
+                    (isPct || isYr || unit === "€/yr" || unit === "€/mo") && React.createElement('span', {
+                        style: { padding: "0 12px 0 0", fontSize: 12, color: "var(--text-secondary)", whiteSpace: "nowrap" }
+                    }, isPct ? "%" : isYr ? "years" : unit === "€/yr" ? "/year" : "/month")
+                ),
+                error && React.createElement('div', { style: { color: "var(--danger)", fontSize: 11, marginTop: 3 } }, error)
+            );
+        }
+
+        function StatCard({ label, value, sub, color, large }) {
+            return React.createElement('div', {
+                style: {
+                    background: "var(--card)", borderRadius: 12, padding: large ? "24px 20px" : "18px 16px",
+                    border: "1px solid var(--border)", flex: 1, minWidth: 160,
+                }
+            },
+                React.createElement('div', {
+                    style: {
+                        fontSize: 12, fontWeight: 500, color: "var(--text-secondary)", marginBottom: 6,
+                        textTransform: "uppercase", letterSpacing: 0.5
+                    }
+                }, label),
+                React.createElement('div', {
+                    style: {
+                        fontSize: large ? 28 : 22, fontWeight: 800, color: color || "var(--text-primary)",
+                        fontFamily: "'DM Mono', monospace", lineHeight: 1.2
+                    }
+                }, value),
+                sub && React.createElement('div', { style: { fontSize: 12, color: "var(--text-secondary)", marginTop: 4 } }, sub)
+            );
+        }
+
+        function Section({ title, children, defaultOpen = true }) {
+            const [open, setOpen] = useState(defaultOpen);
+            return React.createElement('div', {
+                style: {
+                    marginBottom: 24, background: "var(--card)", borderRadius: 14,
+                    border: "1px solid var(--border)", overflow: "hidden"
+                }
+            },
+                React.createElement('button', {
+                    onClick: () => setOpen(!open),
+                    style: {
+                        width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
+                        padding: "16px 20px", background: "none", border: "none", cursor: "pointer",
+                        fontSize: 16, fontWeight: 700, color: "var(--text-primary)", fontFamily: "inherit",
+                    }
+                },
+                    title,
+                    React.createElement('span', { style: { transform: open ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.2s", fontSize: 12 } }, '▼')
+                ),
+                open && React.createElement('div', { style: { padding: "0 20px 20px" } }, children)
+            );
+        }
+
+        function ChartTooltip({ active, payload, label }) {
+            if (!active || !payload?.length) return null;
+            return React.createElement('div', {
+                style: {
+                    background: "var(--card)", border: "1px solid var(--border)", borderRadius: 10,
+                    padding: "12px 16px", boxShadow: "0 8px 30px rgba(0,0,0,0.15)", maxWidth: 280,
+                }
+            },
+                React.createElement('div', {
+                    style: {
+                        fontWeight: 700, fontSize: 13, marginBottom: 8,
+                        color: "var(--text-primary)"
+                    }
+                }, `Year ${label}`),
+                payload.map((p, i) => React.createElement('div', {
+                    key: i,
+                    style: {
+                        display: "flex", justifyContent: "space-between", gap: 16, fontSize: 12,
+                        marginBottom: 3
+                    }
+                },
+                    React.createElement('span', { style: { color: p.color, fontWeight: 600 } }, p.name),
+                    React.createElement('span', {
+                        style: {
+                            fontFamily: "'DM Mono', monospace", fontWeight: 700,
+                            color: "var(--text-primary)"
+                        }
+                    }, fmt(p.value))
+                ))
+            );
+        }
+
+        // Scenarios
+        function useScenarios() {
+            const [scenarios, setScenarios] = useState([]);
+            const save = (name, inputs, results) => {
+                setScenarios((prev) => [...prev, { name, inputs: { ...inputs }, results, id: Date.now() }]);
+            };
+            const remove = (id) => setScenarios((prev) => prev.filter((s) => s.id !== id));
+            return { scenarios, save, remove };
+        }
+
+        // Main App
+        function BuyVsRentApp() {
+            const [inputs, setInputs] = useState(DEFAULTS);
+            const [errors, setErrors] = useState({});
+            const [activeTab, setActiveTab] = useState("overview");
+            const [scenarioName, setScenarioName] = useState("");
+            const { scenarios, save, remove } = useScenarios();
+            const [showHelp, setShowHelp] = useState(false);
+            const printRef = useRef();
+
+            const handleChange = useCallback((name, rawValue) => {
+                const value = rawValue === "" ? "" : Number(rawValue);
+                setInputs((prev) => ({ ...prev, [name]: value }));
+                setErrors((prev) => {
+                    const next = { ...prev };
+                    delete next[name];
+                    if (value === "" || isNaN(value)) next[name] = "Please enter a valid number";
+                    else if (name === "downPayment" && value > inputs.purchasePrice) next[name] = "Cannot exceed purchase price";
+                    else if (name === "mortgageRate" && value < 0) next[name] = "Rate cannot be negative";
+                    else if (name === "yearsInHome" && (value < 1 || value > 50)) next[name] = "Enter 1–50 years";
+                    return next;
+                });
+            }, [inputs.purchasePrice]);
+
+            const hasErrors = Object.keys(errors).length > 0 || Object.values(inputs).some((v) => v === "" || isNaN(v));
+            const results = hasErrors ? null : runModel(inputs);
+
+            const handlePrint = () => window.print();
+
+            const handleExport = () => {
+                if (!results) return;
+                let csv = "Year,Home Value,Equity,Mortgage Balance,Buy Monthly,Rent Monthly,Buyer Net Worth,Renter Net Worth,Advantage (Buy)\n";
+                results.yearlyData.forEach((d) => {
+                    csv += `${d.year},${d.homeValue.toFixed(0)},${d.equity.toFixed(0)},${d.balance.toFixed(0)},${d.totalBuyMonthly.toFixed(0)},${d.totalRentMonthly.toFixed(0)},${d.buyerTotal.toFixed(0)},${d.renterTotal.toFixed(0)},${d.advantage.toFixed(0)}\n`;
+                });
+                const blob = new Blob([csv], { type: "text/csv" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "buy-vs-rent-nl.csv";
+                a.click();
+                URL.revokeObjectURL(url);
+            };
+
+            const TABS = [
+                { id: "overview", label: "Overview" },
+                { id: "monthly", label: "Monthly Costs" },
+                { id: "networth", label: "Net Worth" },
+                { id: "equity", label: "Equity" },
+                { id: "breakdown", label: "Breakdown" },
+                { id: "scenarios", label: "Scenarios" },
+            ];
+
+            const colors = {
+                buy: "#0066FF",
+                rent: "#FF6B35",
+                equity: "#00C49F",
+                invest: "#8B5CF6",
+                advantage: "#10B981",
+                danger: "#EF4444",
+            };
+
+            return React.createElement('div', {
+                style: {
+                    "--bg": "#F8F7F4",
+                    "--card": "#FFFFFF",
+                    "--card-alt": "#F2F0EB",
+                    "--border": "#E5E2DA",
+                    "--text-primary": "#1A1A1A",
+                    "--text-secondary": "#6B6560",
+                    "--accent": "#0066FF",
+                    "--accent-light": "#E8F0FE",
+                    "--success": "#10B981",
+                    "--success-light": "#ECFDF5",
+                    "--danger": "#EF4444",
+                    "--danger-light": "#FEF2F2",
+                    "--muted": "#F0EDE8",
+                    "--input-bg": "#FAFAF8",
+                    fontFamily: "'DM Sans', 'Segoe UI', system-ui, sans-serif",
+                    background: "var(--bg)",
+                    color: "var(--text-primary)",
+                    minHeight: "100vh",
+                    fontSize: 14,
+                }
+            },
+                React.createElement('style', null, `
+                    @media print {
+                        body { background: white !important; }
+                        * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+                    }
+                `),
+                React.createElement('div', { ref: printRef, style: { maxWidth: 900, margin: "0 auto", padding: "24px 24px 60px" } },
+                    // INPUT SECTION
+                    React.createElement(Section, { title: "📝 Your Inputs", defaultOpen: true },
+                        React.createElement('div', {
+                            style: {
+                                display: "grid",
+                                gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                                gap: 24,
+                            }
+                        },
+                            INPUT_GROUPS.map((group) => React.createElement('div', {
+                                key: group.title,
+                                style: {
+                                    background: "var(--card-alt)", borderRadius: 12, padding: "18px 18px 8px",
+                                }
+                            },
+                                React.createElement('div', {
+                                    style: {
+                                        fontSize: 13, fontWeight: 700, color: "var(--text-secondary)",
+                                        marginBottom: 12, display: "flex", alignItems: "center", gap: 6,
+                                    }
+                                },
+                                    React.createElement('span', null, group.icon),
+                                    group.title
+                                ),
+                                group.keys.map((key) => React.createElement(InputField, {
+                                    key: key,
+                                    name: key,
+                                    value: inputs[key],
+                                    onChange: handleChange,
+                                    error: errors[key]
+                                }))
+                            ))
+                        )
+                    ),
+
+                    hasErrors && React.createElement('div', {
+                        style: {
+                            background: "var(--danger-light)", border: "1px solid #FECACA",
+                            borderRadius: 12, padding: "16px 20px", color: "#991B1B",
+                            fontSize: 14, fontWeight: 500, marginBottom: 24,
+                        }
+                    },
+                        "⚠️ Please fix the input errors above to see results."
+                    ),
+
+                    results && React.createElement('div', null,
+                        // SUMMARY CARDS
+                        React.createElement('div', { style: { display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 24 } },
+                            React.createElement(StatCard, {
+                                label: "Breakeven Year",
+                                value: results.breakEvenYear ? `Year ${results.breakEvenYear}` : "Never*",
+                                sub: results.breakEvenYear ? "When buying becomes better" : `Within ${inputs.yearsInHome} years`,
+                                color: results.breakEvenYear ? colors.success : colors.danger,
+                                large: true
+                            }),
+                            React.createElement(StatCard, {
+                                label: `Net Advantage @ Year ${inputs.yearsInHome}`,
+                                value: fmt(results.finalAdvantage),
+                                sub: results.finalAdvantage >= 0 ? "Buying is better" : "Renting is better",
+                                color: results.finalAdvantage >= 0 ? colors.buy : colors.rent,
+                                large: true
+                            }),
+                            React.createElement(StatCard, {
+                                label: "Monthly Mortgage",
+                                value: fmt(results.monthlyMortgage),
+                                sub: `On ${fmt(results.loanAmount)} loan`,
+                                large: true
+                            }),
+                            React.createElement(StatCard, {
+                                label: "Total Upfront (Buy)",
+                                value: fmt(results.totalUpfront),
+                                sub: `Down payment + ${fmt(results.totalClosing)} closing + ${fmt(results.transferTax)} tax`,
+                                large: true
+                            })
+                        ),
+
+                        // TABS
+                        React.createElement('div', {
+                            style: {
+                                display: "flex", gap: 4, marginBottom: 20, overflowX: "auto",
+                                background: "var(--muted)", borderRadius: 10, padding: 4,
+                            }
+                        },
+                            TABS.map((t) => React.createElement('button', {
+                                key: t.id,
+                                onClick: () => setActiveTab(t.id),
+                                style: {
+                                    padding: "10px 18px", borderRadius: 8, border: "none", cursor: "pointer",
+                                    fontSize: 13, fontWeight: 600, whiteSpace: "nowrap", transition: "all 0.2s",
+                                    background: activeTab === t.id ? "var(--card)" : "transparent",
+                                    color: activeTab === t.id ? "var(--text-primary)" : "var(--text-secondary)",
+                                    boxShadow: activeTab === t.id ? "0 1px 4px rgba(0,0,0,0.08)" : "none",
+                                }
+                            }, t.label))
+                        ),
+
+                        // TAB CONTENT - Overview
+                        activeTab === "overview" && React.createElement('div', null,
+                            React.createElement(Section, { title: "📊 Net Worth Over Time", defaultOpen: true },
+                                React.createElement(ResponsiveContainer, { width: "100%", height: 380 },
+                                    React.createElement(AreaChart, { data: results.yearlyData, margin: { top: 10, right: 10, left: 10, bottom: 0 } },
+                                        React.createElement('defs', null,
+                                            React.createElement('linearGradient', { id: "buyGrad", x1: "0", y1: "0", x2: "0", y2: "1" },
+                                                React.createElement('stop', { offset: "5%", stopColor: colors.buy, stopOpacity: 0.2 }),
+                                                React.createElement('stop', { offset: "95%", stopColor: colors.buy, stopOpacity: 0 })
+                                            ),
+                                            React.createElement('linearGradient', { id: "rentGrad", x1: "0", y1: "0", x2: "0", y2: "1" },
+                                                React.createElement('stop', { offset: "5%", stopColor: colors.rent, stopOpacity: 0.2 }),
+                                                React.createElement('stop', { offset: "95%", stopColor: colors.rent, stopOpacity: 0 })
+                                            )
+                                        ),
+                                        React.createElement(CartesianGrid, { strokeDasharray: "3 3", stroke: "var(--border)" }),
+                                        React.createElement(XAxis, { dataKey: "year", tick: { fontSize: 12 } }),
+                                        React.createElement(YAxis, { tickFormatter: fmtK, tick: { fontSize: 12 }, width: 65 }),
+                                        React.createElement(Tooltip, { content: React.createElement(ChartTooltip) }),
+                                        React.createElement(Legend, { wrapperStyle: { fontSize: 13 } }),
+                                        React.createElement(Area, {
+                                            type: "monotone",
+                                            dataKey: "buyerTotal",
+                                            name: "Buyer Net Worth",
+                                            stroke: colors.buy,
+                                            fill: "url(#buyGrad)",
+                                            strokeWidth: 2.5
+                                        }),
+                                        React.createElement(Area, {
+                                            type: "monotone",
+                                            dataKey: "renterTotal",
+                                            name: "Renter Net Worth",
+                                            stroke: colors.rent,
+                                            fill: "url(#rentGrad)",
+                                            strokeWidth: 2.5
+                                        }),
+                                        results.breakEvenYear && React.createElement(ReferenceLine, {
+                                            x: results.breakEvenYear,
+                                            stroke: colors.success,
+                                            strokeDasharray: "5 5",
+                                            label: { value: "Breakeven", fill: colors.success, fontSize: 12 }
+                                        })
+                                    )
+                                )
+                            ),
+
+                            React.createElement(Section, { title: "💰 Buying Advantage Over Time", defaultOpen: true },
+                                React.createElement(ResponsiveContainer, { width: "100%", height: 300 },
+                                    React.createElement(BarChart, { data: results.yearlyData, margin: { top: 10, right: 10, left: 10, bottom: 0 } },
+                                        React.createElement(CartesianGrid, { strokeDasharray: "3 3", stroke: "var(--border)" }),
+                                        React.createElement(XAxis, { dataKey: "year", tick: { fontSize: 12 } }),
+                                        React.createElement(YAxis, { tickFormatter: fmtK, tick: { fontSize: 12 }, width: 65 }),
+                                        React.createElement(Tooltip, { content: React.createElement(ChartTooltip) }),
+                                        React.createElement(ReferenceLine, { y: 0, stroke: "var(--text-secondary)", strokeWidth: 1.5 }),
+                                        React.createElement(Bar, {
+                                            dataKey: "advantage",
+                                            name: "Buy vs Rent Advantage",
+                                            radius: [3, 3, 0, 0],
+                                            fill: colors.buy,
+                                            shape: (props) => {
+                                                const { x, y, width, height, value } = props;
+                                                return React.createElement('rect', {
+                                                    x, y, width, height,
+                                                    rx: 3, ry: 3,
+                                                    fill: value >= 0 ? colors.buy : colors.rent,
+                                                    opacity: 0.85
+                                                });
+                                            }
+                                        })
+                                    )
+                                ),
+                                React.createElement('div', {
+                                    style: {
+                                        textAlign: "center", fontSize: 12, color: "var(--text-secondary)",
+                                        marginTop: 8
+                                    }
+                                },
+                                    React.createElement('span', { style: { color: colors.buy } }, '■'),
+                                    " Blue = buying is better ",
+                                    React.createElement('span', { style: { color: colors.rent } }, '■'),
+                                    " Orange = renting is better"
+                                )
+                            )
+                        ),
+
+                        // TAB CONTENT - Monthly
+                        activeTab === "monthly" && React.createElement(Section, { title: "📅 Monthly Cost Comparison", defaultOpen: true },
+                            React.createElement(ResponsiveContainer, { width: "100%", height: 380 },
+                                React.createElement(LineChart, { data: results.yearlyData, margin: { top: 10, right: 10, left: 10, bottom: 0 } },
+                                    React.createElement(CartesianGrid, { strokeDasharray: "3 3", stroke: "var(--border)" }),
+                                    React.createElement(XAxis, { dataKey: "year", tick: { fontSize: 12 } }),
+                                    React.createElement(YAxis, { tickFormatter: fmtK, tick: { fontSize: 12 }, width: 65 }),
+                                    React.createElement(Tooltip, { content: React.createElement(ChartTooltip) }),
+                                    React.createElement(Legend, { wrapperStyle: { fontSize: 13 } }),
+                                    React.createElement(Line, {
+                                        type: "monotone",
+                                        dataKey: "totalBuyMonthly",
+                                        name: "Buy (monthly)",
+                                        stroke: colors.buy,
+                                        strokeWidth: 2.5,
+                                        dot: false
+                                    }),
+                                    React.createElement(Line, {
+                                        type: "monotone",
+                                        dataKey: "totalRentMonthly",
+                                        name: "Rent (monthly)",
+                                        stroke: colors.rent,
+                                        strokeWidth: 2.5,
+                                        dot: false
+                                    })
+                                )
+                            )
+                        ),
+
+                        // TAB CONTENT - Net Worth
+                        activeTab === "networth" && React.createElement(Section, { title: "💎 Net Worth Trajectories", defaultOpen: true },
+                            React.createElement(ResponsiveContainer, { width: "100%", height: 400 },
+                                React.createElement(LineChart, { data: results.yearlyData, margin: { top: 10, right: 10, left: 10, bottom: 0 } },
+                                    React.createElement(CartesianGrid, { strokeDasharray: "3 3", stroke: "var(--border)" }),
+                                    React.createElement(XAxis, { dataKey: "year", tick: { fontSize: 12 } }),
+                                    React.createElement(YAxis, { tickFormatter: fmtK, tick: { fontSize: 12 }, width: 65 }),
+                                    React.createElement(Tooltip, { content: React.createElement(ChartTooltip) }),
+                                    React.createElement(Legend, { wrapperStyle: { fontSize: 13 } }),
+                                    React.createElement(Line, {
+                                        type: "monotone",
+                                        dataKey: "buyerTotal",
+                                        name: "Buyer Net Worth",
+                                        stroke: colors.buy,
+                                        strokeWidth: 2.5,
+                                        dot: false
+                                    }),
+                                    React.createElement(Line, {
+                                        type: "monotone",
+                                        dataKey: "renterTotal",
+                                        name: "Renter Investments",
+                                        stroke: colors.rent,
+                                        strokeWidth: 2.5,
+                                        dot: false
+                                    }),
+                                    React.createElement(Line, {
+                                        type: "monotone",
+                                        dataKey: "equity",
+                                        name: "Home Equity Only",
+                                        stroke: colors.equity,
+                                        strokeWidth: 1.5,
+                                        strokeDasharray: "5 5",
+                                        dot: false
+                                    })
+                                )
+                            )
+                        ),
+
+                        // TAB CONTENT - Equity
+                        activeTab === "equity" && React.createElement(Section, { title: "🏗️ Equity & Mortgage Balance", defaultOpen: true },
+                            React.createElement(ResponsiveContainer, { width: "100%", height: 380 },
+                                React.createElement(AreaChart, { data: results.yearlyData, margin: { top: 10, right: 10, left: 10, bottom: 0 } },
+                                    React.createElement('defs', null,
+                                        React.createElement('linearGradient', { id: "eqGrad", x1: "0", y1: "0", x2: "0", y2: "1" },
+                                            React.createElement('stop', { offset: "5%", stopColor: colors.equity, stopOpacity: 0.3 }),
+                                            React.createElement('stop', { offset: "95%", stopColor: colors.equity, stopOpacity: 0 })
+                                        )
+                                    ),
+                                    React.createElement(CartesianGrid, { strokeDasharray: "3 3", stroke: "var(--border)" }),
+                                    React.createElement(XAxis, { dataKey: "year", tick: { fontSize: 12 } }),
+                                    React.createElement(YAxis, { tickFormatter: fmtK, tick: { fontSize: 12 }, width: 65 }),
+                                    React.createElement(Tooltip, { content: React.createElement(ChartTooltip) }),
+                                    React.createElement(Legend, { wrapperStyle: { fontSize: 13 } }),
+                                    React.createElement(Area, {
+                                        type: "monotone",
+                                        dataKey: "homeValue",
+                                        name: "Home Value",
+                                        stroke: "#DDA15E",
+                                        fill: "none",
+                                        strokeWidth: 2,
+                                        strokeDasharray: "5 5"
+                                    }),
+                                    React.createElement(Area, {
+                                        type: "monotone",
+                                        dataKey: "equity",
+                                        name: "Your Equity",
+                                        stroke: colors.equity,
+                                        fill: "url(#eqGrad)",
+                                        strokeWidth: 2.5
+                                    }),
+                                    React.createElement(Area, {
+                                        type: "monotone",
+                                        dataKey: "balance",
+                                        name: "Remaining Mortgage",
+                                        stroke: colors.danger,
+                                        fill: "none",
+                                        strokeWidth: 1.5
+                                    })
+                                )
+                            )
+                        ),
+
+                        // TAB CONTENT - Breakdown
+                        activeTab === "breakdown" && React.createElement(Section, { title: "📋 Year-by-Year Breakdown", defaultOpen: true },
+                            React.createElement('div', { style: { overflowX: "auto" } },
+                                React.createElement('table', {
+                                    style: {
+                                        width: "100%", borderCollapse: "collapse", fontSize: 12,
+                                        fontFamily: "'DM Mono', monospace"
+                                    }
+                                },
+                                    React.createElement('thead', null,
+                                        React.createElement('tr', { style: { borderBottom: "2px solid var(--border)" } },
+                                            ["Year", "Home Value", "Equity", "Balance", "Buy/mo", "Rent/mo", "Tax Benefit", "Buyer NW", "Renter NW", "Advantage"].map((h) =>
+                                                React.createElement('th', {
+                                                    key: h,
+                                                    style: {
+                                                        padding: "10px 8px", textAlign: "right", fontWeight: 700,
+                                                        fontSize: 11, color: "var(--text-secondary)", whiteSpace: "nowrap"
+                                                    }
+                                                }, h)
+                                            )
+                                        )
+                                    ),
+                                    React.createElement('tbody', null,
+                                        results.yearlyData.map((d) => React.createElement('tr', {
+                                            key: d.year,
+                                            style: { borderBottom: "1px solid var(--border)" }
+                                        },
+                                            React.createElement('td', { style: { padding: "8px", textAlign: "right", fontWeight: 700 } }, d.year),
+                                            React.createElement('td', { style: { padding: "8px", textAlign: "right" } }, fmtK(d.homeValue)),
+                                            React.createElement('td', { style: { padding: "8px", textAlign: "right", color: colors.equity } }, fmtK(d.equity)),
+                                            React.createElement('td', { style: { padding: "8px", textAlign: "right" } }, fmtK(d.balance)),
+                                            React.createElement('td', { style: { padding: "8px", textAlign: "right", color: colors.buy } }, fmt(d.totalBuyMonthly)),
+                                            React.createElement('td', { style: { padding: "8px", textAlign: "right", color: colors.rent } }, fmt(d.totalRentMonthly)),
+                                            React.createElement('td', { style: { padding: "8px", textAlign: "right", color: colors.success } }, fmt(d.netTaxBenefit)),
+                                            React.createElement('td', { style: { padding: "8px", textAlign: "right", fontWeight: 600 } }, fmtK(d.buyerTotal)),
+                                            React.createElement('td', { style: { padding: "8px", textAlign: "right", fontWeight: 600 } }, fmtK(d.renterTotal)),
+                                            React.createElement('td', {
+                                                style: {
+                                                    padding: "8px", textAlign: "right", fontWeight: 700,
+                                                    color: d.advantage >= 0 ? colors.buy : colors.rent,
+                                                }
+                                            }, fmtK(d.advantage))
+                                        ))
+                                    )
+                                )
+                            )
+                        ),
+
+                        // TAB CONTENT - Scenarios
+                        activeTab === "scenarios" && React.createElement(Section, { title: "🔄 Scenario Comparison", defaultOpen: true },
+                            React.createElement('div', { style: { display: "flex", gap: 10, marginBottom: 20, flexWrap: "wrap", alignItems: "flex-end" } },
+                                React.createElement('div', { style: { flex: 1, minWidth: 200 } },
+                                    React.createElement('label', {
+                                        style: {
+                                            fontSize: 12, fontWeight: 600, color: "var(--text-secondary)",
+                                            display: "block", marginBottom: 4
+                                        }
+                                    }, "Scenario name"),
+                                    React.createElement('input', {
+                                        type: "text",
+                                        value: scenarioName,
+                                        onChange: (e) => setScenarioName(e.target.value),
+                                        placeholder: "e.g. Amsterdam flat, 3.5% rate",
+                                        style: {
+                                            width: "100%", padding: "10px 14px", borderRadius: 8,
+                                            border: "1.5px solid var(--border)", fontSize: 14,
+                                            background: "var(--input-bg)", color: "var(--text-primary)",
+                                            fontFamily: "inherit", boxSizing: "border-box",
+                                        }
+                                    })
+                                ),
+                                React.createElement('button', {
+                                    onClick: () => {
+                                        if (scenarioName.trim()) {
+                                            save(scenarioName.trim(), inputs, results);
+                                            setScenarioName("");
+                                        }
+                                    },
+                                    style: {
+                                        padding: "10px 24px", borderRadius: 8, border: "none",
+                                        background: "var(--accent)", color: "white", cursor: "pointer",
+                                        fontSize: 14, fontWeight: 700, whiteSpace: "nowrap",
+                                    }
+                                }, "Save Current")
+                            ),
+
+                            scenarios.length === 0 ? React.createElement('div', {
+                                style: {
+                                    textAlign: "center", padding: "40px 20px", color: "var(--text-secondary)",
+                                    background: "var(--card-alt)", borderRadius: 12,
+                                }
+                            },
+                                React.createElement('div', { style: { fontSize: 32, marginBottom: 8 } }, '📂'),
+                                React.createElement('div', null, "No saved scenarios yet. Adjust inputs and save different scenarios to compare them side by side.")
+                            ) : React.createElement('div', { style: { overflowX: "auto" } },
+                                React.createElement('table', {
+                                    style: { width: "100%", borderCollapse: "collapse", fontSize: 13 }
+                                },
+                                    React.createElement('thead', null,
+                                        React.createElement('tr', { style: { borderBottom: "2px solid var(--border)" } },
+                                            ["Scenario", "Price", "Rate", "Rent", "Years", "Breakeven", "Final Advantage", ""].map((h) =>
+                                                React.createElement('th', {
+                                                    key: h,
+                                                    style: {
+                                                        padding: "10px 8px", textAlign: "left", fontWeight: 700,
+                                                        fontSize: 12, color: "var(--text-secondary)"
+                                                    }
+                                                }, h)
+                                            )
+                                        )
+                                    ),
+                                    React.createElement('tbody', null,
+                                        scenarios.map((s) => React.createElement('tr', {
+                                            key: s.id,
+                                            style: { borderBottom: "1px solid var(--border)" }
+                                        },
+                                            React.createElement('td', { style: { padding: "10px 8px", fontWeight: 700 } }, s.name),
+                                            React.createElement('td', { style: { padding: "10px 8px", fontFamily: "'DM Mono', monospace" } }, fmtK(s.inputs.purchasePrice)),
+                                            React.createElement('td', { style: { padding: "10px 8px", fontFamily: "'DM Mono', monospace" } }, `${s.inputs.mortgageRate}%`),
+                                            React.createElement('td', { style: { padding: "10px 8px", fontFamily: "'DM Mono', monospace" } }, fmt(s.inputs.monthlyRent)),
+                                            React.createElement('td', { style: { padding: "10px 8px" } }, s.inputs.yearsInHome),
+                                            React.createElement('td', {
+                                                style: {
+                                                    padding: "10px 8px", fontWeight: 700,
+                                                    color: s.results.breakEvenYear ? colors.success : colors.danger
+                                                }
+                                            }, s.results.breakEvenYear ? `Year ${s.results.breakEvenYear}` : "Never"),
+                                            React.createElement('td', {
+                                                style: {
+                                                    padding: "10px 8px", fontWeight: 700, fontFamily: "'DM Mono', monospace",
+                                                    color: s.results.finalAdvantage >= 0 ? colors.buy : colors.rent,
+                                                }
+                                            }, fmtK(s.results.finalAdvantage)),
+                                            React.createElement('td', { style: { padding: "10px 8px" } },
+                                                React.createElement('button', {
+                                                    onClick: () => remove(s.id),
+                                                    style: {
+                                                        background: "none", border: "none", cursor: "pointer",
+                                                        color: "var(--text-secondary)", fontSize: 16,
+                                                    }
+                                                }, '✕')
+                                            )
+                                        ))
+                                    )
+                                )
+                            )
+                        ),
+
+                        // DISCLAIMER
+                        React.createElement('div', {
+                            style: {
+                                marginTop: 32, padding: "20px 24px", background: "var(--card-alt)",
+                                borderRadius: 12, fontSize: 12, color: "var(--text-secondary)",
+                                lineHeight: 1.8, borderLeft: "4px solid var(--border)",
+                            }
+                        },
+                            React.createElement('strong', null, "Disclaimer:"),
+                            " This tool provides estimates for educational purposes only and does not constitute financial advice. Actual costs, tax benefits, and returns will vary. Dutch tax rules change frequently — verify current rates with the Belastingdienst. Consider consulting a financial advisor (financieel adviseur) or mortgage advisor (hypotheekadviseur) for personalized guidance."
+                        )
+                    )
+                )
+            );
+        }
+
+        // Render App
+        ReactDOM.createRoot(document.getElementById('app-container')).render(React.createElement(BuyVsRentApp));
+    </script>
+</body>
+</html>
