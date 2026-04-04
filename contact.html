@@ -663,196 +663,91 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 HuurOfKoopCheck.nl. Alle rechten voorbehouden. | <a href="mailto:info@huurofkoop.nl" style="color: #666;">info@huurofkoop.nl</a></p>
+                <p>&copy; 2024 HuurOfKoopCheck.nl. Alle rechten voorbehouden. | <a href="/cdn-cgi/l/email-protection#6e070008012e061b1b1c01080501011e400002" style="color: #666;"><span class="__cf_email__" data-cfemail="f59c9b939ab59d8080879a939e9a9a85db9b99">[email&#160;protected]</span></a></p>
             </div>
         </div>
     </footer>
 
-    <!-- Contact Form Handler -->
+
+    <!-- Formspree Ajax Integration -->
     <script>
-        // EMAIL CONFIGURATION - EDIT THIS SECTION TO CHANGE RECIPIENT EMAIL
-        const CONFIG = {
-            recipientEmail: 'pieterb2252@gmail.com',
-            formspreeId: 'YOUR_FORMSPREE_ID' // Will be set after you create Formspree form
-        };
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#contactForm', formId: 'maqllwap' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+    
+    <!-- Custom Form Validation & Enhancement -->
+    <script>
+        // Enhance Formspree with our custom validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    // Custom validation
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
+                    const loanAmount = document.getElementById('loanAmount').value;
+                    const timeline = document.getElementById('timeline').value;
+                    const thirdParty = document.getElementById('thirdParty').checked;
 
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+                    // Clear previous errors
+                    document.querySelectorAll('.form-group').forEach(group => {
+                        group.classList.remove('error');
+                    });
+                    document.querySelectorAll('.error-message').forEach(msg => {
+                        msg.classList.remove('show');
+                    });
 
-            // Clear previous errors
-            document.querySelectorAll('.form-group').forEach(group => {
-                group.classList.remove('error');
-            });
-            document.querySelectorAll('.error-message').forEach(msg => {
-                msg.classList.remove('show');
-                msg.textContent = '';
-            });
+                    let isValid = true;
 
-            // Validation
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const loanAmount = document.getElementById('loanAmount').value;
-            const timeline = document.getElementById('timeline').value;
-            const thirdParty = document.getElementById('thirdParty').checked;
+                    if (!name || name.length < 3) {
+                        showError('nameError', 'Voer een geldige naam in');
+                        isValid = false;
+                    }
 
-            let isValid = true;
+                    if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                        showError('emailError', 'Voer een geldig e-mailadres in');
+                        isValid = false;
+                    }
 
-            if (!name || name.length < 3) {
-                showError('nameError', 'Voer een geldige naam in');
-                isValid = false;
-            }
+                    if (!phone || phone.length < 10) {
+                        showError('phoneError', 'Voer een geldig telefoonnummer in');
+                        isValid = false;
+                    }
 
-            if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-                showError('emailError', 'Voer een geldig e-mailadres in');
-                isValid = false;
-            }
+                    if (!loanAmount || loanAmount < 50000) {
+                        showError('loanAmountError', 'Bedrag moet minimaal €50.000 zijn');
+                        isValid = false;
+                    }
 
-            if (!phone || phone.length < 10) {
-                showError('phoneError', 'Voer een geldig telefoonnummer in');
-                isValid = false;
-            }
+                    if (!timeline) {
+                        showError('timelineError', 'Selecteer een moment');
+                        isValid = false;
+                    }
 
-            if (!loanAmount || loanAmount < 50000) {
-                showError('loanAmountError', 'Bedrag moet minimaal €50.000 zijn');
-                isValid = false;
-            }
+                    if (!thirdParty) {
+                        e.preventDefault();
+                        alert('U moet akkoord gaan met het delen van uw gegevens');
+                        isValid = false;
+                    }
 
-            if (!timeline) {
-                showError('timelineError', 'Selecteer een moment');
-                isValid = false;
-            }
-
-            if (!thirdParty) {
-                alert('U moet akkoord gaan met het delen van uw gegevens');
-                isValid = false;
-            }
-
-            if (!isValid) return;
-
-            // Disable submit button
-            const submitBtn = document.querySelector('.btn-primary');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Verzenden...';
-
-            try {
-                // Send form data
-                await sendFormData({
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    loanAmount: loanAmount,
-                    timeline: timeline,
-                    notes: document.getElementById('notes').value.trim(),
-                    timestamp: new Date().toLocaleString('nl-NL')
+                    if (!isValid) {
+                        e.preventDefault();
+                    }
                 });
+            }
 
-                // Show success message
-                document.getElementById('successMessage').classList.add('show');
-                document.getElementById('contactForm').reset();
-
-                // Scroll to message
-                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    document.getElementById('successMessage').classList.remove('show');
-                }, 5000);
-
-            } catch (error) {
-                alert('Er is een fout opgetreden. Probeer het later opnieuw.');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Ontvang Expert Advies';
+            function showError(elementId, message) {
+                const errorElement = document.getElementById(elementId);
+                if (errorElement) {
+                    errorElement.textContent = message;
+                    errorElement.classList.add('show');
+                    errorElement.parentElement.classList.add('error');
+                }
             }
         });
-
-        function showError(elementId, message) {
-            const errorElement = document.getElementById(elementId);
-            errorElement.textContent = message;
-            errorElement.classList.add('show');
-            errorElement.parentElement.classList.add('error');
-        }
-
-        async function sendFormData(data) {
-            // Using Formspree service (free, no backend needed)
-            // Setup instructions:
-            // 1. Go to https://formspree.io/
-            // 2. Sign up with pieterb2252@gmail.com
-            // 3. Create a new form
-            // 4. Copy the form ID (looks like: f/xyzabc123...)
-            // 5. Paste it in CONFIG.formspreeId above as: 'f/YOUR_ID'
-            
-            if (CONFIG.formspreeId === 'YOUR_FORMSPREE_ID') {
-                // Fallback: Send via alternate service
-                return sendViaAlternativeService(data);
-            }
-
-            const response = await fetch(`https://formspree.io/${CONFIG.formspreeId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: data.name,
-                    email: data.email,
-                    phone: data.phone,
-                    loanAmount: '€' + parseInt(data.loanAmount).toLocaleString('nl-NL'),
-                    timeline: getTimelineLabel(data.timeline),
-                    notes: data.notes,
-                    timestamp: data.timestamp,
-                    message: `Nieuwe lead van HuurOfKoopCheck.nl\n\nNaam: ${data.name}\nEmail: ${data.email}\nTelefoon: ${data.phone}\nGewenste leningbedrag: €${parseInt(data.loanAmount).toLocaleString('nl-NL')}\nMoment: ${getTimelineLabel(data.timeline)}\nOpmerking: ${data.notes}`
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error('Form submission failed');
-            }
-
-            return response.json();
-        }
-
-        async function sendViaAlternativeService(data) {
-            // Fallback using Web3Forms (free alternative)
-            const response = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    access_key: 'YOUR_WEB3FORMS_KEY',
-                    name: data.name,
-                    email: data.email,
-                    phone: data.phone,
-                    loanAmount: '€' + parseInt(data.loanAmount).toLocaleString('nl-NL'),
-                    timeline: getTimelineLabel(data.timeline),
-                    notes: data.notes,
-                    timestamp: data.timestamp,
-                    to_email: CONFIG.recipientEmail
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error('Form submission failed');
-            }
-
-            return response.json();
-        }
-
-        function getTimelineLabel(timeline) {
-            const labels = {
-                'urgent': 'Dringend (0-3 maanden)',
-                'medium': 'Medium (3-6 maanden)',
-                'flexible': 'Flexibel (6+ maanden)',
-                'exploring': 'Aan het verkennen'
-            };
-            return labels[timeline] || timeline;
-        }
-
-        // Log configuration for debugging
-        console.log('HuurOfKoopCheck Contact Form');
-        console.log('Recipient Email:', CONFIG.recipientEmail);
-        console.log('To change email: Edit CONFIG.recipientEmail in contact.html');
     </script>
 </body>
 </html>
