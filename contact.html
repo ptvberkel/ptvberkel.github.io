@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ontvang expert advies van gekwalificeerde hypotheekadviseurs - Gratis en zonder verplichtingen">
+    <meta name="author" content="HuurOfKoopCheck.nl">
+    <title>Expert Advies - HuurOfKoopCheck.nl</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
+            background: #F8F7F4;
+            color: #1A1A1A;
+            line-height: 1.6;
+        }
+
+        :root {
+            --bg: #F8F7F4;
+            --card: #FFFFFF;
+            --card-alt: #F2F0EB;
+            --border: #E5E2DA;
+            --text-primary: #1A1A1A;
+            --text-secondary: #6B6560;
+            --accent: #0066FF;
+            --accent-light: #E8F0FE;
+            --success: #10B981;
+            --success-light: #ECFDF5;
+            --danger: #EF4444;
+            --input-bg: #FAFAF8;
+        }
+
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-text {
+            font-size: 16px;
+            font-weight: 900;
+            font-family: 'Fraunces', Georgia, serif;
+            background: linear-gradient(135deg, #0052CC 0%, #0066FF 50%, #22C55E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #001A3D 0%, #003380 40%, #0055CC 100%);
+            color: white;
+            padding: 60px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 48px);
+            font-weight: 900;
+            font-family: 'Fraunces', Georgia, serif;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            opacity: 0.85;
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .content-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin: 80px 0;
+            align-items: center;
+        }
+
+        .content-section h2 {
+            font-size: 32px;
+            font-weight: 800;
+            font-family: 'Fraunces', Georgia, serif;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .content-section p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .benefit-list {
+            list-style: none;
+            margin: 24px 0;
+        }
+
+        .benefit-list li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .benefit-list li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .form-section {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 32px;
+        }
+
+        .form-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .form-section p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            background: var(--input-bg);
+            color: var(--text-primary);
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: white;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            background: var(--accent-light);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .checkbox-group label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .checkbox-group a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .checkbox-group a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0052CC;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-primary:disabled {
+            background: #999;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            background: var(--success-light);
+            border: 1px solid var(--success);
+            border-radius: 8px;
+            padding: 16px;
+            color: #065f46;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .form-group.error input,
+        .form-group.error select,
+        .form-group.error textarea {
+            border-color: var(--danger);
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .testimonial-card .stars {
+            color: #FFA500;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-card .author {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        footer {
+            background: #1A1A1A;
+            color: white;
+            padding: 48px 24px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-section h4 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #999;
+            text-decoration: none;
+            font-size: 13px;
+            line-height: 2;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 24px;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 16px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo-wrapper">
+                <span style="font-size: 24px;">🏠</span>
+                <div class="logo-text">HuurOfKoopCheck.nl</div>
+            </a>
+            <ul>
+                <li><a href="index.html#calculator">Calculator</a></li>
+                <li><a href="index.html#features">Kenmerken</a></li>
+                <li><a href="index.html#faq">Veelgestelde vragen</a></li>
+                <li><a href="contact.html">Expert Advies</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Expert Advies van Gekwalificeerde Hypotheekadviseurs</h1>
+            <p>Ontvang persoonlijke begeleiding van professionals die je helpen de beste hypotheek te vinden voor jouw situatie. Gratis en zonder verplichtingen.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Why Get Expert Advice -->
+        <div class="content-section">
+            <div>
+                <h2>Waarom expert advies?</h2>
+                <p>
+                    Hoewel de calculator je een uitstekend overzicht geeft van kopen versus huren, kan een gecertificeerde hypotheekadviseur je helpen met:
+                </p>
+                <ul class="benefit-list">
+                    <li>Persoonlijke situatie analyse (je specifieke financiën)</li>
+                    <li>Beste hypotheekopties voor jouw profiel</li>
+                    <li>Geldende rentetarieven en actuele voorwaarden</li>
+                    <li>Belastingvoordelen maximaliseren</li>
+                    <li>Hypotheekafsluitingsproces begeleiden</li>
+                    <li>Antwoorden op specifieke vragen</li>
+                </ul>
+                <p style="margin-top: 24px; font-style: italic; color: #999;">
+                    Onze partners zijn onafhankelijk, NRVT-geregistreerd en voldoen aan alle regelgeving.
+                </p>
+            </div>
+
+            <div class="form-section">
+                <h3>Verbinding met Expert</h3>
+                <p>Vul het onderstaande formulier in en ontvang binnen 24 uur contact van een adviseur</p>
+
+                <div class="success-message" id="successMessage">
+                    ✓ Bedankt! Je aanvraag is verzonden. Je hoort snel van een adviseur.
+                </div>
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Volledige Naam *</label>
+                        <input type="text" id="name" name="name" required placeholder="Jan Pieterzoon">
+                        <div class="error-message" id="nameError"></div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">E-mailadres *</label>
+                            <input type="email" id="email" name="email" required placeholder="jij@example.com">
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefoonnummer *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+31 6 12345678">
+                            <div class="error-message" id="phoneError"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loanAmount">Gewenst Leningbedrag (€) *</label>
+                        <input type="number" id="loanAmount" name="loanAmount" required placeholder="300000" min="50000">
+                        <div class="error-message" id="loanAmountError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="timeline">Gewenst Moment *</label>
+                        <select id="timeline" name="timeline" required>
+                            <option value="">-- Selecteer een moment --</option>
+                            <option value="urgent">Dringend (0-3 maanden)</option>
+                            <option value="medium">Medium (3-6 maanden)</option>
+                            <option value="flexible">Flexibel (6+ maanden)</option>
+                            <option value="exploring">Aan het verkennen (nog niet besloten)</option>
+                        </select>
+                        <div class="error-message" id="timelineError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Aanvullende Opmerkingen (optioneel)</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Bijvoorbeeld: ik ben zelfstandig, ik heb inkomsten uit verhuur, etc."></textarea>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="thirdParty" name="thirdParty" required>
+                        <label for="thirdParty">
+                            Ik ga akkoord dat mijn contactgegevens en hypotheekwensen gedeeld kunnen worden met geselecteerde hypotheekadviseurs en geldverstrekkers voor het doel van begeleiding en offertes. 
+                            <a href="privacy.html">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Ontvang Expert Advies</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div style="margin: 80px 0;">
+            <h2 style="font-size: 32px; font-weight: 800; font-family: 'Fraunces', Georgia, serif; text-align: center; margin-bottom: 40px;">Wat zeggen klanten over onze adviseurs?</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"De adviseur hielp me inzien dat huren beter was dan kopen voor mijn situatie. Spaarde me duizenden euro's!"</p>
+                    <div class="author">— Maria K., Amsterdam</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Professioneel, snel en zonder gedoe. Kreeg binnen een dag contact en binnen een week had ik een offerte."</p>
+                    <div class="author">— Patrick R., Rotterdam</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Bespaard me veel zoekwerk. De adviseur kende alle huidige rentetarieven en voorwaarden."</p>
+                    <div class="author">— Sophie M., Utrecht</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div style="margin: 80px 0;">
+            <h2 style="font-size: 32px; font-weight: 800; font-family: 'Fraunces', Georgia, serif; margin-bottom: 40px;">Veelgestelde Vragen</h2>
+            <div style="display: grid; gap: 20px;">
+                <details style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer;">
+                    <summary style="font-weight: 700; font-size: 16px; color: var(--text-primary);">Is dit werkelijk gratis?</summary>
+                    <p style="margin-top: 12px; color: var(--text-secondary); line-height: 1.7;">
+                        Ja! De adviseurs verdienen hun commissie van banken en geldverstrekkers, niet van jou. Je betaalt niets voor advies of offertes.
+                    </p>
+                </details>
+
+                <details style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer;">
+                    <summary style="font-weight: 700; font-size: 16px; color: var(--text-primary);">Ben ik verplicht om iets af te sluiten?</summary>
+                    <p style="margin-top: 12px; color: var(--text-secondary); line-height: 1.7;">
+                        Absoluut niet. Dit is informatief en je bent nooit verplicht om een hypotheek af te sluiten via onze partners.
+                    </p>
+                </details>
+
+                <details style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer;">
+                    <summary style="font-weight: 700; font-size: 16px; color: var(--text-primary);">Hoe lang duurt het voordat ik contact krijg?</summary>
+                    <p style="margin-top: 12px; color: var(--text-secondary); line-height: 1.7;">
+                        Meestal binnen 24 uur. Soms eerder. De adviseur zal je bellen of mailen, afhankelijk van je voorkeur.
+                    </p>
+                </details>
+
+                <details style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer;">
+                    <summary style="font-weight: 700; font-size: 16px; color: var(--text-primary);">Wat gebeurt met mijn gegevens?</summary>
+                    <p style="margin-top: 12px; color: var(--text-secondary); line-height: 1.7;">
+                        Je gegevens worden enkel gedeeld met hypotheekadviseurs en geldverstrekkers die jou kunnen helpen. We volgen GDPR en alle Nederlandse privacywetgeving. Zie onze <a href="privacy.html" style="color: var(--accent); text-decoration: none; font-weight: 600;">privacyverklaring</a>.
+                    </p>
+                </details>
+
+                <details style="background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer;">
+                    <summary style="font-weight: 700; font-size: 16px; color: var(--text-primary);">Wie zijn deze adviseurs?</summary>
+                    <p style="margin-top: 12px; color: var(--text-secondary); line-height: 1.7;">
+                        Onze partners zijn NRVT-geregistreerd, onafhankelijk en aan alle regelgeving onderworpen. Ze zijn niet gebonden aan één bank.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Over</h4>
+                    <p style="color: #999; font-size: 13px; line-height: 1.7; margin: 0;">
+                        HuurOfKoopCheck.nl verbindt je met gekwalificeerde hypotheekadviseurs die je helpen de juiste keuze te maken.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="index.html#calculator">Calculator</a></li>
+                        <li><a href="index.html#features">Kenmerken</a></li>
+                        <li><a href="index.html#faq">Veelgestelde vragen</a></li>
+                        <li><a href="contact.html">Expert Advies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Bronnen</h4>
+                    <ul>
+                        <li><a href="https://www.belastingdienst.nl/" target="_blank">Belastingdienst</a></li>
+                        <li><a href="https://www.cbs.nl/" target="_blank">CBS</a></li>
+                        <li><a href="https://www.nvm.nl/" target="_blank">NVM</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Juridisch</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacyverklaring</a></li>
+                        <li><a href="#" onclick="alert('Disclaimer: Dit is educatief materiaal, geen financieel advies. Raadpleeg altijd een professionele adviseur.'); return false;">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 HuurOfKoopCheck.nl. Alle rechten voorbehouden. | <a href="mailto:info@huurofkoop.nl" style="color: #666;">info@huurofkoop.nl</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Form Handler -->
+    <script>
+        // EMAIL CONFIGURATION - EDIT THIS SECTION TO CHANGE RECIPIENT EMAIL
+        const CONFIG = {
+            recipientEmail: 'pieterb2252@gmail.com',
+            formspreeId: 'YOUR_FORMSPREE_ID' // Will be set after you create Formspree form
+        };
+
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Clear previous errors
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+            document.querySelectorAll('.error-message').forEach(msg => {
+                msg.classList.remove('show');
+                msg.textContent = '';
+            });
+
+            // Validation
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const loanAmount = document.getElementById('loanAmount').value;
+            const timeline = document.getElementById('timeline').value;
+            const thirdParty = document.getElementById('thirdParty').checked;
+
+            let isValid = true;
+
+            if (!name || name.length < 3) {
+                showError('nameError', 'Voer een geldige naam in');
+                isValid = false;
+            }
+
+            if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                showError('emailError', 'Voer een geldig e-mailadres in');
+                isValid = false;
+            }
+
+            if (!phone || phone.length < 10) {
+                showError('phoneError', 'Voer een geldig telefoonnummer in');
+                isValid = false;
+            }
+
+            if (!loanAmount || loanAmount < 50000) {
+                showError('loanAmountError', 'Bedrag moet minimaal €50.000 zijn');
+                isValid = false;
+            }
+
+            if (!timeline) {
+                showError('timelineError', 'Selecteer een moment');
+                isValid = false;
+            }
+
+            if (!thirdParty) {
+                alert('U moet akkoord gaan met het delen van uw gegevens');
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            // Disable submit button
+            const submitBtn = document.querySelector('.btn-primary');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Verzenden...';
+
+            try {
+                // Send form data
+                await sendFormData({
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    loanAmount: loanAmount,
+                    timeline: timeline,
+                    notes: document.getElementById('notes').value.trim(),
+                    timestamp: new Date().toLocaleString('nl-NL')
+                });
+
+                // Show success message
+                document.getElementById('successMessage').classList.add('show');
+                document.getElementById('contactForm').reset();
+
+                // Scroll to message
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('successMessage').classList.remove('show');
+                }, 5000);
+
+            } catch (error) {
+                alert('Er is een fout opgetreden. Probeer het later opnieuw.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Ontvang Expert Advies';
+            }
+        });
+
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.classList.add('show');
+            errorElement.parentElement.classList.add('error');
+        }
+
+        async function sendFormData(data) {
+            // Using Formspree service (free, no backend needed)
+            // Setup instructions:
+            // 1. Go to https://formspree.io/
+            // 2. Sign up with pieterb2252@gmail.com
+            // 3. Create a new form
+            // 4. Copy the form ID (looks like: f/xyzabc123...)
+            // 5. Paste it in CONFIG.formspreeId above as: 'f/YOUR_ID'
+            
+            if (CONFIG.formspreeId === 'YOUR_FORMSPREE_ID') {
+                // Fallback: Send via alternate service
+                return sendViaAlternativeService(data);
+            }
+
+            const response = await fetch(`https://formspree.io/${CONFIG.formspreeId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: data.name,
+                    email: data.email,
+                    phone: data.phone,
+                    loanAmount: '€' + parseInt(data.loanAmount).toLocaleString('nl-NL'),
+                    timeline: getTimelineLabel(data.timeline),
+                    notes: data.notes,
+                    timestamp: data.timestamp,
+                    message: `Nieuwe lead van HuurOfKoopCheck.nl\n\nNaam: ${data.name}\nEmail: ${data.email}\nTelefoon: ${data.phone}\nGewenste leningbedrag: €${parseInt(data.loanAmount).toLocaleString('nl-NL')}\nMoment: ${getTimelineLabel(data.timeline)}\nOpmerking: ${data.notes}`
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Form submission failed');
+            }
+
+            return response.json();
+        }
+
+        async function sendViaAlternativeService(data) {
+            // Fallback using Web3Forms (free alternative)
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: 'YOUR_WEB3FORMS_KEY',
+                    name: data.name,
+                    email: data.email,
+                    phone: data.phone,
+                    loanAmount: '€' + parseInt(data.loanAmount).toLocaleString('nl-NL'),
+                    timeline: getTimelineLabel(data.timeline),
+                    notes: data.notes,
+                    timestamp: data.timestamp,
+                    to_email: CONFIG.recipientEmail
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Form submission failed');
+            }
+
+            return response.json();
+        }
+
+        function getTimelineLabel(timeline) {
+            const labels = {
+                'urgent': 'Dringend (0-3 maanden)',
+                'medium': 'Medium (3-6 maanden)',
+                'flexible': 'Flexibel (6+ maanden)',
+                'exploring': 'Aan het verkennen'
+            };
+            return labels[timeline] || timeline;
+        }
+
+        // Log configuration for debugging
+        console.log('HuurOfKoopCheck Contact Form');
+        console.log('Recipient Email:', CONFIG.recipientEmail);
+        console.log('To change email: Edit CONFIG.recipientEmail in contact.html');
+    </script>
+</body>
+</html>
