@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eigenwoningforfait in Nederland: hoe het berekend wordt, waarom je het moet betalen en hoe het je belasting verhoogt.">
+    <meta name="keywords" content="eigenwoningforfait, WOZ waarde, belasting, eigenwoningforfait 2024">
+    <meta property="og:title" content="Eigenwoningforfait: Wat Is het en Wat Betaal je Echt?">
+    <meta property="og:description" content="Alles over eigenwoningforfait: berekening, percentage en hoe het je belasting beïnvloedt.">
+    <title>Eigenwoningforfait 2024-2025: Compleet Uitleg en Berekening</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
+            background: #F8F7F4;
+            color: #1A1A1A;
+            line-height: 1.6;
+        }
+
+        :root {
+            --bg: #F8F7F4;
+            --card: #FFFFFF;
+            --border: #E5E2DA;
+            --text-primary: #1A1A1A;
+            --text-secondary: #6B6560;
+            --accent: #0066FF;
+            --accent-light: #E8F0FE;
+        }
+
+        nav {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-text {
+            font-size: 16px;
+            font-weight: 900;
+            font-family: 'Fraunces', Georgia, serif;
+            background: linear-gradient(135deg, #0052CC 0%, #0066FF 50%, #22C55E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        article {
+            background: white;
+            padding: 60px 0;
+        }
+
+        .article-header {
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .article-header h1 {
+            font-size: 42px;
+            font-weight: 900;
+            font-family: 'Fraunces', Georgia, serif;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 24px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .article-content {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .article-content p {
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 800;
+            font-family: 'Fraunces', Georgia, serif;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        ul, ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 24px 0;
+        }
+
+        .highlight-box strong {
+            color: var(--accent);
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #001A3D 0%, #0055CC 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .cta-box p {
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+
+        .cta-box a {
+            display: inline-block;
+            background: white;
+            color: #0055CC;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.2s;
+        }
+
+        .cta-box a:hover {
+            transform: translateY(-2px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--accent-light);
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        footer {
+            background: #1A1A1A;
+            color: white;
+            padding: 48px 24px;
+            margin-top: 60px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .article-header h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo-wrapper">
+                <span style="font-size: 24px;">🏠</span>
+                <div class="logo-text">HuurOfKoopCheck.nl</div>
+            </a>
+            <a href="index.html">← Terug naar Home</a>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <article>
+        <div class="container">
+            <div class="article-header">
+                <h1>Eigenwoningforfait: Wat Is het en Wat Betaal je Echt in 2024?</h1>
+                <div class="article-meta">
+                    <span>📅 Maart 2024</span>
+                    <span>⏱️ 7 minuten leestijd</span>
+                    <span>✓ Geupdate 2024-2025</span>
+                </div>
+            </div>
+
+            <div class="article-content">
+                <p><strong>Eigenwoningforfait</strong> is een jaarlijks bedrag dat je als eigenaar van een woning moet betalen als "inkomsten" voor belastingdoeleinden. Het werkt als een tegengewicht tegen de hypotheekrenteaftrek en verhoogt je belastbare inkomen.</p>
+
+                <p>Voor veel mensen is dit onbegrijpelijk: je woont in je eigen huis, je verdient daar niets mee, maar toch moet je belasting betalen alsof je inkomsten hebt. We leggen uit hoe het werkt en hoeveel je echt betaalt.</p>
+
+                <div class="highlight-box">
+                    <strong>Samengevat:</strong> Eigenwoningforfait is een fictieve huurwaarde (0,35% van je WOZ-waarde) die als inkomsten telt. Dit verhoogt je belastbare inkomen en je belasting.
+                </div>
+
+                <h2>Wat Is Eigenwoningforfait Precies?</h2>
+
+                <p><strong>Eigenwoningforfait</strong> betekent letterlijk "eigenwoningsvergoeding". Het is een percentage van je huis-waarde (WOZ-waarde) dat de belastingdienst rekent als je "inkomsten" voor wonen.</p>
+
+                <p>Waarom? Omdat je in je eigen huis woont, bespaart je huurkosten (die je anders zou betalen). De belastingdienst rekent dit als een voordeel, dus als inkomsten.</p>
+
+                <p><strong>Voorbeeld:</strong> Je huis is €400.000 waard (WOZ-waarde). Het eigenwoningforfait is 0,35% × €400.000 = €1.400 per jaar. Dit telt als inkomsten.</p>
+
+                <h2>Hoe Wordt Eigenwoningforfait Berekend?</h2>
+
+                <h3>De Formule</h3>
+
+                <p>De berekening is eenvoudig:</p>
+
+                <p><strong>Eigenwoningforfait = WOZ-waarde × Forfaitpercentage × Belastingschijf</strong></p>
+
+                <h3>Stap 1: Bepaal Je WOZ-Waarde</h3>
+
+                <p>De WOZ-waarde (Waarde Onroerende Zaken) is de geschatte waarde van je huis volgens gemeente. Je krijgt dit jaarlijks in een brief.</p>
+
+                <p>Dit is <strong>niet</strong> de verkoopwaarde—het is een schatting door de gemeente.</p>
+
+                <h3>Stap 2: Vermenigvuldig met 0,35%</h3>
+
+                <p>Voor 2024-2025 is het forfaitpercentage <strong>0,35%</strong>. Dit is hetzelfde percentage voor iedereen.</p>
+
+                <p><strong>Berekening:</strong> WOZ-waarde × 0,35% = Eigenwoningforfait</p>
+
+                <h3>Stap 3: Vermenigvuldig met Je Belastingschijf</h3>
+
+                <p>Het eigenwoningforfait verhoogt je belastbaar inkomen. De belasting die je betaalt hangt af van je belastingschijf (37% of meer).</p>
+
+                <p><strong>Voorbeeld voluit:</strong></p>
+
+                <p>WOZ-waarde: €400.000<br>
+                Eigenwoningforfait: €400.000 × 0,35% = €1.400<br>
+                Belastingschijf: 37%<br>
+                Extra belasting: €1.400 × 37% = €518 per jaar</p>
+
+                <h2>Eigenwoningforfait vs. Hypotheekrenteaftrek</h2>
+
+                <p>Eigenwoningforfait en hypotheekrenteaftrek werken tegenovergesteld:</p>
+
+                <table>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Hypotheekrenteaftrek</th>
+                        <th>Eigenwoningforfait</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Effect</strong></td>
+                        <td>Verlaagt je inkomsten</td>
+                        <td>Verhoogt je inkomsten</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Basis</strong></td>
+                        <td>Je hypotheekrente</td>
+                        <td>Je huiswaarde (WOZ)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Voordeel voor jou</strong></td>
+                        <td>Lagere belasting</td>
+                        <td>Hogere belasting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reden</strong></td>
+                        <td>Stimuleren huizenbezit</td>
+                        <td>Belasten onzichtbare inkomsten</td>
+                    </tr>
+                </table>
+
+                <p>Het netto voordeel van kopen hangt af van beide. Als je rente hoog is, wint hypotheekrenteaftrek. Als je huis zeer waardevol is, wint eigenwoningforfait.</p>
+
+                <h2>Eigenwoningforfait in 2024-2025: Huidige Regels</h2>
+
+                <h3>Het Forfaitpercentage</h3>
+
+                <p>Voor 2024-2025 bedraagt het percentage <strong>0,35%</strong> van je WOZ-waarde.</p>
+
+                <p>Dit is een standaardpercentage dat voor iedereen gelijk is—het hangt niet af van hoeveel hypotheek je hebt.</p>
+
+                <h3>Geschiedenis van Percentages</h3>
+
+                <ul>
+                    <li><strong>2021-2022:</strong> 0,55%</li>
+                    <li><strong>2022-2023:</strong> 0,50%</li>
+                    <li><strong>2023-2024:</strong> 0,45%</li>
+                    <li><strong>2024-2025:</strong> 0,35%</li>
+                </ul>
+
+                <p>Het percentage daalt jaarlijks, dus het voordeel van kopen wordt langzaam groter (omdat je minder eigenwoningforfait betaalt).</p>
+
+                <h2>Wie Betaalt Eigenwoningforfait?</h2>
+
+                <h3>Je Betaalt Eigenwoningforfait Als:</h3>
+
+                <ul>
+                    <li>Je eigenaar bent van je woning</li>
+                    <li>Je woning is je hoofdwoning</li>
+                    <li>Je niet in schulden-regeling zit</li>
+                    <li>Je niet onder studieschuld-afslag valt</li>
+                </ul>
+
+                <h3>Je Betaalt Eigenwoningforfait NIET Als:</h3>
+
+                <ul>
+                    <li>Je huis verhuurt (dat valt onder Box 3)</li>
+                    <li>Je alleen een deel van het huis bezit (alleen je aandeel telt)</li>
+                    <li>Je huis onder €50.000 WOZ-waarde is (sommige uitzonderingen)</li>
+                </ul>
+
+                <h2>Hoeveel Extra Belasting Betaal je Werkelijk?</h2>
+
+                <h3>Praktische Voorbeelden</h3>
+
+                <table>
+                    <tr>
+                        <th>WOZ-Waarde</th>
+                        <th>Eigenwoningforfait</th>
+                        <th>Extra Belasting (37%)</th>
+                        <th>Per Maand</th>
+                    </tr>
+                    <tr>
+                        <td>€300.000</td>
+                        <td>€1.050</td>
+                        <td>€389</td>
+                        <td>€32</td>
+                    </tr>
+                    <tr>
+                        <td>€400.000</td>
+                        <td>€1.400</td>
+                        <td>€518</td>
+                        <td>€43</td>
+                    </tr>
+                    <tr>
+                        <td>€500.000</td>
+                        <td>€1.750</td>
+                        <td>€648</td>
+                        <td>€54</td>
+                    </tr>
+                    <tr>
+                        <td>€600.000</td>
+                        <td>€2.100</td>
+                        <td>€777</td>
+                        <td>€65</td>
+                    </tr>
+                </table>
+
+                <p>Zoals je ziet, betaal je meer naarmate je huis duurder is. Dit is waarom eigenwoningforfait vooral bezitters van dure huizen raakt.</p>
+
+                <h2>Eigenwoningforfait vs. Daadwerkelijke Huurkosten</h2>
+
+                <p>Een interessante vraag: is het eigenwoningforfait realistisch?</p>
+
+                <p>Stel je woont in een huis van €400.000. Het eigenwoningforfait rekent €1.400 als "inkomsten". Maar wat zou dit huis daadwerkelijk huren kosten?</p>
+
+                <h3>Vergelijking</h3>
+
+                <ul>
+                    <li><strong>Eigenwoningforfait berekening:</strong> €400.000 × 0,35% = €1.400</li>
+                    <li><strong>Daadwerkelijke huur:</strong> Waarschijnlijk €1.800-€2.200/maand = €21.600-€26.400/jaar</li>
+                </ul>
+
+                <p>Dus eigenwoningforfait is een <strong>zeer conservatieve schatting</strong> van wat je zou sparen door niet te huren. Dit is voordelig voor eigenaren.</p>
+
+                <h2>Veelgemaakte Fouten met Eigenwoningforfait</h2>
+
+                <h3>Fout 1: Denken dat je het niet Hoeft In te Vullen</h3>
+
+                <p>Je moet eigenwoningforfait zelf op je belastingaangifte invullen. De belastingdienst checkt dit niet automatisch.</p>
+
+                <h3>Fout 2: WOZ-Waarde Vergissen met Verkoopwaarde</h3>
+
+                <p>Je huis kan €500.000 waard zijn (WOZ), maar €550.000 opbrengen op de markt. Voor eigenwoningforfait telt WOZ-waarde, niet verkoopwaarde.</p>
+
+                <h3>Fout 3: Denken dat Eigenwoningforfait Hetzelfde Blijft</h3>
+
+                <p>Je WOZ-waarde kan jaarlijks veranderen (stijgen of dalen). Dit beïnvloedt je eigenwoningforfait.</p>
+
+                <h3>Fout 4: Niet Tegen Verkeerde WOZ-Waarde Bezwaar Maken</h3>
+
+                <p>Je kan bezwaar maken tegen je WOZ-waarde. Als je denkt dat je huis te hoog wordt gewaardeerd, kan je dit aanvechten (wat eigenwoningforfait verlaagt).</p>
+
+                <h2>Hoe Stel je Je WOZ-Waarde Vast?</h2>
+
+                <p>Je ontvangt jaarlijks een WOZ-beschikking van je gemeente. Dit is officieel.</p>
+
+                <h3>Stappen om Je WOZ-Waarde te Checken</h3>
+
+                <ol>
+                    <li>Zoek je WOZ-beschikking op (je krijgt dit per post)</li>
+                    <li>Vergelijk met soortgelijke huizen in je buurt</li>
+                    <li>Als je het oneens bent, maak bezwaar (deadline: meestal 6 weken)</li>
+                    <li>Gemeente past waarde aan of weigert (je kan naar geschil-commissie)</li>
+                </ol>
+
+                <p>Dit is belangrijk omdat lagere WOZ-waarde = lager eigenwoningforfait = lagere belasting.</p>
+
+                <div class="cta-box">
+                    <h3>Wil je Zien Hoe Eigenwoningforfait Je Financiën Beïnvloedt?</h3>
+                    <p>Onze calculator neemt eigenwoningforfait en hypotheekrenteaftrek beide mee bij vergelijking kopen vs. huren.</p>
+                    <a href="index.html#calculator">Naar Calculator →</a>
+                </div>
+
+                <h2>Eigenwoningforfait en Kopen vs. Huren</h2>
+
+                <p>Eigenwoningforfait maakt kopen minder aantrekkelijk dan het op het eerste gezicht lijkt:</p>
+
+                <ul>
+                    <li><strong>Hypotheekrenteaftrek</strong> maakt kopen goedkoper</li>
+                    <li><strong>Eigenwoningforfait</strong> maakt kopen duurder</li>
+                    <li>Het netto voordeel hangt af van beiden</li>
+                </ul>
+
+                <p>Voor een huis van €400.000 met 3,5% rente:</p>
+
+                <ul>
+                    <li>Hypotheekrente per jaar: ~€14.000</li>
+                    <li>Hypotheekrenteaftrek (37%): ~€5.180 besparing</li>
+                    <li>Eigenwoningforfait: €1.400 extra inkomsten</li>
+                    <li>Extra belasting (37%): ~€518</li>
+                    <li><strong>Netto voordeel: ~€4.662/jaar</strong></li>
+                </ul>
+
+                <p>Dus ondanks eigenwoningforfait, wint hypotheekrenteaftrek in dit geval.</p>
+
+                <h2>Conclusie: Is Eigenwoningforfait Eerlijk?</h2>
+
+                <p>Eigenwoningforfait is controversieel. Sommige punten:</p>
+
+                <p><strong>Voor:</strong> Je hebt daadwerkelijk voordeel door niet te huren. Dit voordeel zou belast kunnen worden.</p>
+
+                <p><strong>Tegen:</strong> Het percentage (0,35%) is zeer laag vergeleken met daadwerkelijke huurprijzen. Dit bevoordeeligt eigenaren.</p>
+
+                <p>In ieder geval: eigenwoningforfait is voordelig voor eigenaren in Nederland. Het voordeel van kopen wordt er deels door opgeheven, maar niet volledig.</p>
+
+                <p><strong>Volgende stap:</strong> Gebruik onze calculator om je exacte financiële voordeel van kopen vs. huren te zien, inclusief alle belastingfactoren.</p>
+
+                <div class="cta-box">
+                    <h3>Klaar om je Voordeel te Berekenen?</h3>
+                    <p>Onze gratis calculator berekent eigenwoningforfait automatisch mee.</p>
+                    <a href="index.html#calculator">Probeer Calculator →</a>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 HuurOfKoopCheck.nl. Alle rechten voorbehouden.</p>
+        <p style="margin-top: 12px; font-size: 12px;">
+            <a href="privacy.html">Privacy</a> | 
+            <a href="index.html">Home</a> |
+            <a href="contact.html">Expert Advies</a>
+        </p>
+    </footer>
+</body>
+</html>
