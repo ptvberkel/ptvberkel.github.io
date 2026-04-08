@@ -1,1 +1,889 @@
+<!DOCTYPE html>
+<!--
+╔══════════════════════════════════════════════════════════════════════════╗
+║  HOW TO REUSE THIS TEMPLATE                                              ║
+║                                                                          ║
+║  Search for comments starting with ← REPLACE to find every part you     ║
+║  need to swap out for a new blog post. There are 10 spots total:         ║
+║                                                                          ║
+║  1.  Meta title              (in <head>)                                 ║
+║  2.  Meta description        (in <head>)                                 ║
+║  3.  Canonical URL / slug    (in <head>)                                 ║
+║  4.  Article badge / tag     (above headline)                            ║
+║  5.  Article headline        (H1)                                        ║
+║  6.  Article lead paragraph  (intro sentence)                            ║
+║  7.  Meta row: date, read time, tags                                     ║
+║  8.  Sidebar stat cards      (3 key numbers from the article)            ║
+║  9.  Main article body       (all the HTML content)                      ║
+║  10. Sources & related links (bottom of article)                         ║
+╚══════════════════════════════════════════════════════════════════════════╝
+-->
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- ← REPLACE 1: meta title -->
+    <title>Vaste en Variabele Kosten – Huren versus Kopen in 2026 | HuurOfKoopCheck.nl</title>
+
+    <!-- ← REPLACE 2: meta description -->
+    <meta name="description" content="Vergelijk de vaste en variabele kosten van een huurwoning en een koopwoning. Begrijp welke lasten u kunt verwachten en hoe u uw budget plant.">
+
+    <!-- ← REPLACE 3: canonical URL -->
+    <link rel="canonical" href="https://huurofkoopcheck.nl/blog/vaste-kosten-huren-kopen">
+
+    <meta name="author" content="HuurOfKoopCheck.nl">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="HuurOfKoopCheck.nl">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,700;1,9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ═══════════════════════════════════════════
+           TOKENS
+        ═══════════════════════════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --ink:           #0F172A;
+            --ink-light:     #475569;
+            --ink-muted:     #94A3B8;
+            --brand:         #1D4ED8;
+            --brand-dark:    #1E3A8A;
+            --brand-light:   #EFF6FF;
+            --brand-mid:     #DBEAFE;
+            --rent-orange:   #EA580C;
+            --rent-light:    #FFF7ED;
+            --success:       #059669;
+            --success-light: #ECFDF5;
+            --bg:            #F8F7F4;
+            --bg-soft:       #F1EFE9;
+            --card:          #FFFFFF;
+            --border:        #E5E7EB;
+            --border-soft:   #F0EDE8;
+            --font-body:     'Inter', system-ui, sans-serif;
+            --font-display:  'Fraunces', Georgia, serif;
+            --font-mono:     'JetBrains Mono', monospace;
+            --r-sm: 4px; --r-md: 8px; --r-lg: 12px; --r-xl: 16px;
+            --shadow-sm: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
+            --shadow-md: 0 4px 16px rgba(15,23,42,0.08);
+            --shadow-lg: 0 12px 40px rgba(15,23,42,0.12);
+            --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
+            --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════════════════════════════════
+           UTILITY
+        ═══════════════════════════════════════════ */
+        .container         { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); }
+        .container--narrow { max-width: 960px;  margin: 0 auto; padding: 0 var(--space-lg); }
+        .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+        .kicker {
+            display: inline-block; font-size: 11px; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--ink-muted); margin-bottom: var(--space-sm);
+        }
+
+        /* ═══════════════════════════════════════════
+           BUTTONS
+        ═══════════════════════════════════════════ */
+        .btn {
+            display: inline-flex; align-items: center; gap: var(--space-sm);
+            padding: 11px 22px; border-radius: var(--r-md); border: none;
+            font-family: var(--font-body); font-size: 14px; font-weight: 600;
+            cursor: pointer; text-decoration: none; transition: all 0.18s ease;
+        }
+        .btn--primary  { background: var(--brand); color: #fff; }
+        .btn--primary:hover { background: var(--brand-dark); box-shadow: 0 4px 16px rgba(29,78,216,0.35); transform: translateY(-1px); }
+        .btn--outline  { background: transparent; color: var(--brand); border: 1.5px solid var(--brand); }
+        .btn--outline:hover { background: var(--brand-light); }
+
+        /* ═══════════════════════════════════════════
+           NAV
+        ═══════════════════════════════════════════ */
+        .nav {
+            background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px);
+        }
+        .nav__inner { display: flex; justify-content: space-between; align-items: center; height: 68px; }
+        .nav__logo { display: flex; align-items: center; gap: var(--space-sm); text-decoration: none; }
+        .nav__logo-img { height: 52px; width: auto; }
+        .nav__links { display: flex; list-style: none; gap: var(--space-xl); align-items: center; }
+        .nav__links a { text-decoration: none; color: var(--ink-light); font-size: 14px; font-weight: 500; transition: color 0.15s; }
+        .nav__links a:hover { color: var(--brand); }
+
+        /* ═══════════════════════════════════════════
+           ARTICLE HEADER
+        ═══════════════════════════════════════════ */
+        .article-header {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 45%, #1D4ED8 100%);
+            color: #fff;
+            padding: 56px var(--space-lg) 64px;
+            position: relative;
+            overflow: hidden;
+        }
+        .article-header::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: radial-gradient(ellipse 60% 60% at 10% 100%, rgba(29,78,216,0.30) 0%, transparent 70%);
+        }
+        .article-header__inner {
+            position: relative; z-index: 1;
+            max-width: 820px;
+        }
+
+        .breadcrumb {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 13px; color: rgba(255,255,255,0.55);
+            margin-bottom: var(--space-lg);
+        }
+        .breadcrumb a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.15s; }
+        .breadcrumb a:hover { color: rgba(255,255,255,0.9); }
+        .breadcrumb__sep { color: rgba(255,255,255,0.30); }
+
+        .article-header__badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 100px; padding: 4px 12px;
+            font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+            margin-bottom: var(--space-lg); backdrop-filter: blur(6px);
+        }
+
+        .article-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 5vw, 46px);
+            font-weight: 900;
+            line-height: 1.08;
+            letter-spacing: -0.8px;
+            margin-bottom: var(--space-md);
+        }
+
+        .article-header__lead {
+            font-size: 17px; line-height: 1.75;
+            color: rgba(255,255,255,0.78);
+            max-width: 660px;
+            margin-bottom: var(--space-xl);
+        }
+
+        .article-meta {
+            display: flex; align-items: center; flex-wrap: wrap;
+            gap: var(--space-md);
+            font-size: 13px; color: rgba(255,255,255,0.55);
+        }
+        .article-meta__sep { color: rgba(255,255,255,0.25); }
+        .article-meta__tag {
+            background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 100px; padding: 2px 10px;
+            font-size: 12px; font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════════
+           ARTICLE LAYOUT (body)
+        ═══════════════════════════════════════════ */
+        .article-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: var(--space-2xl);
+            align-items: start;
+            padding: var(--space-3xl) 0;
+        }
+
+        /* ── MAIN CONTENT ── */
+        .article-body {
+            min-width: 0; /* prevent overflow in grid */
+        }
+
+        /* Article typography — all styles scoped to .prose */
+        .prose {
+            font-size: 16px;
+            line-height: 1.85;
+            color: var(--ink-light);
+        }
+
+        .prose h2 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--ink);
+            letter-spacing: -0.3px;
+            margin: var(--space-2xl) 0 var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--border-soft);
+        }
+        .prose h2:first-child { margin-top: 0; }
+
+        .prose h3 {
+            font-family: var(--font-body);
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--ink);
+            margin: var(--space-xl) 0 var(--space-sm);
+        }
+
+        .prose p { margin-bottom: var(--space-md); }
+
+        .prose strong { color: var(--ink); font-weight: 700; }
+
+        .prose a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+        .prose a:hover { color: var(--brand-dark); }
+
+        .prose ul, .prose ol {
+            padding-left: var(--space-xl);
+            margin-bottom: var(--space-md);
+        }
+        .prose li { margin-bottom: var(--space-sm); }
+        .prose li::marker { color: var(--brand); font-weight: 700; }
+
+        .prose ol li::marker { color: var(--brand); font-weight: 700; }
+
+        /* Callout / highlighted box */
+        .callout {
+            background: var(--brand-light);
+            border-left: 3px solid var(--brand);
+            border-radius: 0 var(--r-md) var(--r-md) 0;
+            padding: var(--space-md) var(--space-lg);
+            margin: var(--space-xl) 0;
+            font-size: 15px;
+        }
+        .callout--orange {
+            background: var(--rent-light);
+            border-left-color: var(--rent-orange);
+        }
+        .callout--green {
+            background: var(--success-light);
+            border-left-color: var(--success);
+        }
+        .callout p:last-child { margin-bottom: 0; }
+
+        /* Comparison table */
+        .compare-table-wrap { overflow-x: auto; margin: var(--space-xl) 0; }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .compare-table th {
+            background: var(--ink);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding: 12px var(--space-md);
+            text-align: left;
+        }
+        .compare-table th:first-child { border-radius: var(--r-sm) 0 0 0; }
+        .compare-table th:last-child  { border-radius: 0 var(--r-sm) 0 0; }
+
+        .compare-table td {
+            padding: 12px var(--space-md);
+            border-bottom: 1px solid var(--border);
+            color: var(--ink-light);
+            vertical-align: top;
+        }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table tr:nth-child(even) td { background: var(--bg-soft); }
+        .compare-table td:first-child { font-weight: 600; color: var(--ink); }
+        .compare-table .mono { font-size: 13px; }
+
+        .compare-table .tag-yes { color: var(--success); font-weight: 700; }
+        .compare-table .tag-no  { color: var(--ink-muted); font-weight: 600; }
+
+        /* Numbered tips */
+        .tips-list { list-style: none; padding: 0; margin: var(--space-lg) 0; }
+        .tips-list li {
+            display: flex; gap: var(--space-md);
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid var(--border-soft);
+            color: var(--ink-light);
+            font-size: 15px; line-height: 1.7;
+        }
+        .tips-list li:last-child { border-bottom: none; }
+        .tips-list__num {
+            flex-shrink: 0;
+            width: 28px; height: 28px;
+            background: var(--brand);
+            color: #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 700;
+            margin-top: 2px;
+        }
+
+        /* Sources */
+        .sources {
+            margin-top: var(--space-2xl);
+            padding-top: var(--space-xl);
+            border-top: 2px solid var(--border-soft);
+        }
+        .sources h4 {
+            font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+            text-transform: uppercase; color: var(--ink-muted);
+            margin-bottom: var(--space-md);
+        }
+        .sources ol { padding-left: var(--space-lg); }
+        .sources li {
+            font-size: 13px; color: var(--ink-muted); line-height: 1.7;
+            margin-bottom: var(--space-sm);
+        }
+        .sources a { color: var(--brand); }
+
+        /* ── SIDEBAR ── */
+        .sidebar {
+            position: sticky;
+            top: 88px; /* nav height + small gap */
+        }
+
+        .sidebar-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            margin-bottom: var(--space-lg);
+        }
+
+        .sidebar-card__head {
+            padding: var(--space-md) var(--space-lg);
+            background: var(--ink);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .sidebar-card__body { padding: var(--space-lg); }
+
+        /* Stat item in sidebar */
+        .sidebar-stat {
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid var(--border-soft);
+            position: relative;
+        }
+        .sidebar-stat:last-child { border-bottom: none; padding-bottom: 0; }
+        .sidebar-stat::before {
+            content: '';
+            position: absolute; left: calc(-1 * var(--space-lg));
+            top: 0; bottom: 0;
+            width: 3px;
+            background: transparent;
+            transition: background 0.15s;
+        }
+        .sidebar-stat:hover::before { background: var(--brand); }
+
+        .sidebar-stat__value {
+            font-family: var(--font-display);
+            font-size: 28px; font-weight: 900;
+            color: var(--ink); line-height: 1;
+            margin-bottom: 4px;
+        }
+        .sidebar-stat__label {
+            font-size: 13px; font-weight: 600; color: var(--ink-light);
+            margin-bottom: 2px;
+        }
+        .sidebar-stat__sub { font-size: 12px; color: var(--ink-muted); }
+
+        /* Table of contents */
+        .toc { padding: var(--space-md); }
+        .toc__title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-muted); margin-bottom: var(--space-md); }
+        .toc__list { list-style: none; }
+        .toc__list li { margin-bottom: 2px; }
+        .toc__list a {
+            display: block; padding: 5px 8px; border-radius: var(--r-sm);
+            font-size: 13px; font-weight: 500; color: var(--ink-light);
+            text-decoration: none; transition: all 0.15s;
+        }
+        .toc__list a:hover { color: var(--brand); background: var(--brand-light); }
+        .toc__list a.is-active { color: var(--brand); background: var(--brand-light); font-weight: 700; }
+
+        /* CTA card in sidebar */
+        .sidebar-cta {
+            background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);
+            color: #fff;
+            border-radius: var(--r-lg);
+            padding: var(--space-xl) var(--space-lg);
+            text-align: center;
+        }
+        .sidebar-cta__title { font-family: var(--font-display); font-size: 20px; font-weight: 800; margin-bottom: var(--space-sm); line-height: 1.2; }
+        .sidebar-cta__sub { font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: var(--space-lg); line-height: 1.6; }
+        .sidebar-cta .btn--primary { width: 100%; justify-content: center; background: #fff; color: var(--brand); font-size: 13px; }
+        .sidebar-cta .btn--primary:hover { background: var(--brand-light); box-shadow: none; transform: none; }
+
+        /* ═══════════════════════════════════════════
+           INLINE CTA BAND
+        ═══════════════════════════════════════════ */
+        .inline-cta {
+            background: var(--brand-light);
+            border: 1px solid var(--brand-mid);
+            border-radius: var(--r-lg);
+            padding: var(--space-xl);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-lg);
+            margin: var(--space-2xl) 0;
+            flex-wrap: wrap;
+        }
+        .inline-cta__text h4 { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+        .inline-cta__text p  { font-size: 14px; color: var(--ink-light); }
+
+        /* ═══════════════════════════════════════════
+           RELATED ARTICLES
+        ═══════════════════════════════════════════ */
+        .related { padding: var(--space-3xl) 0 var(--space-2xl); border-top: 1px solid var(--border); }
+        .related__header { margin-bottom: var(--space-xl); }
+        .related__header h3 { font-family: var(--font-display); font-size: 24px; font-weight: 800; }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .related-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: var(--space-lg);
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        .related-card::before {
+            content: ''; position: absolute;
+            top: 0; left: 0; width: 3px; height: 100%;
+            background: var(--brand);
+        }
+        .related-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--brand); }
+        .related-card__kicker { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--brand); margin-bottom: var(--space-sm); }
+        .related-card h4 { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.4; margin-bottom: var(--space-sm); }
+        .related-card p  { font-size: 13px; color: var(--ink-light); line-height: 1.6; }
+
+        /* ═══════════════════════════════════════════
+           DISCLAIMER
+        ═══════════════════════════════════════════ */
+        .disclaimer { background: var(--bg-soft); border-top: 1px solid var(--border); padding: var(--space-lg) 0; }
+        .disclaimer p { font-size: 12px; color: var(--ink-muted); font-style: italic; line-height: 1.7; border-left: 3px solid var(--border); padding-left: var(--space-md); }
+
+        /* ═══════════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════════ */
+        footer { background: var(--ink); color: rgba(255,255,255,0.70); padding: var(--space-3xl) 0 var(--space-xl); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-2xl); margin-bottom: var(--space-2xl); }
+        .footer-brand__logo { font-family: var(--font-display); font-size: 18px; font-weight: 900; color: #fff; }
+        .footer-brand p { font-size: 13px; line-height: 1.75; color: rgba(255,255,255,0.55); margin-top: var(--space-md); max-width: 300px; }
+        .footer-col h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.40); margin-bottom: var(--space-md); }
+        .footer-col ul { list-style: none; }
+        .footer-col a { display: block; color: rgba(255,255,255,0.60); text-decoration: none; font-size: 13px; line-height: 2.2; transition: color 0.15s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: var(--space-lg); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-md); }
+        .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); }
+        .footer-bottom a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 12px; }
+        .footer-bottom a:hover { color: rgba(255,255,255,0.75); }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .article-layout { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+            .sidebar-card:not(.sidebar-cta-wrap) { display: none; } /* hide TOC/stats on mobile, keep CTA */
+            .related-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav__links { display: none; }
+            .article-header { padding: 40px var(--space-lg) 48px; }
+            .related-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .inline-cta { flex-direction: column; align-items: flex-start; }
+        }
+        @media print {
+            .nav, .sidebar, footer, .related, .disclaimer, .inline-cta { display: none; }
+            .article-layout { grid-template-columns: 1fr; }
+            .prose { font-size: 12pt; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══════════════════════════════════════
+         NAV
+    ══════════════════════════════════════ -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav__inner">
+                <a href="../index.html" class="nav__logo">
+                    <img src="../Huur-of-koop-check-logo.png" alt="HuurOfKoopCheck.nl" class="nav__logo-img">
+                </a>
+                <ul class="nav__links">
+                    <li><a href="../index.html#calculator">Calculator</a></li>
+                    <li><a href="../index.html#features">Kenmerken</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="index.html">Blog</a></li>
+                    <li><a href="../contact.html">Expert Advies</a></li>
+                    <li><a href="../privacy.html">Privacy</a></li>
+                </ul>
+                <a href="../index.html#calculator" class="btn btn--primary" style="font-size:13px; padding: 9px 18px;">Calculator ↗</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════
+         ARTICLE HEADER
+    ══════════════════════════════════════ -->
+    <header class="article-header">
+        <div class="container">
+            <div class="article-header__inner">
+
+                <!-- breadcrumb — update the last item for each post -->
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="../index.html">Home</a>
+                    <span class="breadcrumb__sep">›</span>
+                    <a href="index.html">Blog</a>
+                    <span class="breadcrumb__sep">›</span>
+                    <!-- ← REPLACE 4: breadcrumb label & badge -->
+                    <span>Vaste en variabele kosten</span>
+                </nav>
+
+                <!-- ← REPLACE 4: article badge/tag -->
+                <div class="article-header__badge">🧾 Woonlasten vergelijken</div>
+
+                <!-- ← REPLACE 5: headline -->
+                <h1>Vaste en Variabele Kosten – Huren versus Kopen in 2026</h1>
+
+                <!-- ← REPLACE 6: lead paragraph (1–2 sentences) -->
+                <p class="article-header__lead">Bij het vergelijken van een huurwoning en een koopwoning is het essentieel om naar alle kosten te kijken. Vaak wordt alleen naar de maandelijkse huur of hypotheek gekeken, maar er zijn veel meer factoren die de totale woonlast bepalen. In dit artikel bespreken we de vaste en variabele kosten voor huurders en huiseigenaren, zodat u een realistisch beeld krijgt van uw budget. Met deze informatie kunt u de <a href="../index.html#calculator">Huur vs Koop-check</a> beter invullen en een weloverwogen keuze maken.</p>
+
+                <!-- ← REPLACE 7: date / read time / tags -->
+                <div class="article-meta">
+                    <span>8 april 2026</span>
+                    <span class="article-meta__sep">·</span>
+                    <span>7 min lezen</span>
+                    <span class="article-meta__sep">·</span>
+                    <span class="article-meta__tag">Kosten</span>
+                    <span class="article-meta__tag">Huren vs. Kopen</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ══════════════════════════════════════
+         ARTICLE BODY + SIDEBAR
+    ══════════════════════════════════════ -->
+    <div class="container">
+        <div class="article-layout">
+
+            <!-- ── MAIN CONTENT ── -->
+            <main class="article-body">
+
+                <!-- ════════════════════════════════════
+                     ← REPLACE 9: main article body
+                     Copy/paste any of these components:
+                       .prose h2, .prose h3, .prose p
+                       .prose ul / ol
+                       .callout / .callout--orange / .callout--green
+                       .compare-table-wrap + .compare-table
+                       .tips-list
+                       .inline-cta
+                       .sources
+                ════════════════════════════════════ -->
+                <div class="prose">
+
+                    <p>Bij het vergelijken van een huurwoning en een koopwoning is het essentieel om naar alle kosten te kijken. Vaak wordt alleen naar de maandelijkse huur of hypotheek gekeken, maar er zijn veel meer factoren die de totale woonlast bepalen. In dit artikel bespreken we de vaste en variabele kosten voor huurders en huiseigenaren, zodat u een realistisch beeld krijgt van uw budget. Met deze informatie kunt u de <a href="../index.html#calculator">Huur vs Koop-check</a> beter invullen en een weloverwogen keuze maken.</p>
+
+                    <h2 id="vaste-kosten-bij-huren">Vaste kosten bij huren</h2>
+
+                    <ol>
+<li><strong>Kale huur:</strong> Dit is de basisprijs voor het gebruik van de woning. In de sociale sector is de huur gemaximeerd via het woningwaarderingsstelsel, in de vrije sector is de huur vrij maar jaarlijks aan een maximum verhoging gebonden <a href="https://www.rijksoverheid.nl/onderwerpen/veranderingen/wonen-en-leefomgeving#:~:text=Maximale%20huurverhoging" target="_blank" rel="noopener">bron</a>.</li>
+<li><strong>Servicekosten:</strong> Denk aan schoonmaak van gemeenschappelijke ruimtes, verlichting, liftonderhoud, tuinonderhoud of huismeester. Deze kosten kunnen variëren, maar worden meestal als voorschot betaald en jaarlijks verrekend.</li>
+<li><strong>Gemeentelijke belastingen:</strong> Huurders betalen afvalstoffenheffing en soms een gebruikersdeel rioolheffing <a href="https://www.independer.nl/woonverzekering/info/verhuizen/gemeente/belastingen?networkId=7a193491-a691-423d-8ed9-0eb34415e29b#:~:text=Heb%20je%20een%20koopwoning%2C%20dan,OZB" target="_blank" rel="noopener">bron</a>. De totale gemeentelijke lasten bedragen circa €300–€450 per jaar.</li>
+<li><strong>Waterschapsbelasting:</strong> Deze belasting is niet gemeentelijk maar wordt aan alle huishoudens opgelegd en bedraagt ongeveer €150 per jaar.</li>
+<li><strong>Energiekosten:</strong> Gas, water en elektriciteit zijn variabele kosten die vaak als voorschot worden betaald. Ze hangen af van uw verbruik en de energieprijzen.</li>
+<li><strong>Verzekeringen:</strong> Huurders hebben meestal alleen een inboedelverzekering nodig (ca. €10–€15 per maand), omdat de opstalverzekering voor rekening van de verhuurder is.</li>
+</ol>
+
+                    <h2 id="variabele-kosten-bij-huren">Variabele kosten bij huren</h2>
+
+                    <ul>
+<li><strong>Huurverhoging:</strong> De grootste variabele kostenpost is de jaarlijkse huurverhoging. In 2026 mag de huur in de sociale sector met maximaal 4,1% stijgen, in de middenhuur met 6,1% en in de vrije sector met 4,4% <a href="https://www.rijksoverheid.nl/onderwerpen/veranderingen/wonen-en-leefomgeving#:~:text=Maximale%20huurverhoging" target="_blank" rel="noopener">bron</a>. Dit zorgt ervoor dat uw maandlasten op de lange termijn toenemen.</li>
+<li><strong>Energiekosten:</strong> Stijgende energieprijzen kunnen uw maandlasten beïnvloeden. Huurders kunnen meestal zelf overstappen van energieleverancier om te besparen.</li>
+<li><strong>Extra diensten:</strong> Denk aan internet, tv en parkeervergunningen. Deze kosten verschillen per woonplaats.</li>
+</ul>
+
+                    <h2 id="vaste-kosten-bij-kopen">Vaste kosten bij kopen</h2>
+
+                    <div class="compare-table-wrap">
+    <table class="compare-table">
+        <thead>
+            <tr><th>Kostenpost</th><th>Huren</th><th>Kopen</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Maandelijkse basislast</td><td>Huur</td><td>Hypotheekrente + aflossing</td></tr>
+            <tr><td>Groot onderhoud</td><td>Verhuurder</td><td>Eigen rekening</td></tr>
+            <tr><td>OZB</td><td class="tag-no">Nee</td><td class="tag-yes">Ja</td></tr>
+            <tr><td>Opstalverzekering</td><td class="tag-no">Nee</td><td class="tag-yes">Ja</td></tr>
+        </tbody>
+    </table>
+</div>
+
+                    <ol>
+<li><strong>Hypotheeklasten:</strong> Bestaan uit rente en aflossing. Een langlopende hypotheek met vaste rente zorgt voor voorspelbare maandlasten. De rente is gedeeltelijk aftrekbaar van de belasting.</li>
+<li><strong>Gemeentelijke belastingen:</strong> Huiseigenaren betalen afvalstoffenheffing, rioolheffing en OZB. De gemiddelde OZB in 2026 bedraagt €426, een stijging van 5,3% ten opzichte van 2025 <a href="https://www.eigenhuis.nl/nieuws/ozb-schiet-opnieuw-omhoog#:~:text=Huiseigenaren%20betalen%20in%202026%20gemiddeld,tarieven%20met%20meer%20dan%2020" target="_blank" rel="noopener">bron</a>.</li>
+<li><strong>Waterschapsbelasting:</strong> Net als bij huurders ongeveer €150 per jaar.</li>
+<li><strong>Verzekeringen:</strong> Als eigenaar heeft u een opstalverzekering (ca. €15–€20 per maand) en een inboedelverzekering. Soms is een aparte aansprakelijkheidsverzekering vereist.</li>
+<li><strong>VvE-bijdrage:</strong> Bij appartementen betaalt u een maandelijkse bijdrage aan de Vereniging van Eigenaren voor onderhoud en reserves. Dit kan variëren van €50 tot €300 per maand.</li>
+<li><strong>Renteaftrek en subsidies:</strong> De hypotheekrenteaftrek verlaagt de netto lasten. Eventuele subsidies voor verduurzaming (zoals subsidies voor isolatie of zonnepanelen) kunnen de energierekening verlagen.</li>
+</ol>
+
+                    <h2 id="variabele-kosten-bij-kopen">Variabele kosten bij kopen</h2>
+
+                    <ul>
+<li><strong>Onderhoudskosten:</strong> Gemiddeld moet u rekenen op ongeveer €300 per maand voor onderhoud en renovatie. Bij oudere woningen kan dit hoger uitvallen, terwijl nieuwbouwwoningen minder onderhoud vergen in de eerste jaren.</li>
+<li><strong>Energiekosten:</strong> Zijn gelijk aan die van huurders, maar u kunt wel investeren in energiebesparende maatregelen zoals isolatie, zonnepanelen of een warmtepomp, wat op lange termijn bespaart.</li>
+<li><strong>Schommelende rente:</strong> Als u een hypotheek met variabele rente heeft, kunnen uw maandlasten stijgen of dalen afhankelijk van de marktrente. Veel huizenkopers kiezen daarom voor een langere rentevastperiode.</li>
+<li><strong>Marktwaarde:</strong> De waarde van uw woning kan fluctueren. Bij verkoop kan dit leiden tot winst (overwaarde) of verlies.</li>
+</ul>
+
+                    <h2 id="eenmalige-kosten-bij-kopen">Eenmalige kosten bij kopen</h2>
+
+                    <p>Naast vaste en variabele kosten zijn er eenmalige kosten bij aankoop:</p>
+
+                    <ul>
+<li><strong>Kosten koper (k.k.):</strong> Gemiddeld 4–6% van de koopsom voor overdrachtsbelasting (2% voor de meeste kopers, 0% voor starters tot 35 jaar bij huizen tot €555.000) en notariskosten <a href="https://www.raisin.com/nl-nl/sparen/voor-huis/#:~:text=,Dit%20is%20exclusief%20overbieden" target="_blank" rel="noopener">bron</a>.</li>
+<li><strong>Advies- en bemiddelingskosten:</strong> Voor hypotheekadvies en taxatie.</li>
+<li><strong>Bouwtechnische keuring:</strong> Aan te raden bij oudere woningen om onverwachte kosten te voorkomen.</li>
+<li><strong>Overbieden:</strong> Bij krapte op de woningmarkt moet u soms boven de vraagprijs bieden. Het bedrag boven de taxatiewaarde moet u zelf betalen <a href="https://www.raisin.com/nl-nl/sparen/voor-huis/#:~:text=bepaald%20reparatiebedrag%20aan%20gebreken%20is,je%20eigen%20spaargeld%20moet%20betalen" target="_blank" rel="noopener">bron</a>.</li>
+</ul>
+
+                    <h2 id="wat-is-goedkoper-huren-of-kopen">Wat is goedkoper: huren of kopen?</h2>
+
+                    <p>Er is geen eenvoudig antwoord. In de regel zijn de <strong>maandelijkse netto woonlasten</strong> bij kopen vaak lager dan bij huren, vooral als u lang in de woning blijft en de hypotheekrente laag is. U bouwt vermogen op en profiteert van belastingvoordelen. Huren is aantrekkelijker als u flexibiliteit wilt, weinig spaargeld heeft of verwacht binnen enkele jaren te verhuizen. Bovendien kunt u met huurtoeslag uw kosten verlagen <a href="https://www.rijksoverheid.nl/onderwerpen/woning-huren/vraag-en-antwoord/kan-ik-huurtoeslag-krijgen#:~:text=Huurtoeslag%20vanaf%202026" target="_blank" rel="noopener">bron</a>. Door alle vaste en variabele kosten naast elkaar te zetten, kunt u bepalen welke optie bij uw financiële situatie past.</p>
+
+                    <div class="inline-cta">
+    <div class="inline-cta__text">
+        <h4>Benieuwd wat in uw situatie slimmer is?</h4>
+        <p>Gebruik de Huur vs Koop-check en vergelijk direct uw woonlasten, belastingen en fiscale voordelen.</p>
+    </div>
+    <a href="../index.html#calculator" class="btn btn--primary">Open Calculator ↗</a>
+</div>
+
+                    <h2 id="tips-om-kosten-te-beheersen">Tips om kosten te beheersen</h2>
+
+                    <ol class="tips-list">
+<li><div class="tips-list__num">1</div><div><strong>Maak een realistisch budget:</strong> Schat zowel de vaste als variabele kosten in voor uw situatie en houd rekening met toekomstige prijsstijgingen.</div></li>
+<li><div class="tips-list__num">2</div><div><strong>Gebruik de <a href="../index.html#calculator">Huur vs Koop-check</a>:</strong> Hiermee berekent u nauwkeurig wat huren of kopen u per maand kost, inclusief belastingen en onderhoud.</div></li>
+<li><div class="tips-list__num">3</div><div><strong>Vergelijk energieleveranciers en verzekeringen:</strong> Zowel huurders als kopers kunnen besparen door over te stappen.</div></li>
+<li><div class="tips-list__num">4</div><div><strong>Plan onderhoudsreserves:</strong> Als koper zet u maandelijks een bedrag opzij voor groot onderhoud, zodat onverwachte reparaties geen financiële strop worden.</div></li>
+</ol>
+
+                    <h2 id="conclusie">Conclusie</h2>
+
+                    <p>Vaste en variabele kosten bepalen samen de totale woonlasten. Huurders hebben lagere vaste lasten omdat ze geen OZB en onderhoud betalen, maar krijgen te maken met jaarlijkse huurverhogingen en kunnen geen vermogen opbouwen. Kopers dragen hogere vaste lasten en eenmalige kosten, maar bouwen vermogen op en profiteren van fiscale voordelen. Door alle kosten transparant te maken en uw persoonlijke situatie te analyseren, kunt u een weloverwogen keuze maken tussen huren en kopen.</p>
+
+                </div>
+                <!-- end .prose -->
+
+                <!-- ── INTERNAL LINKS ── -->
+                <!-- ← REPLACE 10: related/internal links -->
+                <div class="callout" style="margin-top: var(--space-2xl);">
+                    <p>📚 <strong>Lees ook:</strong></p>
+                    <ul style="margin-top: var(--space-sm); padding-left: var(--space-lg);">
+                        <li>Lees ons artikel <strong>Voordelen en nadelen van huren vs kopen</strong> voor een overzicht van alle argumenten.</li>
+                        <li>Bekijk <strong><a href="spaargeld-en-inkomen-bij-kopen.html">Spaargeld en inkomen bij kopen</a></strong> om te weten hoeveel eigen geld u nodig heeft voor de aankoop.</li>
+                        <li>Voor informatie over gemeentelijke belastingen en OZB, lees <strong>Gemeentelijke belastingen</strong> en <strong>OZB 2026</strong>.</li>
+                    </ul>
+                </div>
+
+                <!-- ── SOURCES ── -->
+                <div class="sources">
+                    <h4>Bronnen</h4>
+                    <ol>
+                        <li>[1] Rijksoverheid, &quot;Wijzigingen huurbeleid 2026&quot;, 2025 – Maxima voor huurverhogingen in 2026 <a href="https://www.rijksoverheid.nl/onderwerpen/veranderingen/wonen-en-leefomgeving#:~:text=Maximale%20huurverhoging" target="_blank" rel="noopener">bron</a>. [2] Independer, &quot;Gemeentelijke belastingen&quot;, 2025 – Overzicht van wat huurders en eigenaren betalen <a href="https://www.independer.nl/woonverzekering/info/verhuizen/gemeente/belastingen?networkId=7a193491-a691-423d-8ed9-0eb34415e29b#:~:text=Heb%20je%20een%20koopwoning%2C%20dan,OZB" target="_blank" rel="noopener">bron</a>. [3] Vereniging Eigen Huis, &quot;Ozb schiet opnieuw omhoog&quot;, 2025 – Gemiddelde OZB en stijgingen <a href="https://www.eigenhuis.nl/nieuws/ozb-schiet-opnieuw-omhoog#:~:text=Huiseigenaren%20betalen%20in%202026%20gemiddeld,tarieven%20met%20meer%20dan%2020" target="_blank" rel="noopener">bron</a>. [4] Wijzer in geldzaken, &quot;Checklist woning huren of kopen&quot;, 2024 – Informatie over onderhoudskosten en vaste lasten. [5] Raisin, &quot;Sparen voor een huis in 2026&quot;, 2026 – Uitleg over kosten koper en overbieden <a href="https://www.raisin.com/nl-nl/sparen/voor-huis/#:~:text=,Dit%20is%20exclusief%20overbieden" target="_blank" rel="noopener">bron</a> <a href="https://www.raisin.com/nl-nl/sparen/voor-huis/#:~:text=bepaald%20reparatiebedrag%20aan%20gebreken%20is,je%20eigen%20spaargeld%20moet%20betalen" target="_blank" rel="noopener">bron</a>. [6] Belastingdienst, &quot;Kan ik huurtoeslag krijgen?&quot;, 2025 – Nieuwe regels voor huurtoeslag en eigen bijdrage <a href="https://www.rijksoverheid.nl/onderwerpen/woning-huren/vraag-en-antwoord/kan-ik-huurtoeslag-krijgen#:~:text=Huurtoeslag%20vanaf%202026" target="_blank" rel="noopener">bron</a>.</li>
+                    </ol>
+                </div>
+
+            </main>
+            <!-- end main -->
+
+            <!-- ── SIDEBAR ── -->
+            <aside class="sidebar">
+
+                <!-- Table of contents -->
+                <div class="sidebar-card">
+                    <div class="sidebar-card__head">Inhoudsopgave</div>
+                    <div class="toc">
+                        <!-- ← REPLACE: update these anchor links to match your H2 ids -->
+                        <ul class="toc__list" id="toc-list">
+                            <li><a href="#vaste-kosten-bij-huren">Vaste kosten bij huren</a></li>
+                            <li><a href="#variabele-kosten-bij-huren">Variabele kosten bij huren</a></li>
+                            <li><a href="#vaste-kosten-bij-kopen">Vaste kosten bij kopen</a></li>
+                            <li><a href="#variabele-kosten-bij-kopen">Variabele kosten bij kopen</a></li>
+                            <li><a href="#eenmalige-kosten-bij-kopen">Eenmalige kosten bij kopen</a></li>
+                            <li><a href="#wat-is-goedkoper-huren-of-kopen">Wat is goedkoper: huren of kopen?</a></li>
+                            <li><a href="#tips-om-kosten-te-beheersen">Tips om kosten te beheersen</a></li>
+                            <li><a href="#conclusie">Conclusie</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Key stats -->
+                <!-- ← REPLACE 8: stat cards — 3 key numbers from your article -->
+                <div class="sidebar-card">
+                    <div class="sidebar-card__head">Kerncijfers 2026</div>
+                    <div class="sidebar-card__body">
+                        <div class="sidebar-stat">
+                            <div class="sidebar-stat__value mono">€ 426</div>
+                            <div class="sidebar-stat__label">Gem. OZB</div>
+                            <div class="sidebar-stat__sub">voor kopers in 2026</div>
+                        </div>
+                        <div class="sidebar-stat">
+                            <div class="sidebar-stat__value mono">€ 150</div>
+                            <div class="sidebar-stat__label">Waterschapslasten</div>
+                            <div class="sidebar-stat__sub">indicatief per jaar</div>
+                        </div>
+                        <div class="sidebar-stat">
+                            <div class="sidebar-stat__value mono">4,1–6,1%</div>
+                            <div class="sidebar-stat__label">Huurstijging</div>
+                            <div class="sidebar-stat__sub">afhankelijk van sector</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="sidebar-cta sidebar-cta-wrap">
+                    <div class="sidebar-cta__title">Huren of<br>Kopen?</div>
+                    <p class="sidebar-cta__sub">Vergelijk direct huren en kopen op basis van woonlasten, belastingen en fiscale voordelen in onze gratis calculator.</p>
+                    <a href="../index.html#calculator" class="btn btn--primary">Start Calculator ↗</a>
+                </div>
+
+            </aside>
+
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         RELATED ARTICLES
+    ══════════════════════════════════════ -->
+    <div style="background: var(--bg-soft); border-top: 1px solid var(--border);">
+        <div class="container">
+            <section class="related">
+                <div class="related__header">
+                    <span class="kicker">Verder lezen</span>
+                    <h3>Gerelateerde artikelen</h3>
+                </div>
+                <!-- ← REPLACE 10: update these 3 related article cards -->
+                <div class="related-grid">
+                    <a href="ozb-2026.html" class="related-card">
+                        <div class="related-card__kicker">Belastingen</div>
+                        <h4>OZB 2026</h4>
+                        <p>Hoeveel stijgt de OZB in 2026 en wat betekent dat voor huiseigenaren?</p>
+                    </a>
+                    <a href="huurverhoging-2026.html" class="related-card">
+                        <div class="related-card__kicker">Huren</div>
+                        <h4>Huurverhoging 2026</h4>
+                        <p>Wat mag uw verhuurder in 2026 verhogen in sociale huur, middenhuur en vrije sector?</p>
+                    </a>
+                    <a href="spaargeld-en-inkomen-bij-kopen.html" class="related-card">
+                        <div class="related-card__kicker">Kopen</div>
+                        <h4>Spaargeld en inkomen bij kopen</h4>
+                        <p>Hoeveel spaargeld en inkomen u nodig heeft om in 2026 een huis te kopen.</p>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         DISCLAIMER
+    ══════════════════════════════════════ -->
+    <div class="disclaimer">
+        <div class="container">
+            <p>⚠️ <strong>Disclaimer:</strong> De informatie op HuurOfKoopCheck.nl is informatief van aard en geen fiscaal of financieel advies. Belastingtarieven en -wetgeving kunnen jaarlijks wijzigen. Raadpleeg de Belastingdienst of een erkend adviseur voor uw persoonlijke situatie.</p>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-brand__logo">HuurOfKoopCheck.nl</div>
+                    <p>Een gratis, onafhankelijke calculator die huizenkopers en huurders helpt een weloverwogen financiële beslissing te nemen. Gebaseerd op actuele Nederlandse belastingwetgeving.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigatie</h4>
+                    <ul>
+                        <li><a href="../index.html#calculator">Calculator</a></li>
+                        <li><a href="../index.html#features">Kenmerken</a></li>
+                        <li><a href="../index.html#faq">FAQ</a></li>
+                        <li><a href="index.html">Blog</a></li>
+                        <li><a href="../contact.html">Expert Advies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Bronnen</h4>
+                    <ul>
+                        <li><a href="https://www.belastingdienst.nl/" target="_blank" rel="noopener">Belastingdienst</a></li>
+                        <li><a href="https://www.cbs.nl/" target="_blank" rel="noopener">CBS</a></li>
+                        <li><a href="https://www.nvm.nl/" target="_blank" rel="noopener">NVM</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Juridisch</h4>
+                    <ul>
+                        <li><a href="../privacy.html">Privacyverklaring</a></li>
+                        <li><a href="#" onclick="alert('Educatief model — geen financieel advies.'); return false;">Disclaimer</a></li>
+                        <li><a href="mailto:info@huurofkoopcheck.nl">info@huurofkoopcheck.nl</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HuurOfKoopCheck.nl — Alle rechten voorbehouden.</p>
+                <a href="../privacy.html">Privacyverklaring</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ══════════════════════════════════════
+         TOC ACTIVE LINK TRACKER
+    ══════════════════════════════════════ -->
+    <script>
+        // Highlights the active TOC item based on scroll position
+        (function () {
+            const headings = document.querySelectorAll('.prose h2[id]');
+            const links = document.querySelectorAll('#toc-list a');
+            if (!headings.length || !links.length) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        links.forEach(l => l.classList.remove('is-active'));
+                        const active = document.querySelector(`#toc-list a[href="#${entry.target.id}"]`);
+                        if (active) active.classList.add('is-active');
+                    }
+                });
+            }, { rootMargin: '-80px 0px -60% 0px' });
+
+            headings.forEach(h => observer.observe(h));
+        })();
+    </script>
+
+</body>
+</html>
