@@ -8,204 +8,501 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KNQ83F3G');</script>
     <!-- End Google Tag Manager -->
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Blog over huizenkoop, hypotheekrenteaftrek, transactiekosten en meer. Alles wat je moet weten over kopen vs huren.">
     <meta name="keywords" content="blog hypotheek, gids huiskoop, kopen versus huren, transactiekosten, rentetarieven">
-    <title>Blog - HuurOfKoopCheck.nl | Alles Over Huizenkoop</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:wght@700;800;900&display=swap" rel="stylesheet">
+    <title>Blog - HuurOfKoopCheck.nl | Alles Over Huizenkoop & Huren</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,700;1,9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { font-family: 'DM Sans', sans-serif; background: #F8F7F4; color: #1A1A1A; }
-        nav { background: white; border-bottom: 1px solid #E5E2DA; position: sticky; top: 0; z-index: 1000; }
-        nav .container { max-width: 900px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 70px; }
-       
-        .logo-text {
-    margin-left: 10px;
-}    
-        .logo-image {
-    height: 60px;
-    width: auto;
-    display: block;
-} 
-        .logo {
-    display: flex;
-    align-items: center;
-}
-        nav a { text-decoration: none; color: #6B6560; font-weight: 500; font-size: 13px; }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-        .hero { background: linear-gradient(135deg, #001A3D 0%, #0055CC 100%); color: white; padding: 60px 24px; text-align: center; }
-        .hero h1 { font-size: 42px; font-weight: 900; font-family: 'Fraunces', Georgia, serif; margin-bottom: 16px; }
-        .hero p { font-size: 16px; opacity: 0.85; max-width: 560px; margin: 0 auto; line-height: 1.7; }
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; padding: 60px 24px; background: white; }
-        .blog-card { background: white; border: 1px solid #E5E2DA; border-radius: 12px; padding: 24px; transition: transform 0.2s, box-shadow 0.2s; }
-        .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
-        .blog-card h3 { font-size: 20px; font-weight: 800; margin-bottom: 12px; font-family: 'Fraunces', Georgia, serif; }
-        .blog-card p { font-size: 14px; color: #6B6560; line-height: 1.7; margin-bottom: 16px; }
-        .blog-card a { display: inline-block; background: #0066FF; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 13px; transition: background 0.2s; }
-        .blog-card a:hover { background: #0052CC; }
-        .blog-meta { font-size: 12px; color: #999; margin-bottom: 12px; }
-        footer { background: #1A1A1A; color: white; padding: 48px 24px; margin-top: 60px; text-align: center; font-size: 13px; }
-        footer a { color: #0066FF; text-decoration: none; }
+        /* ═══════════════════════════════════════════
+           TOKENS
+        ═══════════════════════════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --ink:           #0F172A;
+            --ink-light:     #475569;
+            --ink-muted:     #94A3B8;
+            --brand:         #1D4ED8;
+            --brand-dark:    #1E3A8A;
+            --brand-light:   #EFF6FF;
+            --bg:            #F8F7F4;
+            --bg-soft:       #F1EFE9;
+            --card:          #FFFFFF;
+            --border:        #E5E7EB;
+            --border-soft:   #F0EDE8;
+            --font-body:     'Inter', system-ui, sans-serif;
+            --font-display:  'Fraunces', Georgia, serif;
+            --font-mono:     'JetBrains Mono', monospace;
+            --r-sm: 4px; --r-md: 8px; --r-lg: 12px; --r-xl: 16px;
+            --shadow-sm: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
+            --shadow-md: 0 4px 16px rgba(15,23,42,0.08), 0 2px 6px rgba(15,23,42,0.04);
+            --shadow-lg: 0 12px 40px rgba(15,23,42,0.12);
+            --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
+            --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════════════════════════════════
+           UTILITY
+        ═══════════════════════════════════════════ */
+        .container         { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); }
+        .container--narrow { max-width: 960px;  margin: 0 auto; padding: 0 var(--space-lg); }
+        .kicker {
+            display: inline-block; font-size: 11px; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--ink-muted); margin-bottom: var(--space-sm);
+        }
+
+        /* ═══════════════════════════════════════════
+           BUTTONS
+        ═══════════════════════════════════════════ */
+        .btn {
+            display: inline-flex; align-items: center; gap: var(--space-sm);
+            padding: 11px 22px; border-radius: var(--r-md); border: none;
+            font-family: var(--font-body); font-size: 14px; font-weight: 600;
+            cursor: pointer; text-decoration: none; transition: all 0.18s ease;
+        }
+        .btn--primary  { background: var(--brand); color: #fff; }
+        .btn--primary:hover { background: var(--brand-dark); box-shadow: 0 4px 16px rgba(29,78,216,0.35); transform: translateY(-1px); }
+        .btn--outline  { background: transparent; color: var(--brand); border: 1.5px solid var(--brand); }
+        .btn--outline:hover { background: var(--brand-light); }
+
+        /* ═══════════════════════════════════════════
+           NAV
+        ═══════════════════════════════════════════ */
+        .nav {
+            background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px);
+        }
+        .nav__inner { display: flex; justify-content: space-between; align-items: center; height: 68px; }
+        .nav__logo { display: flex; align-items: center; gap: var(--space-sm); text-decoration: none; }
+        .nav__logo-img { height: 52px; width: auto; }
+        .nav__links { display: flex; list-style: none; gap: var(--space-xl); align-items: center; }
+        .nav__links a { text-decoration: none; color: var(--ink-light); font-size: 14px; font-weight: 500; transition: color 0.15s; }
+        .nav__links a:hover { color: var(--brand); }
+        .nav__actions { display: flex; align-items: center; gap: var(--space-md); }
+
+        /* ═══════════════════════════════════════════
+           HERO
+        ═══════════════════════════════════════════ */
+        .hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 45%, #1D4ED8 100%);
+            color: #fff;
+            padding: 72px var(--space-lg) 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: radial-gradient(ellipse 60% 50% at 20% 100%, rgba(29,78,216,0.25) 0%, transparent 70%);
+        }
+        .hero__content { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+        .hero__badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 100px; padding: 5px 14px;
+            font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+            margin-bottom: var(--space-lg); backdrop-filter: blur(6px);
+        }
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 6.5vw, 58px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -1px;
+            margin-bottom: var(--space-md);
+        }
+        .hero__sub {
+            font-size: 17px; line-height: 1.75;
+            color: rgba(255,255,255,0.80);
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        /* ═══════════════════════════════════════════
+           SECTION HEADER
+        ═══════════════════════════════════════════ */
+        .section-header { text-align: center; margin-bottom: var(--space-2xl); }
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(26px, 4vw, 36px);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--ink);
+            margin-bottom: var(--space-sm);
+        }
+        .section-header p { font-size: 16px; color: var(--ink-light); max-width: 520px; margin: 0 auto; }
+
+        /* ═══════════════════════════════════════════
+           BLOG GRID
+        ═══════════════════════════════════════════ */
+        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); padding: var(--space-3xl) 0; }
+
+        .blog-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: var(--space-xl) var(--space-lg);
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+        .blog-card::before {
+            content: ''; position: absolute;
+            top: 0; left: 0; width: 3px; height: 100%;
+            background: var(--brand);
+        }
+        .blog-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--brand); }
+
+        .blog-card__meta {
+            font-size: 12px; color: var(--ink-muted); font-weight: 600;
+        }
+
+        .blog-card h3 {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--ink);
+            line-height: 1.3;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .blog-card p {
+            font-size: 14px;
+            color: var(--ink-light);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .blog-card__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--brand);
+            font-weight: 600;
+            font-size: 13px;
+            text-decoration: none;
+            margin-top: auto;
+            transition: gap 0.15s;
+        }
+        .blog-card__link:hover { gap: 10px; }
+
+        /* ═══════════════════════════════════════════
+           CTA BAND
+        ═══════════════════════════════════════════ */
+        .cta-section {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 45%, #1D4ED8 100%);
+            color: #fff;
+            padding: var(--space-3xl) var(--space-lg);
+            text-align: center;
+            margin: var(--space-3xl) 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: radial-gradient(ellipse 50% 80% at 50% 100%, rgba(29,78,216,0.3) 0%, transparent 70%);
+        }
+        .cta-section__content { position: relative; z-index: 1; max-width: 560px; margin: 0 auto; }
+        .cta-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            margin-bottom: var(--space-md);
+        }
+        .cta-section p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.80);
+            margin-bottom: var(--space-xl);
+            line-height: 1.75;
+        }
+
+        /* ═══════════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════════ */
+        footer { background: var(--ink); color: rgba(255,255,255,0.70); padding: var(--space-3xl) 0 var(--space-xl); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-2xl); margin-bottom: var(--space-2xl); }
+        .footer-brand__logo { font-family: var(--font-display); font-size: 18px; font-weight: 900; color: #fff; }
+        .footer-brand p { font-size: 13px; line-height: 1.75; color: rgba(255,255,255,0.55); margin-top: var(--space-md); max-width: 300px; }
+        .footer-col h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.40); margin-bottom: var(--space-md); }
+        .footer-col ul { list-style: none; }
+        .footer-col a { display: block; color: rgba(255,255,255,0.60); text-decoration: none; font-size: 13px; line-height: 2.2; transition: color 0.15s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: var(--space-lg); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-md); }
+        .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); }
+        .footer-bottom a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 12px; }
+        .footer-bottom a:hover { color: rgba(255,255,255,0.75); }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 28px; }
+            .nav__links { display: none; }
             .blog-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">
-             <a href="../index.html" class="logo-wrapper">
-                <img src="Huur-of-koop-check-logo.png" alt="logo" class="logo-image">
-            </a>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNQ83F3G"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- ══════════════════════════════════════
+         NAV
+    ══════════════════════════════════════ -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav__inner">
+                <a href="../index.html" class="nav__logo">
+                    <img src="../huur-of-koop-check.png" alt="HuurOfKoopCheck.nl" class="nav__logo-img">
+                </a>
+                <ul class="nav__links">
+                    <li><a href="../index.html#calculator">Calculator</a></li>
+                    <li><a href="../index.html#features">Kenmerken</a></li>
+                    <li><a href="../index.html#faq">FAQ</a></li>
+                    <li><a href="index.html">Blog</a></li>
+                    <li><a href="../contact.html">Expert Advies</a></li>
+                    <li><a href="../privacy.html">Privacy</a></li>
+                </ul>
+                <div class="nav__actions">
+                    <a href="https://www.paypal.com/ncp/payment/BXCB3XFET46RC" target="_blank" rel="noopener" class="btn btn--outline" style="font-size:13px; padding: 9px 18px;">❤️ Steun</a>
+                    <a href="../index.html#calculator" class="btn btn--primary" style="font-size:13px; padding: 9px 18px;">Calculator ↓</a>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <div class="hero">
-        <div class="container">
-            <h1>Blog: Alles Over Huizenkoop</h1>
-            <p>Diepgaande gidsen over hypotheekrenteaftrek, transactiekosten, rentetarieven en meer. Alles wat je moet weten over kopen vs. huren.</p>
+    <!-- ══════════════════════════════════════
+         HERO
+    ══════════════════════════════════════ -->
+    <section class="hero">
+        <div class="hero__content">
+            <div class="hero__badge">📚 Blog & Gidsen</div>
+            <h1>Alles Over Huizenkoop & Huren</h1>
+            <p class="hero__sub">Diepgaande gidsen over hypotheekrenteaftrek, transactiekosten, rentetarieven, gemeentelijke belastingen en alles wat je moet weten over kopen versus huren.</p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         BLOG GRID
+    ══════════════════════════════════════ -->
+    <div class="container">
+        <div class="blog-grid">
+
+            <!-- 1. Hypotheekrenteaftrek -->
+            <a href="hypotheekrenteaftrek.html" class="blog-card">
+                <span class="blog-card__meta">💰 Belastingen & Voordelen</span>
+                <h3>Hypotheekrenteaftrek — Complete Gids 2026</h3>
+                <p>Hoe werkt de hypotheekrenteaftrek, hoeveel kun je aftrekken en wat is het maximale belastingtarief? Praktische voorbeelden en tips.</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 2. Eigenwoningforfait -->
+            <a href="eigenwoningforfait.html" class="blog-card">
+                <span class="blog-card__meta">💰 Belastingen & Voordelen</span>
+                <h3>Eigenwoningforfait — Wat Betaal je Echt?</h3>
+                <p>Wat is eigenwoningforfait en hoe wordt het berekend? Het tegengewicht van hypotheekrenteaftrek, praktische voorbeelden, en impact op je belasting.</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 3. Transactiekosten -->
+            <a href="transactiekosten.html" class="blog-card">
+                <span class="blog-card__meta">🏠 Koopproces</span>
+                <h3>Transactiekosten Huiskoop — 2-4% van de Prijs</h3>
+                <p>Volledige gids: notaris, overdrachtsbelasting, taxatie, hypotheekadviseur. Hoe je minimaliseert en waarom jongeren 0% overdrachtsbelasting betalen.</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 4. Hypotheek aflossen -->
+            <a href="hypotheek-aflossen.html" class="blog-card">
+                <span class="blog-card__meta">💳 Hypotheek</span>
+                <h3>Hypotheek Aflossen — Annuïteit vs. Lineair</h3>
+                <p>Welk aflossingsysteem kies je? Annuïteit (gelijke betalingen), lineair (bespaar rente), of aflossingsvrij? Voordelen, nadelen en berekeningen.</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 5. Rentetarieven -->
+            <a href="rentetarieven.html" class="blog-card">
+                <span class="blog-card__meta">💳 Hypotheek</span>
+                <h3>Hypotheek Rentetarieven 2026</h3>
+                <p>Wat zijn huidige rentetarieven? Vaste of variabel? 30 jaar of 10 jaar? Hoe vind je de beste rente en hoeveel scheelt 0,5% verschil?</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 6. Gemeentelijke belastingen -->
+            <a href="gemeentelijke_belastingen.html" class="blog-card">
+                <span class="blog-card__meta">💰 Belastingen & Voordelen</span>
+                <h3>Gemeentelijke Belastingen — Huurders vs. Eigenaren</h3>
+                <p>Welke lokale belastingen betaal je als huurder of eigenaar? OZB, rioolheffing, afvalstoffenheffing en hoe dit je totale woonlasten beïnvloedt.</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 7. OZB 2026 -->
+            <a href="ozb-2026.html" class="blog-card">
+                <span class="blog-card__meta">💰 Belastingen & Voordelen</span>
+                <h3>OZB 2026 — Tariefen Stijgen Opnieuw</h3>
+                <p>Onroerendezaakbelasting stijgt gemiddeld 5,3% in 2026. Wat betaal je, per gemeente en hoe kan je besparen op OZB?</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 8. Vaste kosten huren vs. kopen -->
+            <a href="vaste-kosten-huren-kopen.html" class="blog-card">
+                <span class="blog-card__meta">🔄 Huren vs. Kopen</span>
+                <h3>Vaste Kosten — Huren vs. Kopen</h3>
+                <p>Wat zijn je werkelijke maandelijkse kosten als huurder versus huiseigenaar? Inclusief gemeentelijke lasten, onderhoud en belastingen.</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 9. Voordelen en nadelen huren vs. kopen -->
+            <a href="voordelen-nadelen-huren-kopen.html" class="blog-card">
+                <span class="blog-card__meta">🔄 Huren vs. Kopen</span>
+                <h3>Voordelen & Nadelen — Huren vs. Kopen</h3>
+                <p>Compleet overzicht van alle voordelen en nadelen van beide opties. Stabiliteit, vrijheid, vermogensopbouw en flexibiliteit.</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 10. Lange-termijn voordeel kopen -->
+            <a href="lange-termijn-voordeel-kopen.html" class="blog-card">
+                <span class="blog-card__meta">🏠 Eigenwoningbezit</span>
+                <h3>Lange-Termijn Voordeel van Kopen</h3>
+                <p>Hoe bouw je vermogen op als huiseigenaar? Hypotheekrenteaftrek, eigenhuisbezit en waardestijging over 20-30 jaar.</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 11. Spaargeld en inkomen bij kopen -->
+            <a href="spaargeld-en-inkomen-bij-kopen.html" class="blog-card">
+                <span class="blog-card__meta">🏠 Koopproces</span>
+                <h3>Spaargeld & Inkomen — Vereisten voor Hypotheek</h3>
+                <p>Hoeveel spaargeld heb je nodig? Welke inkomeneisen gelden? Hoe hoger je inkomst, hoe meer je mag lenen — praktische richtlijnen.</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 12. Puntenstelsel huurprijs -->
+            <a href="puntenstelsel-huurprijs.html" class="blog-card">
+                <span class="blog-card__meta">🏘️ Huren</span>
+                <h3>Puntenstelsel & Huurprijs — Sociaal Segment</h3>
+                <p>Wat is het puntenstelsel voor huurprijzen? Hoe wordt een rechtmatige huur bepaald in het sociale woningbezit?</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 13. Huurcontracten en huurbescherming -->
+            <a href="huurcontracten-en-huurbescherming.html" class="blog-card">
+                <span class="blog-card__meta">🏘️ Huren</span>
+                <h3>Huurcontracten & Huurbescherming</h3>
+                <p>Wat staat in een huurcontract? Welke rechten heb je als huurder? Ontslag uit woning, verhoging en huurbescherming — alles uitgelegd.</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 14. Huurverhoging 2026 -->
+            <a href="huurverhoging-2026.html" class="blog-card">
+                <span class="blog-card__meta">🏘️ Huren</span>
+                <h3>Huurverhoging 2026 — Nieuwe Regels & Percentages</h3>
+                <p>Wat mag je verhuurder maximaal verhogen? Sociale en vrije sector, wettelijke grenzen, en hoe verzet je je ertegen.</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 15. Huurtoeslag 2026 -->
+            <a href="huurtoeslag-2026.html" class="blog-card">
+                <span class="blog-card__meta">🏘️ Huren</span>
+                <h3>Huurtoeslag 2026 — Heb je Recht op Toeslag?</h3>
+                <p>Inkomens- en huurgrenswaarden voor 2026, hoe je aanvraagt, en wat het bijstandsniveau voor je betekent.</p>
+                <span class="blog-card__link">Lees artikel →</span>
+            </a>
+
+            <!-- 16. Blog index -->
+            <a href="index.html" class="blog-card" style="border-color:var(--brand); background:var(--brand-light);">
+                <span class="blog-card__meta">📚 Overzicht</span>
+                <h3>Alle Blog Artikelen</h3>
+                <p>Compleet overzicht van alle gidsen, tips en praktische informatie over huren, kopen, hypotheeken en belastingen.</p>
+                <span class="blog-card__link" style="color:var(--brand);">Alle artikelen →</span>
+            </a>
+
         </div>
     </div>
 
-    <!-- Blog Grid -->
-    <div class="blog-grid">
-        <div class="blog-card">
-            <div class="blog-meta">📅 Maart 2026 • 8 min leestijd</div>
-            <h3>Hypotheekrenteaftrek: Hoeveel Bespaar je?</h3>
-            <p>Compleet gids over hypotheekrenteaftrek in Nederland. Hoe het werkt, hoeveel je bespaard, eigenwoningforfait, en waarom kopen aantrekkelijker is dankzij dit voordeel.</p>
-            <a href="hypotheekrenteaftrek.html">Lees artikel →</a>
+    <!-- ══════════════════════════════════════
+         CTA
+    ══════════════════════════════════════ -->
+    <section class="cta-section">
+        <div class="cta-section__content">
+            <h2>Klaar om Jouw Beslissing te Nemen?</h2>
+            <p>Gebruik onze gratis calculator om exact uit te rekenen of kopen of huren beter voor jouw situatie is.</p>
+            <a href="../index.html#calculator" class="btn btn--primary">Open Calculator ↗</a>
         </div>
+    </section>
 
-        <div class="blog-card">
-            <div class="blog-meta">📅 Maart 2026 • 7 min leestijd</div>
-            <h3>Eigenwoningforfait: Wat Betaal je Echt?</h3>
-            <p>Wat is eigenwoningforfait en hoe wordt het berekend? Praktische voorbeelden, het tegengewicht van hypotheekrenteaftrek, en hoe het jouw belasting beïnvloedt.</p>
-            <a href="eigenwoningforfait.html">Lees artikel →</a>
-        </div>
-
-        <div class="blog-card">
-            <div class="blog-meta">📅 Maart 2026 • 8 min leestijd</div>
-            <h3>Transactiekosten Huiskoop: 2-4% van Prijs</h3>
-            <p>Volledige gids transactiekosten: notaris, overdrachtsbelasting, taxatierapport, hypotheekadviseur. Hoe je dit minimaliseert en waarom jongeren 0% overdrachtsbelasting betalen.</p>
-            <a href="transactiekosten.html">Lees artikel →</a>
-        </div>
-
-        <div class="blog-card">
-            <div class="blog-meta">📅 Maart 2026 • 7 min leestijd</div>
-            <h3>Hypotheek Aflossen: Annuïteit vs. Lineair</h3>
-            <p>Welk aflossingsysteem kies je? Annuïteit (gelijke betalingen), lineair (bespaar rente), of aflossingsvrij? Voordelen, nadelen, en hoeveel je bespaard.</p>
-            <a href="hypotheek-aflossen.html">Lees artikel →</a>
-        </div>
-
-        <div class="blog-card">
-            <div class="blog-meta">📅 Maart 2026 • 8 min leestijd</div>
-            <h3>Hypotheek Rentetarieven 2026 </h3>
-            <p>Wat zijn huidige rentetarieven? Vaste of variabel? 30 jaar of 10 jaar? Hoe vind je beste rente en hoeveel scheelt 0,5% verschil? Compleet overzicht.</p>
-            <a href="rentetarieven.html">Lees artikel →</a>
-        </div>
-        
-        <div class="blog-card">
-            <div class="blog-meta">📅 Maart 2026 • 6 min leestijd</div>
-            <h3>Gemeentelijke Belastingen – Verschillen voor Huurders en Huiseigenaren </h3>
-            <p>Leer welke gemeentelijke belastingen u betaalt als huurder of als huiseigenaar. Ontdek wat afvalstoffenheffing, rioolheffing en OZB in 2026 kosten.</p>
-            <a href="gemeentelijke_belastingen.html">Lees artikel →</a>
-        </div>
-        
-         <div class="blog-card">
-            <div class="blog-meta">📅 Maart 2026 • 6 min leestijd</div>
-            <h3>Huurcontracten en Huurbescherming in 2026 – Wat Zijn Je Rechten? </h3>
-            <p>Lees alles over huurcontracten in 2026, van de Wet vaste huurcontracten tot uitzonderingen voor tijdelijke huur en je rechten als huurder.</p>
-            <a href="huurcontracten-en-huurbescherming.html">Lees artikel →</a>
-        </div>
-        
-        <div class="blog-card">
-            <div class="blog-meta">📅 Maart 2026 • 6 min leestijd</div>
-            <h3>Huurtoeslag 2026 – Wie Komt In Aanmerking en Hoe Werk Het? </h3>
-            <p>Lees alles over de nieuwe regels voor huurtoeslag vanaf 2026. Ontdek de inkomensgrenzen, huurprijzen en hoe je de toeslag aanvraagt.</p>
-            <a href="huurtoeslag-2026.html">Lees artikel →</a>
-        </div>
-
-        <div class="blog-card">
-            <div class="blog-meta">📅 Maart 2026 • 6 min leestijd</div>
-            <h3>Huurverhoging 2026 – Regels, Percentages en Tips </h3>
-            <p>Ontdek hoe de maximale huurverhoging in 2026 werkt. Leer de verschillen tussen sociale huur, middenhuur en vrije sector, de percentages en toeslagen.</p>
-            <a href="huurverhoging-2026.html">Lees artikel →</a>
-        </div>
-
-        <div class="blog-card">
-            <div class="blog-meta">📅 Maart 2026 • 6 min leestijd</div>
-            <h3>Waarom Kopen Op Lange Termijn Vaak Voordeliger Is Dan Huren </h3>
-            <p>ntdek waarom het kopen van een huis op de lange termijn financieel aantrekkelijk kan zijn. Leer over vermogensopbouw, inflatie en persoonlijke factoren.</p>
-            <a href="lange-termijn-voordeel-kopen.html">Lees artikel →</a>
-        </div>
-
-        <div class="blog-card">
-            <div class="blog-meta">📅 Maart 2026 • 6 min leestijd</div>
-            <h3>OZB en Lokale Lasten 2026 – Hoeveel Stijgt Onroerendezaakbelasting? </h3>
-            <p>Verdiep u in de onroerendezaakbelasting (OZB) en lokale lasten in 2026. Lees hoe gemeenten de tarieven aanpassen en wat dat betekent voor huiseigenaren.</p>
-            <a href="ozb-2026.html">Lees artikel →</a>
-        </div>
-
-        <div class="blog-card">
-            <div class="blog-meta">📅 Februari 2026 • 6 min leestijd</div>
-            <h3>Puntensysteem en Huurprijsbegrenzing – Hoe Bepaalt Het WWS de Maximale Huur?</h3>
-            <p>ntdek hoe het woningwaarderingsstelsel (WWS) werkt, welke punten uw woning krijgt en hoe de maximale huurprijs voor sociale en middenhuur wordt vastgesteld.</p>
-            <a href="puntenstelsel-huurprijs.html">Lees artikel →</a>
-        </div>
-
-        <div class="blog-card">
-            <div class="blog-meta">📅 Februari 2026 • 6 min leestijd</div>
-            <h3>Spaargeld en Inkomen – Hoe Bepaal Je of een Huis Kopen Mogelijk Is? </h3>
-            <p>a je een huis kopen? Lees hoeveel spaargeld je nodig hebt en welk inkomen je nodig hebt om een hypotheek te krijgen in 2026. Tips voor starters en doorstromers.</p>
-            <a href="spaargeld-en-inkomen-bij-kopen.html">Lees artikel →</a>
-        </div>
-
-        <div class="blog-card">
-            <div class="blog-meta">📅 Maart 2026 • 6 min leestijd</div>
-            <h3>Vaste en Variabele Kosten – Huren versus Kopen in 2026 </h3>
-            <p>Vergelijk de vaste en variabele kosten van een huurwoning en een koopwoning. Begrijp welke lasten u kunt verwachten en hoe u uw budget plant.</p>
-            <a href="vaste-kosten-huren-kopen.html">Lees artikel →</a>
-        </div>
-
-        <div class="blog-card">
-            <div class="blog-meta">📅 Februari 2026 • 5 min leestijd</div>
-            <h3>Huren of Kopen? Voordelen en Nadelen in Nederland op een Rij </h3>
-            <p>Twijfel je tussen huren of kopen? Lees de belangrijkste voordelen en nadelen van beide opties en maak een weloverwogen keuze voor jouw situatie.</p>
-            <a href="voordelen-nadelen-huren-kopen.html">Lees artikel →</a>
-        </div>
-        
-        <div class="blog-card">
-            <div class="blog-meta">🔗 Externe gids</div>
-            <h3>Meer Informatie: Belastingdienst</h3>
-            <p>Officiële informatie van de Belastingdienst over hypotheekrenteaftrek, eigenwoningforfait, en Box 1 belasting voor eigenhuisbezitters.</p>
-            <a href="https://www.belastingdienst.nl/" target="_blank">Naar Belastingdienst →</a>
-        </div>
-    </div>
-
-    <!-- CTA -->
-    <div style="background: linear-gradient(135deg, #001A3D 0%, #0055CC 100%); color: white; padding: 60px 24px; text-align: center; margin: 0;">
-        <div class="container">
-            <h2 style="font-size: 32px; font-weight: 900; font-family: 'Fraunces', Georgia, serif; margin-bottom: 16px;">Bereid voor Huiskoop?</h2>
-            <p style="font-size: 16px; margin-bottom: 24px; opacity: 0.85; max-width: 560px; margin-left: auto; margin-right: auto;">Gebruik onze gratis calculator om exact uit te rekenen of kopen of huren beter voor jou is.</p>
-            <a href="../index.html#calculator" style="display: inline-block; background: white; color: #0055CC; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; transition: transform 0.2s;">Naar Calculator →</a>
-        </div>
-    </div>
-
-    <!-- Footer -->
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════ -->
     <footer>
-        <p>&copy; 2026 HuurOfKoopCheck.nl. Alle rechten voorbehouden.</p>
-        <p style="margin-top: 12px;">
-            <a href="../privacy.html">Privacy</a> | 
-            <a href="../index.html">Home</a> |
-            <a href="../contact.html">Expert Advies</a> |
-            <a href="index.html">Blog</a>
-        </p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-brand__logo">HuurOfKoopCheck.nl</div>
+                    <p>Een gratis, onafhankelijke calculator die huizenkopers en huurders helpt een weloverwogen financiële beslissing te nemen. Gebaseerd op actuele Nederlandse belastingwetgeving.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigatie</h4>
+                    <ul>
+                        <li><a href="../index.html#calculator">Calculator</a></li>
+                        <li><a href="../index.html#features">Kenmerken</a></li>
+                        <li><a href="../index.html#faq">FAQ</a></li>
+                        <li><a href="index.html">Blog</a></li>
+                        <li><a href="../contact.html">Expert Advies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Bronnen</h4>
+                    <ul>
+                        <li><a href="https://www.belastingdienst.nl/" target="_blank" rel="noopener">Belastingdienst</a></li>
+                        <li><a href="https://www.cbs.nl/" target="_blank" rel="noopener">CBS</a></li>
+                        <li><a href="https://www.nvm.nl/" target="_blank" rel="noopener">NVM</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Juridisch</h4>
+                    <ul>
+                        <li><a href="../privacy.html">Privacyverklaring</a></li>
+                        <li><a href="mailto:info@huurofkoopcheck.nl">info@huurofkoopcheck.nl</a></li>
+                        <li><a href="https://www.paypal.com/ncp/payment/BXCB3XFET46RC" target="_blank" rel="noopener">Steun dit project</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HuurOfKoopCheck.nl — Alle rechten voorbehouden.</p>
+                <a href="../privacy.html">Privacyverklaring</a>
+            </div>
+        </div>
     </footer>
+
 </body>
 </html>
