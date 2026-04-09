@@ -8,369 +8,323 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KNQ83F3G');</script>
     <!-- End Google Tag Manager -->
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Privacyverklaring van HuurOfKoopCheck.nl">
+    <meta name="description" content="Privacyverklaring van HuurOfKoopCheck.nl — lees hoe wij jouw gegevens behandelen">
     <meta name="author" content="HuurOfKoopCheck.nl">
     <title>Privacyverklaring - HuurOfKoopCheck.nl</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:wght@700;800;900&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        html, body {
-            font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
-            background: #F8F7F4;
-            color: #1A1A1A;
-            line-height: 1.6;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,700;1,9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ═══════════════════════════════════════════
+           TOKENS
+        ═══════════════════════════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         :root {
-            --bg: #F8F7F4;
-            --card: #FFFFFF;
-            --border: #E5E2DA;
-            --text-primary: #1A1A1A;
-            --text-secondary: #6B6560;
-            --accent: #0066FF;
+            --ink:           #0F172A;
+            --ink-light:     #475569;
+            --ink-muted:     #94A3B8;
+            --brand:         #1D4ED8;
+            --brand-dark:    #1E3A8A;
+            --brand-light:   #EFF6FF;
+            --bg:            #F8F7F4;
+            --bg-soft:       #F1EFE9;
+            --card:          #FFFFFF;
+            --border:        #E5E7EB;
+            --border-soft:   #F0EDE8;
+            --font-body:     'Inter', system-ui, sans-serif;
+            --font-display:  'Fraunces', Georgia, serif;
+            --font-mono:     'JetBrains Mono', monospace;
+            --r-sm: 4px; --r-md: 8px; --r-lg: 12px; --r-xl: 16px;
+            --shadow-md: 0 4px 16px rgba(15,23,42,0.08), 0 2px 6px rgba(15,23,42,0.04);
+            --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
+            --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px;
         }
 
-        nav {
-            background: white;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
+        /* ═══════════════════════════════════════════
+           UTILITY
+        ═══════════════════════════════════════════ */
+        .container         { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); }
+        .container--narrow { max-width: 960px;  margin: 0 auto; padding: 0 var(--space-lg); }
+        .container--text   { max-width: 720px;  margin: 0 auto; padding: 0 var(--space-lg); }
+        .kicker {
+            display: inline-block; font-size: 11px; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--ink-muted); margin-bottom: var(--space-sm);
         }
 
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: inherit;
+        /* ═══════════════════════════════════════════
+           BUTTONS
+        ═══════════════════════════════════════════ */
+        .btn {
+            display: inline-flex; align-items: center; gap: var(--space-sm);
+            padding: 11px 22px; border-radius: var(--r-md); border: none;
+            font-family: var(--font-body); font-size: 14px; font-weight: 600;
+            cursor: pointer; text-decoration: none; transition: all 0.18s ease;
         }
+        .btn--primary { background: var(--brand); color: #fff; }
+        .btn--primary:hover { background: var(--brand-dark); box-shadow: 0 4px 16px rgba(29,78,216,0.35); transform: translateY(-1px); }
 
-        .logo-text {
-            font-size: 16px;
+        /* ═══════════════════════════════════════════
+           NAV
+        ═══════════════════════════════════════════ */
+        .nav {
+            background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px);
+        }
+        .nav__inner { display: flex; justify-content: space-between; align-items: center; height: 68px; }
+        .nav__logo { display: flex; align-items: center; gap: var(--space-sm); text-decoration: none; }
+        .nav__logo-img { height: 52px; width: auto; }
+        .nav__links { display: flex; list-style: none; gap: var(--space-xl); align-items: center; }
+        .nav__links a { text-decoration: none; color: var(--ink-light); font-size: 14px; font-weight: 500; transition: color 0.15s; }
+        .nav__links a:hover { color: var(--brand); }
+        .nav__actions { display: flex; align-items: center; gap: var(--space-md); }
+
+        /* ═══════════════════════════════════════════
+           HERO / PAGE HEADER
+        ═══════════════════════════════════════════ */
+        .page-hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 45%, #1D4ED8 100%);
+            color: #fff;
+            padding: 56px var(--space-lg) 64px;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: radial-gradient(ellipse 60% 60% at 10% 100%, rgba(29,78,216,0.30) 0%, transparent 70%);
+        }
+        .page-hero__content { position: relative; z-index: 1; }
+        .page-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 5vw, 48px);
             font-weight: 900;
-            font-family: 'Fraunces', Georgia, serif;
-            background: linear-gradient(135deg, #0052CC 0%, #0066FF 50%, #22C55E 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
+            line-height: 1.1;
+            letter-spacing: -0.8px;
+            margin-bottom: var(--space-md);
+        }
+        .page-hero p {
+            font-size: 16px; line-height: 1.75;
+            color: rgba(255,255,255,0.78);
+            max-width: 560px;
         }
 
-        .logo-image {
-            height: 60px;
-            width: auto;
+        /* ═══════════════════════════════════════════
+           PRIVACY CONTENT
+        ═══════════════════════════════════════════ */
+        .privacy-body {
+            padding: var(--space-3xl) 0;
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 32px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-weight: 500;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            margin-bottom: 20px;
-            transition: gap 0.2s;
-        }
-
-        .back-link:hover {
-            gap: 12px;
-        }
-
-        .privacy-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 24px;
-        }
-
-        .privacy-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .privacy-header h1 {
-            font-size: 36px;
-            font-weight: 800;
-            font-family: 'Fraunces', Georgia, serif;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-        }
-
-        .privacy-header p {
+        .prose {
             font-size: 16px;
-            color: var(--text-secondary);
+            line-height: 1.85;
+            color: var(--ink-light);
         }
 
-        .privacy-content {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 32px;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            font-size: 14px;
+        .prose h2 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--ink);
+            letter-spacing: -0.3px;
+            margin: var(--space-2xl) 0 var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--border-soft);
+        }
+        .prose h2:first-child { margin-top: 0; }
+
+        .prose p { margin-bottom: var(--space-md); }
+        .prose strong { color: var(--ink); font-weight: 700; }
+        .prose a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+        .prose a:hover { color: var(--brand-dark); }
+
+        .prose ol {
+            padding-left: var(--space-xl);
+            margin-bottom: var(--space-md);
+        }
+        .prose li { margin-bottom: var(--space-sm); }
+
+        .updated-stamp {
+            font-size: 12px; color: var(--ink-muted); font-style: italic;
+            margin-top: var(--space-2xl); padding-top: var(--space-xl);
+            border-top: 1px solid var(--border);
         }
 
-        .privacy-content h2 {
-            color: var(--text-primary);
-            font-size: 18px;
-            margin: 32px 0 16px 0;
-            font-weight: 700;
-        }
+        /* ═══════════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════════ */
+        footer { background: var(--ink); color: rgba(255,255,255,0.70); padding: var(--space-3xl) 0 var(--space-xl); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-2xl); margin-bottom: var(--space-2xl); }
+        .footer-brand__logo { font-family: var(--font-display); font-size: 18px; font-weight: 900; color: #fff; }
+        .footer-brand p { font-size: 13px; line-height: 1.75; color: rgba(255,255,255,0.55); margin-top: var(--space-md); max-width: 300px; }
+        .footer-col h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.40); margin-bottom: var(--space-md); }
+        .footer-col ul { list-style: none; }
+        .footer-col a { display: block; color: rgba(255,255,255,0.60); text-decoration: none; font-size: 13px; line-height: 2.2; transition: color 0.15s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: var(--space-lg); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-md); }
+        .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); }
+        .footer-bottom a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 12px; }
+        .footer-bottom a:hover { color: rgba(255,255,255,0.75); }
 
-        .privacy-content h2:first-child {
-            margin-top: 0;
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
-
-        .privacy-content p {
-            margin-bottom: 20px;
-        }
-
-        footer {
-            background: #1A1A1A;
-            color: white;
-            padding: 48px 24px;
-            margin-top: 80px;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 32px;
-            margin-bottom: 32px;
-        }
-
-        .footer-section h4 {
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            color: var(--accent);
-        }
-
-        .footer-section a {
-            color: #999;
-            text-decoration: none;
-            font-size: 13px;
-            line-height: 2;
-            transition: color 0.2s;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #333;
-            padding-top: 24px;
-            text-align: center;
-            color: #666;
-            font-size: 12px;
-        }
-
-        .footer-bottom a {
-            color: #666;
-            text-decoration: none;
-        }
-
         @media (max-width: 768px) {
-            nav ul {
-                gap: 16px;
-            }
-
-            nav a {
-                font-size: 12px;
-            }
-
-            .logo-text {
-                font-size: 14px;
-            }
-
-            .privacy-header h1 {
-                font-size: 28px;
-            }
-
-            nav .container {
-                height: 60px;
-            }
-
-            .privacy-content {
-                padding: 24px;
-            }
+            .nav__links { display: none; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNQ83F3G"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- ══════════════════════════════════════
+         NAV
+    ══════════════════════════════════════ -->
+    <nav class="nav">
         <div class="container">
-            <a href="index.html" class="logo-wrapper">
-                <img src="Huur-of-koop-check-logo.png" alt="HuurOfKoopCheck.nl logo" class="logo-image">
-            </a>
-            <ul>
-                <li><a href="index.html#calculator">Calculator</a></li>
-                <li><a href="index.html#features">Kenmerken</a></li>
-                <li><a href="index.html#faq">Veelgestelde vragen</a></li>
-                <li><a href="privacy.html">Privacy</a></li>
-            </ul>
+            <div class="nav__inner">
+                <a href="index.html" class="nav__logo">
+                    <img src="huur-of-koop-check.png" alt="HuurOfKoopCheck.nl" class="nav__logo-img">
+                </a>
+                <ul class="nav__links">
+                    <li><a href="index.html#calculator">Calculator</a></li>
+                    <li><a href="index.html#features">Kenmerken</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="blog/index.html">Blog</a></li>
+                    <li><a href="contact.html">Expert Advies</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
+                </ul>
+                <div class="nav__actions">
+                    <a href="https://www.paypal.com/ncp/payment/BXCB3XFET46RC" target="_blank" rel="noopener" class="btn btn--outline" style="font-size:13px; padding: 9px 18px;">❤️ Steun</a>
+                    <a href="index.html#calculator" class="btn btn--primary" style="font-size:13px; padding: 9px 18px;">Calculator ↓</a>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="privacy-container">
-        <a href="index.html" class="back-link">← Terug naar startpagina</a>
-
-        <div class="privacy-header">
-            <h1>Privacyverklaring</h1>
-            <p>Gegevensbescherming en transparantie zijn belangrijk voor ons</p>
+    <!-- ══════════════════════════════════════
+         PAGE HERO
+    ══════════════════════════════════════ -->
+    <section class="page-hero">
+        <div class="container--text">
+            <div class="page-hero__content">
+                <h1>Privacyverklaring</h1>
+                <p>Gegevensbescherming en transparantie zijn belangrijk voor ons</p>
+            </div>
         </div>
+    </section>
 
-        <div class="privacy-content">
-            <h2>1. Gegevens die wij verzamelen</h2>
-            <p>
-                HuurOfKoopCheck.nl verzamelt geen persoonlijke gegevens. De calculator werkt volledig lokaal in je browser. Alle berekeningen gebeuren op je eigen apparaat en worden niet opgeslagen op onze servers of derden.
-            </p>
+    <!-- ══════════════════════════════════════
+         CONTENT
+    ══════════════════════════════════════ -->
+    <div class="container--text">
+        <div class="privacy-body">
+            <div class="prose">
 
-            <h2>2. Cookies</h2>
-            <p>
-                Deze website maakt geen gebruik van tracking cookies, analytics cookies, of andere tracking technologie. Wij plaatsen geen cookies op je apparaat tenzij je deze uitdrukkelijk hebt ingeschakeld. Je informatie blijft volledig privé.
-            </p>
+                <h2 id="gegevens">1. Gegevens die wij verzamelen</h2>
+                <p>HuurOfKoopCheck.nl verzamelt geen persoonlijke gegevens. De calculator werkt volledig lokaal in je browser. Alle berekeningen gebeuren op je eigen apparaat en worden niet opgeslagen op onze servers of derden.</p>
 
-            <h2>3. Externe links</h2>
-            <p>
-                Deze website bevat links naar externe websites zoals de Belastingdienst, CBS en NVM. Wij zijn niet verantwoordelijk voor het privacybeleid van deze externe sites. Controleer hun privacyverklaringen voor meer informatie alvorens je daar persoonlijke gegevens invoert.
-            </p>
+                <h2 id="cookies">2. Cookies</h2>
+                <p>Deze website maakt geen gebruik van tracking cookies, analytics cookies, of andere tracking technologie. Wij plaatsen geen cookies op je apparaat tenzij je deze uitdrukkelijk hebt ingeschakeld. Je informatie blijft volledig privé.</p>
 
-            <h2>4. Veiligheid</h2>
-            <p>
-                Hoewel deze website via HTTPS wordt bediend, kunnen we geen garantie geven voor volledige veiligheid van gegevens die over het internet worden verzonden. Voer geen gevoelige financiële informatie in op deze website als je niet zeker bent van de veiligheid van je verbinding.
-            </p>
+                <h2 id="externe-links">3. Externe links</h2>
+                <p>Deze website bevat links naar externe websites zoals de Belastingdienst, CBS en NVM. Wij zijn niet verantwoordelijk voor het privacybeleid van deze externe sites. Controleer hun privacyverklaringen voor meer informatie alvorens je daar persoonlijke gegevens invoert.</p>
 
-            <h2>5. Gebruikersgegevens en logging</h2>
-            <p>
-                Wij loggen geen IP-adressen, surfgedrag, of ander persoonlijke informatie. Je bezoeken aan deze website worden niet bijgehouden of gemonitord. De calculator opereert volledig anoniem.
-            </p>
+                <h2 id="veiligheid">4. Veiligheid</h2>
+                <p>Hoewel deze website via HTTPS wordt bediend, kunnen we geen garantie geven voor volledige veiligheid van gegevens die over het internet worden verzonden. Voer geen gevoelige financiële informatie in op deze website als je niet zeker bent van de veiligheid van je verbinding.</p>
 
-            <h2>6. Derde partijen</h2>
-            <p>
-                De calculator laadt via een iframe van een externe server. Voor vragen over hun privacybeleid verwijzen we je naar hun eigen privacyverklaring. De berekeningen gebeuren echter altijd lokaal op je eigen device.
-            </p>
+                <h2 id="logging">5. Gebruikersgegevens en logging</h2>
+                <p>Wij loggen geen IP-adressen, surfgedrag, of ander persoonlijke informatie. Je bezoeken aan deze website worden niet bijgehouden of gemonitord. De calculator opereert volledig anoniem.</p>
 
-            <h2>7. Je rechten</h2>
-            <p>
-                Aangezien wij geen persoonlijke gegevens verzamelen, zijn de meeste privacyrechten automatisch gewaarborgd. Er is geen data om in te zien, te corrigeren, of te verwijderen. Dit is een van onze kernwaarden.
-            </p>
+                <h2 id="derde-partijen">6. Derde partijen</h2>
+                <p>De calculator laadt via een iframe van een externe server. Voor vragen over hun privacybeleid verwijzen we je naar hun eigen privacyverklaring. De berekeningen gebeuren echter altijd lokaal op je eigen device.</p>
 
-            <h2>8. Contactgegevens</h2>
-            <p>
-                Heb je vragen over deze privacyverklaring of opmerkingen over onze privacypraktijken? Neem contact met ons op via: <strong>info@huurofkoop.nl</strong>
-            </p>
+                <h2 id="rechten">7. Je rechten</h2>
+                <p>Aangezien wij geen persoonlijke gegevens verzamelen, zijn de meeste privacyrechten automatisch gewaarborgd. Er is geen data om in te zien, te corrigeren, of te verwijderen. Dit is een van onze kernwaarden.</p>
 
-            <h2>9. Wijzigingen aan deze verklaring</h2>
-            <p>
-                Wij behouden het recht voor om deze privacyverklaring op elk moment aan te passen zonder voorafgaande waarschuwing. Wijzigingen zullen op deze pagina worden gepubliceerd. Wanneer we substantiële wijzigingen aanbrengen, zullen we dit duidelijk communiceren.
-            </p>
+                <h2 id="contact">8. Contactgegevens</h2>
+                <p>Heb je vragen over deze privacyverklaring of opmerkingen over onze privacypraktijken? Neem contact met ons op via: <strong>info@huurofkoopcheck.nl</strong></p>
 
-            <h2>10. Disclaimer</h2>
-            <p>
-                Deze calculator dient alleen voor educatieve doeleinden. Het is geen professioneel financieel advies. De resultaten zijn schattingen gebaseerd op de ingevoerde gegevens. Werkelijke uitkomsten kunnen aanzienlijk afwijken van de berekende waarden.
-            </p>
-            <p>
-                Nederlands belastingrecht is complex en wijzigt regelmatig. Raadpleeg altijd de website van de Belastingdienst (belastingdienst.nl) voor actuele en accurate informatie. Voor persoonlijk advies raden wij aan contact op te nemen met een gekwalificeerde financieel adviseur (financieel adviseur) of hypotheekadviseur (hypotheekadviseur).
-            </p>
+                <h2 id="wijzigingen">9. Wijzigingen aan deze verklaring</h2>
+                <p>Wij behouden het recht voor om deze privacyverklaring op elk moment aan te passen zonder voorafgaande waarschuwing. Wijzigingen zullen op deze pagina worden gepubliceerd. Wanneer we substantiële wijzigingen aanbrengen, zullen we dit duidelijk communiceren.</p>
 
-            <h2>11. Complianties en regelgeving</h2>
-            <p>
-                Deze website voldoet aan de GDPR (Algemene Verordening Gegevensbescherming) omdat wij geen persoonlijke gegevens verwerken. Wij volgen best practices op het gebied van webbeveiliging en transparantie.
-            </p>
+                <h2 id="disclaimer">10. Disclaimer</h2>
+                <p>Deze calculator dient alleen voor educatieve doeleinden. Het is geen professioneel financieel advies. De resultaten zijn schattingen gebaseerd op de ingevoerde gegevens. Werkelijke uitkomsten kunnen aanzienlijk afwijken van de berekende waarden.</p>
+                <p>Nederlands belastingrecht is complex en wijzigt regelmatig. Raadpleeg altijd de website van de Belastingdienst (belastingdienst.nl) voor actuele en accurate informatie. Voor persoonlijk advies raden wij aan contact op te nemen met een gekwalificeerde financieel adviseur of hypotheekadviseur.</p>
 
-            <p style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #E5E2DA; color: #999; font-size: 12px;">
-                <strong>Laatst bijgewerkt:</strong> April 2026
-            </p>
+                <h2 id="compliance">11. Complianties en regelgeving</h2>
+                <p>Deze website voldoet aan de GDPR (Algemene Verordening Gegevensbescherming) omdat wij geen persoonlijke gegevens verwerken. Wij volgen best practices op het gebied van webbeveiliging en transparantie.</p>
+
+                <div class="updated-stamp">
+                    <p><strong>Laatst bijgewerkt:</strong> April 2026</p>
+                </div>
+
+            </div>
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════ -->
     <footer>
-        <div class="footer-content">
+        <div class="container">
             <div class="footer-grid">
-                <div class="footer-section">
-                    <h4>Over</h4>
-                    <p style="color: #999; font-size: 13px; line-height: 1.7; margin: 0;">
-                        HuurOfKoopCheck.nl is een gratis calculator die huizenkopers en huurders helpt een weloverwogen financiële beslissing te nemen door de langetermijnfinanciële gevolgen van beide opties te vergelijken.
-                    </p>
+                <div class="footer-brand">
+                    <div class="footer-brand__logo">HuurOfKoopCheck.nl</div>
+                    <p>Een gratis, onafhankelijke calculator die huizenkopers en huurders helpt een weloverwogen financiële beslissing te nemen. Gebaseerd op actuele Nederlandse belastingwetgeving.</p>
                 </div>
-                <div class="footer-section">
-                    <h4>Links</h4>
-                    <ul style="list-style: none;">
+                <div class="footer-col">
+                    <h4>Navigatie</h4>
+                    <ul>
                         <li><a href="index.html#calculator">Calculator</a></li>
                         <li><a href="index.html#features">Kenmerken</a></li>
-                        <li><a href="index.html#faq">Veelgestelde vragen</a></li>
-                        <li><a href="privacy.html">Privacyverklaring</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="blog/index.html">Blog</a></li>
+                        <li><a href="contact.html">Expert Advies</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+                <div class="footer-col">
                     <h4>Bronnen</h4>
-                    <ul style="list-style: none;">
-                        <li><a href="https://www.belastingdienst.nl/" target="_blank">Belastingdienst</a></li>
-                        <li><a href="https://www.cbs.nl/" target="_blank">CBS (Centraal Bureau voor de Statistiek)</a></li>
-                        <li><a href="https://www.nvm.nl/" target="_blank">NVM (Makelaarvereniging)</a></li>
+                    <ul>
+                        <li><a href="https://www.belastingdienst.nl/" target="_blank" rel="noopener">Belastingdienst</a></li>
+                        <li><a href="https://www.cbs.nl/" target="_blank" rel="noopener">CBS</a></li>
+                        <li><a href="https://www.nvm.nl/" target="_blank" rel="noopener">NVM</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+                <div class="footer-col">
                     <h4>Juridisch</h4>
-                    <ul style="list-style: none;">
+                    <ul>
                         <li><a href="privacy.html">Privacyverklaring</a></li>
-                        <li><a href="#" onclick="alert('Disclaimer: Dit is educatief materiaal, geen financieel advies. Raadpleeg altijd een professionele adviseur.'); return false;">Disclaimer</a></li>
+                        <li><a href="mailto:info@huurofkoopcheck.nl">Contact</a></li>
+                        <li><a href="https://www.paypal.com/ncp/payment/BXCB3XFET46RC" target="_blank" rel="noopener">Steun dit project</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 HuurOfKoopCheck.nl. Alle rechten voorbehouden. | <a href="mailto:info@huurofkoopcheck.nl?subject=Contact via website" style="color: #666; text-decoration: none;"> info@huurofkoopcheck.nl </a>
+                <p>&copy; 2026 HuurOfKoopCheck.nl — Alle rechten voorbehouden.</p>
+                <a href="privacy.html">Privacyverklaring</a>
             </div>
         </div>
     </footer>
