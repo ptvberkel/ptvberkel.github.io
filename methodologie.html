@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Hoe werkt de Huur of Koop berekening? Volledige uitleg van de formules, aannames en uitgewerkte voorbeelden.">
+<title>Methodologie - HuurOfKoopCheck.nl | Zo Rekenen Wij</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --ink:#0F172A;--ink-light:#475569;--ink-muted:#94A3B8;
+  --brand:#1D4ED8;--brand-dark:#1E3A8A;--brand-light:#EFF6FF;
+  --bg:#F8F7F4;--bg-soft:#F1EFE9;--card:#FFFFFF;
+  --border:#E5E7EB;--border-soft:#F0EDE8;
+  --ok:#059669;--ok-light:#ECFDF5;--warn:#D97706;--warn-light:#FFFBEB;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-display:'Fraunces',Georgia,serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --r-sm:4px;--r-md:8px;--r-lg:12px;--r-xl:16px;
+  --shadow-sm:0 1px 3px rgba(15,23,42,0.06),0 1px 2px rgba(15,23,42,0.04);
+  --shadow-md:0 4px 16px rgba(15,23,42,0.08),0 2px 6px rgba(15,23,42,0.04);
+  --space-xs:4px;--space-sm:8px;--space-md:16px;--space-lg:24px;
+  --space-xl:40px;--space-2xl:64px;--space-3xl:96px;
+}
+body{font-family:var(--font-body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+.container{max-width:1200px;margin:0 auto;padding:0 var(--space-lg)}
+.container--narrow{max-width:860px;margin:0 auto;padding:0 var(--space-lg)}
+.kicker{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-muted);margin-bottom:var(--space-sm)}
+
+/* NAV */
+.nav{background:rgba(255,255,255,0.96);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;backdrop-filter:blur(12px)}
+.nav__inner{display:flex;justify-content:space-between;align-items:center;height:68px}
+.nav__logo{display:flex;align-items:center;gap:var(--space-sm);text-decoration:none}
+.nav__logo-img{height:52px;width:auto}
+.nav__links{display:flex;list-style:none;gap:var(--space-xl);align-items:center}
+.nav__links a{text-decoration:none;color:var(--ink-light);font-size:14px;font-weight:500;transition:color 0.15s}
+.nav__links a:hover,.nav__links a.active{color:var(--brand)}
+.btn{display:inline-flex;align-items:center;gap:var(--space-sm);padding:11px 22px;border-radius:var(--r-md);border:none;font-family:var(--font-body);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.18s ease}
+.btn--primary{background:var(--brand);color:#fff}
+.btn--primary:hover{background:var(--brand-dark);box-shadow:0 4px 16px rgba(29,78,216,0.35);transform:translateY(-1px)}
+
+/* HERO */
+.hero{padding:var(--space-3xl) 0 var(--space-2xl);text-align:center}
+.hero__badge{display:inline-block;background:var(--brand-light);color:var(--brand);padding:6px 16px;border-radius:999px;font-size:12px;font-weight:600;margin-bottom:var(--space-md)}
+.hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,56px);line-height:1.1;font-weight:700;color:var(--ink);margin-bottom:var(--space-md);letter-spacing:-0.02em}
+.hero p{font-size:18px;color:var(--ink-light);max-width:640px;margin:0 auto}
+
+/* TOC */
+.toc{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--space-lg) var(--space-xl);margin:var(--space-2xl) 0;box-shadow:var(--shadow-sm)}
+.toc h3{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--ink);margin-bottom:var(--space-md);text-transform:uppercase;letter-spacing:1px}
+.toc ol{list-style:none;counter-reset:toc;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.toc li{counter-increment:toc;padding-left:32px;position:relative;font-size:14px}
+.toc li::before{content:counter(toc,decimal-leading-zero);position:absolute;left:0;top:0;font-family:var(--font-mono);font-size:12px;color:var(--brand);font-weight:600}
+.toc a{color:var(--ink-light);text-decoration:none;transition:color 0.15s}
+.toc a:hover{color:var(--brand)}
+
+/* SECTIONS */
+.section{padding:var(--space-2xl) 0;border-top:1px solid var(--border-soft);scroll-margin-top:90px}
+.section h2{font-family:var(--font-display);font-size:clamp(26px,3.5vw,36px);font-weight:700;color:var(--ink);margin-bottom:var(--space-md);letter-spacing:-0.01em;line-height:1.15}
+.section h3{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--brand-dark);margin:var(--space-xl) 0 var(--space-md)}
+.section p{font-size:16px;color:var(--ink-light);margin-bottom:var(--space-md);line-height:1.7}
+.section strong{color:var(--ink)}
+
+/* FORMULA BOX */
+.formula{background:var(--bg-soft);border-left:3px solid var(--brand);border-radius:0 var(--r-md) var(--r-md) 0;padding:var(--space-md) var(--space-lg);margin:var(--space-md) 0;font-family:var(--font-mono);font-size:14px;color:var(--ink);line-height:1.8;overflow-x:auto}
+.formula .var{color:var(--brand);font-weight:600}
+
+/* EXAMPLE CARD */
+.example{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--space-xl);margin:var(--space-lg) 0;box-shadow:var(--shadow-sm)}
+.example__header{display:flex;align-items:center;gap:var(--space-md);margin-bottom:var(--space-md);padding-bottom:var(--space-md);border-bottom:1px solid var(--border-soft)}
+.example__num{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--brand);line-height:1}
+.example__title{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--ink)}
+.example__sub{font-size:13px;color:var(--ink-muted);margin-top:2px}
+.example__inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--space-sm);margin:var(--space-md) 0}
+.example__input{background:var(--bg-soft);padding:10px 12px;border-radius:var(--r-sm)}
+.example__input .k{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--ink-muted);font-weight:600}
+.example__input .v{font-family:var(--font-display);font-size:18px;color:var(--ink);font-weight:600;margin-top:2px}
+.example__steps{margin-top:var(--space-md)}
+.example__steps li{font-size:14px;color:var(--ink-light);margin:8px 0;padding-left:24px;position:relative;line-height:1.6}
+.example__steps li::before{content:"→";position:absolute;left:0;color:var(--brand);font-weight:700}
+.example__result{margin-top:var(--space-md);padding:var(--space-md);background:var(--ok-light);border:1px solid #A7F3D0;border-radius:var(--r-md);font-size:15px}
+.example__result strong{color:var(--ok);font-family:var(--font-display);font-size:18px}
+
+.callout{background:var(--warn-light);border-left:3px solid var(--warn);padding:var(--space-md) var(--space-lg);border-radius:0 var(--r-md) var(--r-md) 0;margin:var(--space-md) 0;font-size:14px;color:var(--ink)}
+.callout strong{color:var(--warn)}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--brand),var(--brand-dark));color:#fff;padding:var(--space-2xl);border-radius:var(--r-xl);text-align:center;margin:var(--space-2xl) 0}
+.cta h2{font-family:var(--font-display);font-size:28px;color:#fff;margin-bottom:var(--space-sm)}
+.cta p{color:rgba(255,255,255,0.9);margin-bottom:var(--space-lg);font-size:15px}
+.cta .btn{background:#fff;color:var(--brand)}
+.cta .btn:hover{background:var(--brand-light)}
+
+footer{background:var(--ink);color:#94A3B8;padding:var(--space-xl) 0;text-align:center;font-size:13px;margin-top:var(--space-3xl)}
+footer a{color:#CBD5E1;text-decoration:none;margin:0 var(--space-md)}
+
+@media (max-width:720px){
+  .nav__links{display:none}
+  .toc ol{grid-template-columns:1fr}
+  .example{padding:var(--space-md)}
+  .hero{padding:var(--space-2xl) 0 var(--space-xl)}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <img src="../huur-of-koop-check.png" alt="HuurOfKoopCheck.nl" class="nav__logo-img">
+      </a>
+      <ul class="nav__links">
+        <li><a href="../index.html">Calculator</a></li>
+        <li><a href="index.html">Blog</a></li>
+        <li><a href="methodologie.html" class="active">Methodologie</a></li>
+      </ul>
+      <a href="../index.html" class="btn btn--primary">Start berekening</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container--narrow">
+    <span class="hero__badge">📐 Methodologie</span>
+    <h1>Zo rekenen wij</h1>
+    <p>Volledige uitleg van de formules, aannames en uitgewerkte voorbeelden achter HuurOfKoopCheck.nl. Geen black box — alles transparant en controleerbaar.</p>
+  </div>
+</section>
+
+<div class="container--narrow">
+
+<div class="toc">
+  <h3>Inhoud</h3>
+  <ol>
+    <li><a href="#principe">Het principe</a></li>
+    <li><a href="#hypotheek">Hypotheekberekening</a></li>
+    <li><a href="#fiscaal">Fiscale berekening 2026</a></li>
+    <li><a href="#huren">Huurkant van de vergelijking</a></li>
+    <li><a href="#vermogen">Vermogensvergelijking</a></li>
+    <li><a href="#voorbeeld1">Voorbeeld 1 — Starter alleen</a></li>
+    <li><a href="#voorbeeld2">Voorbeeld 2 — Met familiehypotheek</a></li>
+    <li><a href="#voorbeeld3">Voorbeeld 3 — Co-ownership</a></li>
+    <li><a href="#voorbeeld4">Voorbeeld 4 — Stel met onzekerheid</a></li>
+    <li><a href="#beperkingen">Beperkingen & disclaimers</a></li>
+  </ol>
+</div>
+
+<section id="principe" class="section">
+  <h2>1. Het principe</h2>
+  <p>De vraag "huren of kopen" gaat niet om de maandlasten van vandaag, maar om je <strong>totale financiële positie</strong> over de tijd. Iemand die koopt bouwt vermogen op via aflossing en waardestijging, maar betaalt rente, onderhoud en belastingen. Iemand die huurt heeft geen onderhoudsverplichting, maar bouwt geen huizenvermogen op — wel kan die persoon het verschil beleggen.</p>
+  <p>Onze tool simuleert beide scenario's jaar voor jaar over de hele looptijd, en vergelijkt aan het eind het opgebouwde vermogen. Het scenario met het hoogste eindvermogen is financieel gunstiger.</p>
+  <div class="formula">
+    <span class="var">Voordeel kopen</span> = (Overwaarde + Belegd verschil bij koper) − (Belegging huurder)
+  </div>
+</section>
+
+<section id="hypotheek" class="section">
+  <h2>2. Hypotheekberekening</h2>
+  <p>Voor een annuïtaire hypotheek gebruiken we de standaardformule waarbij de maandlast gelijk blijft, maar de verhouding rente-aflossing in de loop der jaren verschuift:</p>
+  <div class="formula">
+    <span class="var">M</span> = <span class="var">L</span> × (r × (1+r)<sup>n</sup>) / ((1+r)<sup>n</sup> − 1)<br>
+    waarbij L = leenbedrag, r = maandrente, n = aantal maanden
+  </div>
+  <p>Bij een lineaire hypotheek wordt elke maand hetzelfde bedrag afgelost, waardoor de maandlast geleidelijk daalt. Bij aflossingsvrij wordt alleen rente betaald en blijft de hoofdsom staan — fiscaal voordelig op korte termijn maar zonder hypotheekrenteaftrek.</p>
+</section>
+
+<section id="fiscaal" class="section">
+  <h2>3. Fiscale berekening 2026</h2>
+  <p>De tool past de actuele Nederlandse fiscale regels toe die gelden voor 2026:</p>
+  <p><strong>Hypotheekrenteaftrek (HRA).</strong> Maximaal 36,93% van de betaalde rente kan worden teruggevraagd, mits het een annuïtaire of lineaire hypotheek betreft op de eigen woning.</p>
+  <p><strong>Eigenwoningforfait (EWF).</strong> Een fictief inkomen op basis van de WOZ-waarde dat bij je belastbaar inkomen wordt opgeteld. Voor woningen tussen €75.000 en €1.330.000 geldt 0,35% van de WOZ-waarde in 2026.</p>
+  <p><strong>Box 3-vermogensbelasting.</strong> Beleggingen boven de vrijstelling (€59.357 per persoon in 2026) worden belast tegen het forfaitaire rendement. Dit raakt vooral de huurder die het verschil belegt, en bij familiehypotheken ook de ouders.</p>
+  <div class="formula">
+    <span class="var">Netto belastingvoordeel</span> = (Rente × 0,3693) − (WOZ × 0,0035 × marginaal tarief)
+  </div>
+</section>
+
+<section id="huren" class="section">
+  <h2>4. Huurkant van de vergelijking</h2>
+  <p>Voor de huurder rekenen we met de kale huur plus eventuele servicekosten en gemeentelijke heffingen die voor rekening van de huurder komen. De huur stijgt jaarlijks met het door jou opgegeven percentage (standaard volgens CBS-inflatie).</p>
+  <p>Cruciaal: we gaan ervan uit dat de huurder <strong>het bedrag dat anders aan kosten koper was uitgegeven</strong> belegt tegen het opgegeven rendement. Bovendien wordt elk jaar waarin kopen duurder is dan huren, het verschil ook bijgestort in de belegging. Dit maakt de vergelijking eerlijk.</p>
+  <div class="callout"><strong>Let op:</strong> deze aanname is theoretisch. In de praktijk belegt lang niet iedere huurder het verschil. Doe je dat niet, dan is huren financieel nadeliger dan de tool laat zien.</div>
+</section>
+
+<section id="vermogen" class="section">
+  <h2>5. Vermogensvergelijking</h2>
+  <p>Aan het eind van elk jaar bepalen we voor beide scenario's het totale vermogen. Bij de koper is dat de overwaarde van de woning (huidige waarde minus restschuld) plus eventueel belegd extra geld. Bij de huurder is dat de waarde van de beleggingsportefeuille.</p>
+  <p>Het verschil tussen deze twee getallen is wat we het "voordeel van kopen" noemen. Wordt dit getal in de loop van de tijd positief, dan ben je het break-evenpunt gepasseerd.</p>
+</section>
+
+<section id="voorbeeld1" class="section">
+  <h2>Uitgewerkte voorbeelden</h2>
+  <p>Vier veelvoorkomende situaties, stap voor stap doorgerekend met de standaard-aannames van de tool.</p>
+
+  <div class="example">
+    <div class="example__header">
+      <div class="example__num">01</div>
+      <div>
+        <div class="example__title">Starter alleen — €350.000 woning</div>
+        <div class="example__sub">Onder de 35, eerste woning, 30 jaar annuïtair</div>
+      </div>
+    </div>
+    <div class="example__inputs">
+      <div class="example__input"><div class="k">Aankoopprijs</div><div class="v">€ 350.000</div></div>
+      <div class="example__input"><div class="k">Eigen inbreng</div><div class="v">€ 25.000</div></div>
+      <div class="example__input"><div class="k">Rente</div><div class="v">4,2%</div></div>
+      <div class="example__input"><div class="k">Looptijd</div><div class="v">30 jaar</div></div>
+      <div class="example__input"><div class="k">Vergelijkbare huur</div><div class="v">€ 1.450/mnd</div></div>
+    </div>
+    <ol class="example__steps">
+      <li>Overdrachtsbelasting: 0% (jongerenvrijstelling, woning onder €555.000)</li>
+      <li>Kosten koper (notaris, taxatie, advies): ongeveer € 6.000</li>
+      <li>Hypotheekbedrag: € 350.000 − € 19.000 inbreng na k.k. = € 331.000</li>
+      <li>Maandlast bruto: € 1.620 (annuïtair, 4,2%, 30 jaar)</li>
+      <li>HRA-voordeel jaar 1: ongeveer € 175/mnd → netto € 1.445</li>
+      <li>Onderhoud + VvE + gemeentelijke lasten: ongeveer € 280/mnd</li>
+    </ol>
+    <div class="example__result">Na 20 jaar: koper bouwt circa <strong>€ 195.000</strong> meer vermogen op dan de huurder, mits de huurder het verschil belegt tegen 5% rendement.</div>
+  </div>
+
+  <div class="example" id="voorbeeld2">
+    <div class="example__header">
+      <div class="example__num">02</div>
+      <div>
+        <div class="example__title">Met familiehypotheek van € 80.000</div>
+        <div class="example__sub">Ouders lenen mee tegen 3%, woning € 425.000</div>
+      </div>
+    </div>
+    <div class="example__inputs">
+      <div class="example__input"><div class="k">Aankoopprijs</div><div class="v">€ 425.000</div></div>
+      <div class="example__input"><div class="k">Familielening</div><div class="v">€ 80.000</div></div>
+      <div class="example__input"><div class="k">Familierente</div><div class="v">3,0%</div></div>
+      <div class="example__input"><div class="k">Bankhypotheek</div><div class="v">€ 320.000</div></div>
+      <div class="example__input"><div class="k">Bankrente</div><div class="v">4,2%</div></div>
+    </div>
+    <ol class="example__steps">
+      <li>Twee aparte hypotheken: bankdeel (annuïtair) + familiedeel (annuïtair, lagere rente)</li>
+      <li>Beide rentes zijn aftrekbaar via HRA — totaal voordeel circa € 230/mnd</li>
+      <li>Voor de ouders: € 80.000 valt in box 3, boven hun vrijstelling van € 59.357 p.p.</li>
+      <li>Ouders ontvangen ongeveer € 2.400/jaar rente (gunstiger dan spaarrekening)</li>
+      <li>Schenking: ouders mogen jaarlijks € 6.713 belastingvrij teruggeven</li>
+    </ol>
+    <div class="example__result">De familiehypotheek bespaart de koper circa <strong>€ 95/mnd</strong> aan rentelasten t.o.v. een volledige bankhypotheek, plus een fiscaal voordeel voor de ouders mits hun box 3-positie het toelaat.</div>
+  </div>
+
+  <div class="example" id="voorbeeld3">
+    <div class="example__header">
+      <div class="example__num">03</div>
+      <div>
+        <div class="example__title">Co-ownership met drie vrienden</div>
+        <div class="example__sub">Amsterdam, € 650.000, ieder 1/3 eigenaar</div>
+      </div>
+    </div>
+    <div class="example__inputs">
+      <div class="example__input"><div class="k">Aankoopprijs</div><div class="v">€ 650.000</div></div>
+      <div class="example__input"><div class="k">Aandeel/persoon</div><div class="v">33,3%</div></div>
+      <div class="example__input"><div class="k">Eigen inbreng totaal</div><div class="v">€ 90.000</div></div>
+      <div class="example__input"><div class="k">Hypotheek totaal</div><div class="v">€ 595.000</div></div>
+      <div class="example__input"><div class="k">Per persoon/mnd</div><div class="v">€ 980 netto</div></div>
+    </div>
+    <ol class="example__steps">
+      <li>Overdrachtsbelasting: 2% over € 650.000 = € 13.000 (geen jongerenvrijstelling boven € 555.000)</li>
+      <li>Hypotheek wordt op alle drie de namen gezet, met hoofdelijke aansprakelijkheid</li>
+      <li>HRA wordt naar rato verdeeld: ieder mag 1/3 van de rente aftrekken</li>
+      <li>Eigenwoningforfait ook verdeeld: ieder telt 1/3 van de WOZ als fictief inkomen</li>
+      <li>Belangrijk: notariële samenlevingsovereenkomst nodig voor exit-clausules</li>
+    </ol>
+    <div class="example__result">Per persoon circa <strong>€ 470/mnd lagere woonlasten</strong> dan een vergelijkbare huurkamer in Amsterdam. Na 10 jaar: gezamenlijke overwaarde circa € 180.000 (bij 2% waardestijging).</div>
+  </div>
+
+  <div class="example" id="voorbeeld4">
+    <div class="example__header">
+      <div class="example__num">04</div>
+      <div>
+        <div class="example__title">Stel met onzekere verblijfduur</div>
+        <div class="example__sub">Verwachte verblijfduur 4 jaar (stage/traineeship)</div>
+      </div>
+    </div>
+    <div class="example__inputs">
+      <div class="example__input"><div class="k">Aankoopprijs</div><div class="v">€ 380.000</div></div>
+      <div class="example__input"><div class="k">Verblijfduur</div><div class="v">4 jaar</div></div>
+      <div class="example__input"><div class="k">Kosten koper</div><div class="v">€ 14.000</div></div>
+      <div class="example__input"><div class="k">Verkoopkosten later</div><div class="v">€ 6.500</div></div>
+      <div class="example__input"><div class="k">Vergelijkbare huur</div><div class="v">€ 1.650/mnd</div></div>
+    </div>
+    <ol class="example__steps">
+      <li>Eenmalige aankoopkosten: € 14.000 (notaris, taxatie, advies, overdrachtsbelasting)</li>
+      <li>Bij verkoop na 4 jaar: makelaarskosten + notaris ongeveer € 6.500</li>
+      <li>Aflossing in 4 jaar (annuïtair): nauwelijks vermogensopbouw via aflossing</li>
+      <li>Waardestijging 4 jaar × 2%: circa € 31.000 bruto overwaarde</li>
+      <li>Min totale transactiekosten € 20.500: netto circa € 10.500 voordeel</li>
+    </ol>
+    <div class="example__result">Bij korte verblijfduur is huren bijna altijd voordeliger. Pas vanaf circa <strong>7 jaar verblijf</strong> wordt kopen in dit scenario interessanter dan huren met belegging van het verschil.</div>
+  </div>
+</section>
+
+<section id="beperkingen" class="section">
+  <h2>10. Beperkingen & disclaimers</h2>
+  <p>Deze tool gebruikt vereenvoudigde aannames die een goede schatting geven, maar geen perfecte voorspelling. De belangrijkste beperkingen:</p>
+  <p><strong>Constante percentages.</strong> Rente, waardestijging en huurverhoging worden constant verondersteld over de hele looptijd. In werkelijkheid fluctueren deze sterk. Gebruik de gevoeligheidsanalyse in de tool om te zien wat er gebeurt bij andere aannames.</p>
+  <p><strong>Geen rekening met levensgebeurtenissen.</strong> Verhuizing, scheiding, baanverlies of een groot onderhoudsmoment komen niet voor in het model. Houd hiervoor altijd een buffer aan.</p>
+  <p><strong>Belastingregels kunnen wijzigen.</strong> HRA, eigenwoningforfait en box 3 zijn politieke variabelen. De berekening reflecteert de regels van 2026, maar de werkelijkheid over 20 jaar kan significant anders zijn.</p>
+  <p><strong>Geen advies.</strong> Dit is een hulpmiddel voor je eigen oriëntatie, geen financieel advies. Voor een definitieve keuze raadpleeg een onafhankelijk financieel adviseur die jouw volledige situatie kent.</p>
+</section>
+
+<div class="cta">
+  <h2>Probeer de tool zelf</h2>
+  <p>Vul je eigen situatie in en zie binnen een minuut wat er financieel uitkomt.</p>
+  <a href="../index.html" class="btn">Start je berekening →</a>
+</div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 HuurOfKoopCheck.nl — Hobbyproject, geen advies.</p>
+    <p style="margin-top:8px">
+      <a href="../index.html">Calculator</a>·
+      <a href="index.html">Blog</a>·
+      <a href="methodologie.html">Methodologie</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
