@@ -152,8 +152,24 @@
         /* ═══════════════════════════════════════════
            BLOG GRID
         ═══════════════════════════════════════════ */
-        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); padding: var(--space-3xl) 0; }
+        .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 0 0 var(--space-2xl); }
+        .filter-pill { padding: 8px 16px; border: 1.5px solid var(--border); border-radius: 999px; background: white; font-size: 13px; font-weight: 600; color: var(--ink-light); cursor: pointer; transition: all 0.15s; font-family: inherit; }
+        .filter-pill:hover { border-color: var(--brand); color: var(--brand); }
+        .filter-pill.active { background: var(--brand); color: white; border-color: var(--brand); }
+        .featured-card { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-xl); background: linear-gradient(135deg, #0047b3, #0066ff); color: white; border-radius: 16px; padding: var(--space-2xl); margin-bottom: var(--space-3xl); text-decoration: none; box-shadow: 0 8px 24px rgba(0,71,179,0.2); }
+        .featured-card .badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+        .featured-card h2 { font-family: var(--serif); font-size: 32px; line-height: 1.15; margin-bottom: 12px; }
+        .featured-card p { opacity: 0.92; font-size: 15px; line-height: 1.6; }
+        .featured-card .arrow { display: inline-block; margin-top: 16px; font-weight: 600; }
+        .category-section { margin-bottom: var(--space-3xl); scroll-margin-top: 100px; }
+        .category-header { display: flex; align-items: baseline; gap: var(--space-md); margin-bottom: var(--space-lg); padding-bottom: var(--space-sm); border-bottom: 2px solid var(--border); }
+        .category-header h2 { font-family: var(--serif); font-size: 26px; color: var(--brand); }
+        .category-header .count { font-size: 13px; color: var(--ink-light); font-weight: 500; }
+        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+        @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } .featured-card { grid-template-columns: 1fr; } .featured-card h2 { font-size: 24px; } }
+    @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
 
+        
         .blog-card {
             background: var(--card);
             border: 1px solid var(--border);
@@ -316,138 +332,77 @@
          BLOG GRID
     ══════════════════════════════════════ -->
     <div class="container">
-        <div class="blog-grid">
+        <!-- FEATURED START-HERE CARD -->
+        <a href="voordelen-nadelen-huren-kopen.html" class="featured-card">
+            <div>
+                <span class="badge">⭐ Begin hier</span>
+                <h2>Huren of kopen — wat past bij jou?</h2>
+                <p>Het complete overzicht van alle voordelen en nadelen. De beste startpunt als je twijfelt tussen huren en kopen.</p>
+                <span class="arrow">Lees het overzicht →</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;font-size:120px;opacity:0.3;">🏠</div>
+        </a>
 
-            <!-- 1. Hypotheekrenteaftrek -->
-            <a href="hypotheekrenteaftrek.html" class="blog-card">
-                <span class="blog-card__meta">💰 Belastingen & Voordelen</span>
-                <h3>Hypotheekrenteaftrek — Complete Gids 2026</h3>
-                <p>Hoe werkt de hypotheekrenteaftrek, hoeveel kun je aftrekken en wat is het maximale belastingtarief? Praktische voorbeelden en tips.</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 2. Eigenwoningforfait -->
-            <a href="eigenwoningforfait.html" class="blog-card">
-                <span class="blog-card__meta">💰 Belastingen & Voordelen</span>
-                <h3>Eigenwoningforfait — Wat Betaal je Echt?</h3>
-                <p>Wat is eigenwoningforfait en hoe wordt het berekend? Het tegengewicht van hypotheekrenteaftrek, praktische voorbeelden, en impact op je belasting.</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 3. Transactiekosten -->
-            <a href="transactiekosten.html" class="blog-card">
-                <span class="blog-card__meta">🏠 Koopproces</span>
-                <h3>Transactiekosten Huiskoop — 2-4% van de Prijs</h3>
-                <p>Volledige gids: notaris, overdrachtsbelasting, taxatie, hypotheekadviseur. Hoe je minimaliseert en waarom jongeren 0% overdrachtsbelasting betalen.</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 4. Hypotheek aflossen -->
-            <a href="hypotheek-aflossen.html" class="blog-card">
-                <span class="blog-card__meta">💳 Hypotheek</span>
-                <h3>Hypotheek Aflossen — Annuïteit vs. Lineair</h3>
-                <p>Welk aflossingsysteem kies je? Annuïteit (gelijke betalingen), lineair (bespaar rente), of aflossingsvrij? Voordelen, nadelen en berekeningen.</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 5. Rentetarieven -->
-            <a href="rentetarieven.html" class="blog-card">
-                <span class="blog-card__meta">💳 Hypotheek</span>
-                <h3>Hypotheek Rentetarieven 2026</h3>
-                <p>Wat zijn huidige rentetarieven? Vaste of variabel? 30 jaar of 10 jaar? Hoe vind je de beste rente en hoeveel scheelt 0,5% verschil?</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 6. Gemeentelijke belastingen -->
-            <a href="gemeentelijke_belastingen.html" class="blog-card">
-                <span class="blog-card__meta">💰 Belastingen & Voordelen</span>
-                <h3>Gemeentelijke Belastingen — Huurders vs. Eigenaren</h3>
-                <p>Welke lokale belastingen betaal je als huurder of eigenaar? OZB, rioolheffing, afvalstoffenheffing en hoe dit je totale woonlasten beïnvloedt.</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 7. OZB 2026 -->
-            <a href="ozb-2026.html" class="blog-card">
-                <span class="blog-card__meta">💰 Belastingen & Voordelen</span>
-                <h3>OZB 2026 — Tariefen Stijgen Opnieuw</h3>
-                <p>Onroerendezaakbelasting stijgt gemiddeld 5,3% in 2026. Wat betaal je, per gemeente en hoe kan je besparen op OZB?</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 8. Vaste kosten huren vs. kopen -->
-            <a href="vaste-kosten-huren-kopen.html" class="blog-card">
-                <span class="blog-card__meta">🔄 Huren vs. Kopen</span>
-                <h3>Vaste Kosten — Huren vs. Kopen</h3>
-                <p>Wat zijn je werkelijke maandelijkse kosten als huurder versus huiseigenaar? Inclusief gemeentelijke lasten, onderhoud en belastingen.</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 9. Voordelen en nadelen huren vs. kopen -->
-            <a href="voordelen-nadelen-huren-kopen.html" class="blog-card">
-                <span class="blog-card__meta">🔄 Huren vs. Kopen</span>
-                <h3>Voordelen & Nadelen — Huren vs. Kopen</h3>
-                <p>Compleet overzicht van alle voordelen en nadelen van beide opties. Stabiliteit, vrijheid, vermogensopbouw en flexibiliteit.</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 10. Lange-termijn voordeel kopen -->
-            <a href="lange-termijn-voordeel-kopen.html" class="blog-card">
-                <span class="blog-card__meta">🏠 Eigenwoningbezit</span>
-                <h3>Lange-Termijn Voordeel van Kopen</h3>
-                <p>Hoe bouw je vermogen op als huiseigenaar? Hypotheekrenteaftrek, eigenhuisbezit en waardestijging over 20-30 jaar.</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 11. Spaargeld en inkomen bij kopen -->
-            <a href="spaargeld-en-inkomen-bij-kopen.html" class="blog-card">
-                <span class="blog-card__meta">🏠 Koopproces</span>
-                <h3>Spaargeld & Inkomen — Vereisten voor Hypotheek</h3>
-                <p>Hoeveel spaargeld heb je nodig? Welke inkomeneisen gelden? Hoe hoger je inkomst, hoe meer je mag lenen — praktische richtlijnen.</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 12. Puntenstelsel huurprijs -->
-            <a href="puntenstelsel-huurprijs.html" class="blog-card">
-                <span class="blog-card__meta">🏘️ Huren</span>
-                <h3>Puntenstelsel & Huurprijs — Sociaal Segment</h3>
-                <p>Wat is het puntenstelsel voor huurprijzen? Hoe wordt een rechtmatige huur bepaald in het sociale woningbezit?</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 13. Huurcontracten en huurbescherming -->
-            <a href="huurcontracten-en-huurbescherming.html" class="blog-card">
-                <span class="blog-card__meta">🏘️ Huren</span>
-                <h3>Huurcontracten & Huurbescherming</h3>
-                <p>Wat staat in een huurcontract? Welke rechten heb je als huurder? Ontslag uit woning, verhoging en huurbescherming — alles uitgelegd.</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 14. Huurverhoging 2026 -->
-            <a href="huurverhoging-2026.html" class="blog-card">
-                <span class="blog-card__meta">🏘️ Huren</span>
-                <h3>Huurverhoging 2026 — Nieuwe Regels & Percentages</h3>
-                <p>Wat mag je verhuurder maximaal verhogen? Sociale en vrije sector, wettelijke grenzen, en hoe verzet je je ertegen.</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 15. Huurtoeslag 2026 -->
-            <a href="huurtoeslag-2026.html" class="blog-card">
-                <span class="blog-card__meta">🏘️ Huren</span>
-                <h3>Huurtoeslag 2026 — Heb je Recht op Toeslag?</h3>
-                <p>Inkomens- en huurgrenswaarden voor 2026, hoe je aanvraagt, en wat het bijstandsniveau voor je betekent.</p>
-                <span class="blog-card__link">Lees artikel →</span>
-            </a>
-
-            <!-- 16. Blog index -->
-            <a href="index.html" class="blog-card" style="border-color:var(--brand); background:var(--brand-light);">
-                <span class="blog-card__meta">📚 Overzicht</span>
-                <h3>Alle Blog Artikelen</h3>
-                <p>Compleet overzicht van alle gidsen, tips en praktische informatie over huren, kopen, hypotheeken en belastingen.</p>
-                <span class="blog-card__link" style="color:var(--brand);">Alle artikelen →</span>
-            </a>
-
+<!-- FILTER PILLS -->
+        <div class="filter-bar">
+            <a href="#alles" class="filter-pill active">Alle artikelen</a>
+            <a href="#vergelijking" class="filter-pill">🔄 Huren vs. Kopen</a>
+            <a href="#belastingen" class="filter-pill">💰 Belastingen</a>
+            <a href="#hypotheek" class="filter-pill">💳 Hypotheek</a>
+            <a href="#kopen" class="filter-pill">🏠 Kopen</a>
+            <a href="#huren" class="filter-pill">🏘️ Huren</a>
         </div>
-    </div>
+
+<!-- 1. HUREN VS KOPEN -->
+        <section id="vergelijking" class="category-section">
+            <div class="category-header"><h2>🔄 Huren vs. Kopen</h2><span class="count">3 artikelen</span></div>
+            <div class="blog-grid">
+                <a href="voordelen-nadelen-huren-kopen.html" class="blog-card"><span class="blog-card__meta">🔄 Vergelijking</span><h3>Voordelen & Nadelen — Huren vs. Kopen</h3><p>Compleet overzicht van alle voordelen en nadelen. Stabiliteit, vrijheid, vermogensopbouw en flexibiliteit.</p><span class="blog-card__link">Lees artikel →</span></a>
+                <a href="vaste-kosten-huren-kopen.html" class="blog-card"><span class="blog-card__meta">🔄 Vergelijking</span><h3>Vaste Kosten — Huren vs. Kopen</h3><p>Wat zijn je werkelijke maandelijkse kosten als huurder versus huiseigenaar?</p><span class="blog-card__link">Lees artikel →</span></a>
+                <a href="lange-termijn-voordeel-kopen.html" class="blog-card"><span class="blog-card__meta">🏠 Eigenwoningbezit</span><h3>Lange-Termijn Voordeel van Kopen</h3><p>Hoe bouw je vermogen op als huiseigenaar over 20-30 jaar?</p><span class="blog-card__link">Lees artikel →</span></a>
+            </div>
+        </section>
+
+<!-- 2. BELASTINGEN -->
+        <section id="belastingen" class="category-section">
+            <div class="category-header"><h2>💰 Belastingen & Voordelen</h2><span class="count">4 artikelen</span></div>
+            <div class="blog-grid">
+                <a href="hypotheekrenteaftrek.html" class="blog-card"><span class="blog-card__meta">💰 Belastingen</span><h3>Hypotheekrenteaftrek — Complete Gids 2026</h3><p>Hoe werkt de aftrek, hoeveel kun je aftrekken en wat is het maximale tarief?</p><span class="blog-card__link">Lees artikel →</span></a>
+                <a href="eigenwoningforfait.html" class="blog-card"><span class="blog-card__meta">💰 Belastingen</span><h3>Eigenwoningforfait — Wat Betaal je Echt?</h3><p>Het tegengewicht van hypotheekrenteaftrek, met praktische voorbeelden.</p><span class="blog-card__link">Lees artikel →</span></a>
+                <a href="gemeentelijke_belastingen.html" class="blog-card"><span class="blog-card__meta">💰 Belastingen</span><h3>Gemeentelijke Belastingen</h3><p>OZB, rioolheffing, afvalstoffenheffing — huurders vs. eigenaren.</p><span class="blog-card__link">Lees artikel →</span></a>
+                <a href="ozb-2026.html" class="blog-card"><span class="blog-card__meta">💰 Belastingen</span><h3>OZB 2026 — Tarieven Stijgen Opnieuw</h3><p>OZB stijgt gemiddeld 5,3% in 2026. Wat betaal je per gemeente?</p><span class="blog-card__link">Lees artikel →</span></a>
+            </div>
+        </section>
+
+<!-- 3. HYPOTHEEK -->
+        <section id="hypotheek" class="category-section">
+            <div class="category-header"><h2>💳 Hypotheek</h2><span class="count">2 artikelen</span></div>
+            <div class="blog-grid">
+                <a href="hypotheek-aflossen.html" class="blog-card"><span class="blog-card__meta">💳 Hypotheek</span><h3>Hypotheek Aflossen — Annuïteit vs. Lineair</h3><p>Welk aflossingsysteem kies je? Voordelen, nadelen en berekeningen.</p><span class="blog-card__link">Lees artikel →</span></a>
+                <a href="rentetarieven.html" class="blog-card"><span class="blog-card__meta">💳 Hypotheek</span><h3>Hypotheek Rentetarieven 2026</h3><p>Vaste of variabel? 30 of 10 jaar? Hoeveel scheelt 0,5%?</p><span class="blog-card__link">Lees artikel →</span></a>
+            </div>
+        </section>
+
+<!-- 4. KOPEN -->
+        <section id="kopen" class="category-section">
+            <div class="category-header"><h2>🏠 Het Koopproces</h2><span class="count">2 artikelen</span></div>
+            <div class="blog-grid">
+                <a href="transactiekosten.html" class="blog-card"><span class="blog-card__meta">🏠 Koopproces</span><h3>Transactiekosten Huiskoop — 2-4%</h3><p>Notaris, overdrachtsbelasting, taxatie. Waarom jongeren 0% betalen.</p><span class="blog-card__link">Lees artikel →</span></a>
+                <a href="spaargeld-en-inkomen-bij-kopen.html" class="blog-card"><span class="blog-card__meta">🏠 Koopproces</span><h3>Spaargeld & Inkomen — Vereisten</h3><p>Hoeveel spaargeld heb je nodig? Welke inkomenseisen gelden?</p><span class="blog-card__link">Lees artikel →</span></a>
+            </div>
+        </section>
+
+<!-- 5. HUREN -->
+        <section id="huren" class="category-section">
+            <div class="category-header"><h2>🏘️ Huren</h2><span class="count">4 artikelen</span></div>
+            <div class="blog-grid">
+                <a href="puntenstelsel-huurprijs.html" class="blog-card"><span class="blog-card__meta">🏘️ Huren</span><h3>Puntenstelsel & Huurprijs</h3><p>Hoe wordt een rechtmatige huur bepaald in het sociale segment?</p><span class="blog-card__link">Lees artikel →</span></a>
+                <a href="huurcontracten-en-huurbescherming.html" class="blog-card"><span class="blog-card__meta">🏘️ Huren</span><h3>Huurcontracten & Huurbescherming</h3><p>Welke rechten heb je als huurder? Alles uitgelegd.</p><span class="blog-card__link">Lees artikel →</span></a>
+                <a href="huurverhoging-2026.html" class="blog-card"><span class="blog-card__meta">🏘️ Huren</span><h3>Huurverhoging 2026 — Nieuwe Regels</h3><p>Wat mag je verhuurder maximaal verhogen? Sociale en vrije sector.</p><span class="blog-card__link">Lees artikel →</span></a>
+                <a href="huurtoeslag-2026.html" class="blog-card"><span class="blog-card__meta">🏘️ Huren</span><h3>Huurtoeslag 2026</h3><p>Inkomens- en huurgrenzen, hoe je aanvraagt.</p><span class="blog-card__link">Lees artikel →</span></a>
+            </div>
+        </section>
+     </div>
 
     <!-- ══════════════════════════════════════
          CTA
