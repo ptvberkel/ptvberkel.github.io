@@ -209,14 +209,14 @@
                     <img src="../Huur-of-koop-check-logo.png" alt="HuurOfKoopCheck.nl" class="nav__logo-img">
                 </a>
                 <ul class="nav__links">
-                        <li><a href="#calculator">Calculator</a></li>
                         <li><a href="methodologie.html">Methodologie</a></li>
                         <li><a href="blog/index.html">Blog</a></li>
-                        <li><a href="contact.html">Expert Advies</a></li>
+                        <li><a href="contact.html">Expert advies</a></li>
+                        <li><a href="over.html">Over</a></li>
                 </ul>
                 <div style="display:flex; align-items:center; gap:10px;">
                     <a href="https://www.paypal.com/ncp/payment/BXCB3XFET46RC" target="_blank" rel="noopener" class="btn btn--outline" style="font-size:13px; padding: 9px 18px;">❤️ Steun dit project</a>
-                    <a href="index.html#calculator" class="btn btn--primary" style="font-size:13px; padding: 9px 18px;">Start Calculator ↓</a>
+                    <a href="index.html#calculator" class="btn btn--primary" style="font-size:13px; padding: 9px 18px;">Start calculator ↓</a>
                 </div>
             </div>
         </div>
@@ -241,42 +241,49 @@
         <div class="privacy-body">
             <div class="prose">
 
-                <h2 id="gegevens">1. Gegevens die wij verzamelen</h2>
-                <p>HuurOfKoopCheck.nl verzamelt geen persoonlijke gegevens. De calculator werkt volledig lokaal in je browser. Alle berekeningen gebeuren op je eigen apparaat en worden niet opgeslagen op onze servers of derden.</p>
+                <h2 id="verantwoordelijke">1. Verwerkingsverantwoordelijke</h2>
+                <p>Verantwoordelijke voor de gegevensverwerking op HuurOfKoopCheck.nl is:</p>
+                <p><strong>Pieter van Berkel</strong><br>E-mail: <a href="mailto:info@huurofkoopcheck.nl">info@huurofkoopcheck.nl</a></p>
+                <p>HuurOfKoopCheck.nl is een persoonlijk hobbyproject en geen onderneming met Wft-vergunning. De tool biedt educatieve berekeningen, geen financieel advies.</p>
 
-                <h2 id="cookies">2. Cookies</h2>
-                <p>Deze website maakt geen gebruik van tracking cookies, analytics cookies, of andere tracking technologie. Wij plaatsen geen cookies op je apparaat tenzij je deze uitdrukkelijk hebt ingeschakeld. Je informatie blijft volledig privé.</p>
+                <h2 id="gegevens">2. Welke gegevens worden verwerkt</h2>
+                <p>Wanneer je de calculator gebruikt, worden de door jou ingevoerde parameters (zoals aankoopprijs, hypotheekrente, huurprijs en inkomen) als JSON verzonden naar onze eigen serveromgeving op Vercel. Dit gebeurt via de API-endpoints <strong>/api/calculate</strong> en <strong>/api/generate-report</strong>. De server voert de berekening uit en stuurt het resultaat terug naar je browser.</p>
+                <p>Deze invoergegevens worden <strong>niet opgeslagen, niet gelogd en niet bewaard</strong> op de server. Ze bestaan uitsluitend in het werkgeheugen gedurende de berekening (doorgaans minder dan een seconde) en worden daarna verwijderd. Er vindt geen koppeling plaats met identificeerbare persoonsgegevens.</p>
 
-                <h2 id="externe-links">3. Externe links</h2>
-                <p>Deze website bevat links naar externe websites zoals de Belastingdienst, CBS en NVM. Wij zijn niet verantwoordelijk voor het privacybeleid van deze externe sites. Controleer hun privacyverklaringen voor meer informatie alvorens je daar persoonlijke gegevens invoert.</p>
+                <h2 id="verwerker">3. Verwerker: Vercel</h2>
+                <p>De serveromgeving wordt gehost door <strong>Vercel Inc.</strong> (San Francisco, VS). Vercel treedt op als verwerker in de zin van de AVG. Vercel beschikt over een standaard Data Processing Addendum (DPA) dat voldoet aan de vereisten van artikel 28 AVG, is SOC 2 Type II-gecertificeerd en ondersteunt de EU Standard Contractual Clauses voor internationale doorgifte. Het DPA is beschikbaar op <a href="https://vercel.com/legal/dpa" target="_blank" rel="noopener">vercel.com/legal/dpa</a>.</p>
+                <p>Vercel verwerkt serververzoeken in het kader van de uitvoering van de Serverless Functions. Vercel slaat geen invoergegevens van de calculator op en heeft geen toegang tot de inhoud van individuele berekeningen buiten de technische verwerking van het HTTP-verzoek.</p>
 
-                <h2 id="veiligheid">4. Veiligheid</h2>
-                <p>Hoewel deze website via HTTPS wordt bediend, kunnen we geen garantie geven voor volledige veiligheid van gegevens die over het internet worden verzonden. Voer geen gevoelige financiële informatie in op deze website als je niet zeker bent van de veiligheid van je verbinding.</p>
+                <h2 id="analytics">4. Analytics</h2>
+                <p>Deze website maakt gebruik van <strong>Google Analytics</strong> (via Google Tag Manager) om anonieme gebruiksstatistieken te verzamelen, zoals paginaweergaven en sessieduur. Google Analytics 4 maakt gebruik van first-party cookies (<code>_ga</code>, <code>_ga_*</code>) om sessies te onderscheiden. Deze cookies bevatten geen persoonsgegevens en worden niet gekoppeld aan identificeerbare informatie.</p>
+                <p>Google treedt hierbij op als verwerker. De verzamelde gegevens worden verwerkt conform het privacybeleid van Google (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>). IP-adressen worden door Google geanonimiseerd.</p>
 
-                <h2 id="logging">5. Gebruikersgegevens en logging</h2>
-                <p>Wij loggen geen IP-adressen, surfgedrag, of ander persoonlijke informatie. Je bezoeken aan deze website worden niet bijgehouden of gemonitord. De calculator opereert volledig anoniem.</p>
+                <h2 id="cookies">5. Cookies</h2>
+                <p>Deze website plaatst de volgende cookies:</p>
+                <ol>
+                    <li><strong>Google Analytics cookies</strong> (<code>_ga</code>, <code>_ga_*</code>): voor anonieme gebruiksstatistieken. Bewaartermijn: maximaal 2 jaar.</li>
+                    <li><strong>Technische cookies</strong>: Vercel kan technische sessiecookies plaatsen die noodzakelijk zijn voor de werking van de website. Deze bevatten geen persoonsgegevens.</li>
+                </ol>
+                <p>Er worden geen advertising cookies, social media cookies of andere tracking cookies van derden geplaatst.</p>
 
-                <h2 id="derde-partijen">6. Derde partijen</h2>
-                <p>De calculator laadt via een iframe van een externe server. Voor vragen over hun privacybeleid verwijzen we je naar hun eigen privacyverklaring. De berekeningen gebeuren echter altijd lokaal op je eigen device.</p>
+                <h2 id="externe-links">6. Externe links</h2>
+                <p>Deze website bevat links naar externe websites zoals de Belastingdienst, CBS en NVM. Wij zijn niet verantwoordelijk voor het privacybeleid van deze externe sites. Controleer hun privacyverklaringen voordat je daar persoonlijke gegevens invoert.</p>
 
-                <h2 id="rechten">7. Je rechten</h2>
-                <p>Aangezien wij geen persoonlijke gegevens verzamelen, zijn de meeste privacyrechten automatisch gewaarborgd. Er is geen data om in te zien, te corrigeren, of te verwijderen. Dit is een van onze kernwaarden.</p>
+                <h2 id="beveiliging">7. Beveiliging</h2>
+                <p>Alle communicatie met de website en API verloopt via HTTPS (TLS-versleuteling). De serveromgeving wordt beheerd door Vercel met beveiligingsmaatregelen conform SOC 2 Type II. Aangezien er geen persoonsgegevens worden opgeslagen, is het risico op een datalek minimaal.</p>
 
-                <h2 id="contact">8. Contactgegevens</h2>
-                <p>Heb je vragen over deze privacyverklaring of opmerkingen over onze privacypraktijken? Neem contact met ons op via: <strong>info@huurofkoopcheck.nl</strong></p>
+                <h2 id="rechten">8. Je rechten onder de AVG</h2>
+                <p>Op grond van de Algemene Verordening Gegevensbescherming (AVG) heb je recht op inzage, correctie, verwijdering en overdraagbaarheid van je persoonsgegevens, en het recht om bezwaar te maken tegen verwerking. Aangezien wij geen persoonsgegevens opslaan die aan jou te koppelen zijn, zijn deze rechten in de praktijk automatisch gewaarborgd: er is geen data om in te zien, te corrigeren of te verwijderen.</p>
+                <p>Mocht je desondanks vragen hebben over je rechten, neem dan contact op via <a href="mailto:info@huurofkoopcheck.nl">info@huurofkoopcheck.nl</a>. Je hebt ook het recht om een klacht in te dienen bij de Autoriteit Persoonsgegevens (<a href="https://www.autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">autoriteitpersoonsgegevens.nl</a>).</p>
 
-                <h2 id="wijzigingen">9. Wijzigingen aan deze verklaring</h2>
-                <p>Wij behouden het recht voor om deze privacyverklaring op elk moment aan te passen zonder voorafgaande waarschuwing. Wijzigingen zullen op deze pagina worden gepubliceerd. Wanneer we substantiële wijzigingen aanbrengen, zullen we dit duidelijk communiceren.</p>
+                <h2 id="wijzigingen">9. Wijzigingen</h2>
+                <p>Wij behouden het recht voor om deze privacyverklaring aan te passen. Wijzigingen worden op deze pagina gepubliceerd met een bijgewerkte datum. Bij substantiele wijzigingen zullen we dit duidelijk communiceren.</p>
 
                 <h2 id="disclaimer">10. Disclaimer</h2>
-                <p>Deze calculator dient alleen voor educatieve doeleinden. Het is geen professioneel financieel advies. De resultaten zijn schattingen gebaseerd op de ingevoerde gegevens. Werkelijke uitkomsten kunnen aanzienlijk afwijken van de berekende waarden.</p>
-                <p>Nederlands belastingrecht is complex en wijzigt regelmatig. Raadpleeg altijd de website van de Belastingdienst (belastingdienst.nl) voor actuele en accurate informatie. Voor persoonlijk advies raden wij aan contact op te nemen met een gekwalificeerde financieel adviseur of hypotheekadviseur.</p>
-
-                <h2 id="compliance">11. Complianties en regelgeving</h2>
-                <p>Deze website voldoet aan de GDPR (Algemene Verordening Gegevensbescherming) omdat wij geen persoonlijke gegevens verwerken. Wij volgen best practices op het gebied van webbeveiliging en transparantie.</p>
+                <p>Deze calculator dient uitsluitend voor educatieve doeleinden. Het is geen professioneel financieel, fiscaal of hypotheekadvies. De resultaten zijn schattingen gebaseerd op vereenvoudigde aannames. Werkelijke uitkomsten kunnen aanzienlijk afwijken. Raadpleeg altijd de <a href="https://www.belastingdienst.nl" target="_blank" rel="noopener">Belastingdienst</a> voor actuele tarieven en een gekwalificeerde adviseur voor persoonlijk advies.</p>
 
                 <div class="updated-stamp">
-                    <p><strong>Laatst bijgewerkt:</strong> April 2026</p>
+                    <p><strong>Laatst bijgewerkt:</strong> april 2026</p>
                 </div>
 
             </div>
@@ -300,7 +307,8 @@
                         <li><a href="index.html#features">Kenmerken</a></li>
                         <li><a href="index.html#faq">FAQ</a></li>
                         <li><a href="blog/index.html">Blog</a></li>
-                        <li><a href="contact.html">Expert Advies</a></li>
+                        <li><a href="contact.html">Expert advies</a></li>
+                        <li><a href="over.html">Over</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
