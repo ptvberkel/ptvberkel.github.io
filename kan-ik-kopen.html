@@ -181,6 +181,13 @@
             color: var(--ink-light);
         }
 
+        .field .hint {
+            font-size: 12px;
+            color: var(--ink-muted);
+            line-height: 1.5;
+            margin-top: -2px;
+        }
+
         .field input,
         .field select {
             width: 100%;
@@ -233,6 +240,10 @@
         }
 
         .check:hover { border-color: var(--brand); }
+
+        .check__text { display: flex; flex-direction: column; gap: 2px; }
+        .check__title { font-weight: 600; color: var(--ink); font-size: 13px; }
+        .check__hint { font-size: 11px; color: var(--ink-muted); line-height: 1.4; }
 
         .check input[type="checkbox"] {
             width: 18px; height: 18px;
@@ -385,6 +396,83 @@
         .hidden { display: none !important; }
 
         /* ═══════════════════════════════════════════
+           STATS STRIP
+        ═══════════════════════════════════════════ */
+        .stats-strip {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+        }
+        .stats-strip__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .strip-stat {
+            padding: var(--space-xl) var(--space-lg);
+            border-right: 1px solid var(--border);
+            position: relative;
+        }
+        .strip-stat:last-child { border-right: none; }
+        .strip-stat::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px; height: 100%;
+            background: var(--brand);
+            border-radius: 0 2px 2px 0;
+        }
+        .strip-stat__value {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--ink);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .strip-stat__label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink-light);
+            margin-bottom: 4px;
+        }
+        .strip-stat__sub {
+            font-size: 11px;
+            color: var(--ink-muted);
+        }
+
+        /* ═══════════════════════════════════════════
+           CTA SECTION
+        ═══════════════════════════════════════════ */
+        .cta-section {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 45%, #1D4ED8 100%);
+            color: #fff;
+            padding: var(--space-3xl) var(--space-lg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 50% 80% at 50% 100%, rgba(29,78,216,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-section__content { position: relative; z-index: 1; max-width: 560px; margin: 0 auto; }
+        .cta-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            margin-bottom: var(--space-md);
+        }
+        .cta-section p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.80);
+            margin-bottom: var(--space-xl);
+            line-height: 1.75;
+        }
+
+        /* ═══════════════════════════════════════════
            FOOTER
         ═══════════════════════════════════════════ */
         footer { background: var(--ink); color: rgba(255,255,255,0.70); padding: var(--space-3xl) 0 var(--space-xl); }
@@ -405,11 +493,15 @@
         ═══════════════════════════════════════════ */
         @media (max-width: 1024px) {
             .content-layout { grid-template-columns: 1fr; }
+            .stats-strip__grid { grid-template-columns: repeat(3, 1fr); }
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 768px) {
             .nav__links { display: none; }
             .form-grid, .checkboxes, .result-grid { grid-template-columns: 1fr; }
+            .stats-strip__grid { grid-template-columns: 1fr; }
+            .strip-stat { border-right: none; border-bottom: 1px solid var(--border); }
+            .strip-stat:last-child { border-bottom: none; }
             .footer-grid { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; text-align: center; }
         }
@@ -455,6 +547,42 @@
     </section>
 
     <!-- ══════════════════════════════════════
+         STATS STRIP
+    ══════════════════════════════════════ -->
+    <div class="stats-strip">
+        <div class="container">
+            <div class="stats-strip__grid">
+                <div class="strip-stat">
+                    <div class="strip-stat__value" style="font-family: var(--font-mono);">2026</div>
+                    <div class="strip-stat__label">Actuele normen</div>
+                    <div class="strip-stat__sub">NIBUD-woonlastenpercentages</div>
+                </div>
+                <div class="strip-stat">
+                    <div class="strip-stat__value" style="font-family: var(--font-mono);">NHG</div>
+                    <div class="strip-stat__label">Nationale Hypotheek Garantie</div>
+                    <div class="strip-stat__sub">Incl. premieberekening &amp; limiet</div>
+                </div>
+                <div class="strip-stat">
+                    <div class="strip-stat__value" style="font-family: var(--font-mono);">Gratis</div>
+                    <div class="strip-stat__label">Zonder advertenties</div>
+                    <div class="strip-stat__sub">Geen registratie vereist</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         AFM DISCLAIMER
+    ══════════════════════════════════════ -->
+    <div style="background: var(--bg-soft); border-bottom: 1px solid var(--border);">
+        <div class="container" style="max-width: 960px; padding-top: var(--space-lg); padding-bottom: var(--space-lg);">
+            <div style="background: #FFFBEB; border-left: 3px solid #D97706; padding: var(--space-md) var(--space-lg); border-radius: 0 var(--r-md) var(--r-md) 0; font-size: 14px; color: var(--ink); line-height: 1.7;">
+                <strong style="color: #D97706;">Let op:</strong> Deze tool berekent een indicatieve maximale hypotheek op basis van openbare NIBUD-normen. Dit is geen officieel advies. Raadpleeg een onafhankelijke hypotheekadviseur met AFM-vergunning voor een persoonlijk advies.
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
          CONTENT
     ══════════════════════════════════════ -->
     <div class="container">
@@ -467,13 +595,16 @@
                 </div>
                 <div class="card__body">
                     <form id="buyCheckForm">
+                        <div class="section-label">Inkomen</div>
                         <div class="form-grid">
                             <div class="field">
                                 <label for="income1">Bruto jaarinkomen persoon 1</label>
+                                <span class="hint">Je totale bruto jaarsalaris inclusief vakantiegeld en eventuele vaste 13e maand.</span>
                                 <input id="income1" name="income1" type="number" min="0" step="100" required placeholder="Bijv. 52 000" />
                             </div>
                             <div class="field">
                                 <label for="employment1">Dienstverband persoon 1</label>
+                                <span class="hint">Bij een tijdelijk contract telt je inkomen soms minder mee.</span>
                                 <select id="employment1" name="employment1" required>
                                     <option value="permanent">Vast contract</option>
                                     <option value="temporary">Tijdelijk contract</option>
@@ -483,10 +614,12 @@
                             </div>
                             <div class="field">
                                 <label for="income2">Bruto jaarinkomen persoon 2</label>
+                                <span class="hint">Laat leeg als je alleen koopt. Het tweede inkomen vergroot je leencapaciteit.</span>
                                 <input id="income2" name="income2" type="number" min="0" step="100" placeholder="Optioneel" />
                             </div>
                             <div class="field">
                                 <label for="employment2">Dienstverband persoon 2</label>
+                                <span class="hint">Alleen relevant als er een tweede inkomen is.</span>
                                 <select id="employment2" name="employment2">
                                     <option value="none">Geen tweede inkomen</option>
                                     <option value="permanent">Vast contract</option>
@@ -494,32 +627,47 @@
                                     <option value="self-employed">Zelfstandig ondernemer</option>
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="section-label">Vermogen &amp; schulden</div>
+                        <div class="form-grid">
                             <div class="field">
                                 <label for="ownSavings">Eigen spaargeld</label>
+                                <span class="hint">Spaargeld dat je kunt inzetten voor kosten koper of extra aflossing. Houd een financiële buffer achter de hand.</span>
                                 <input id="ownSavings" name="ownSavings" type="number" min="0" step="100" placeholder="Bijv. 25 000" />
                             </div>
                             <div class="field">
                                 <label for="targetHousePrice">Gewenste koopsom</label>
+                                <span class="hint">Optioneel. Vul in om te zien of een specifiek huis binnen je bereik valt.</span>
                                 <input id="targetHousePrice" name="targetHousePrice" type="number" min="0" step="1000" placeholder="Optioneel" />
                             </div>
                             <div class="field">
                                 <label for="otherLoans">Openstaande leningen</label>
+                                <span class="hint">Doorlopend krediet, persoonlijke lening, etc. Verlaagt je maximale hypotheek.</span>
                                 <input id="otherLoans" name="otherLoans" type="number" min="0" step="100" placeholder="Totaalbedrag" />
                             </div>
                             <div class="field">
                                 <label for="privateLeaseMonthly">Private lease per maand</label>
+                                <span class="hint">Maandbedrag van je autolease. Telt mee als verplichting bij de hypotheekaanvraag.</span>
                                 <input id="privateLeaseMonthly" name="privateLeaseMonthly" type="number" min="0" step="1" placeholder="Optioneel" />
                             </div>
                             <div class="field">
                                 <label for="studentLoanAmount">Studieschuld</label>
+                                <span class="hint">Totale oorspronkelijke studieschuld. Wordt gewogen meegeteld bij je leencapaciteit.</span>
                                 <input id="studentLoanAmount" name="studentLoanAmount" type="number" min="0" step="100" placeholder="Optioneel" />
                             </div>
                             <div class="field">
                                 <label for="monthlyStudentPayment">Maandbedrag studieschuld</label>
+                                <span class="hint">Wat je nu maandelijks aflost aan DUO of andere studiefinanciering.</span>
                                 <input id="monthlyStudentPayment" name="monthlyStudentPayment" type="number" min="0" step="1" placeholder="Optioneel" />
                             </div>
+                        </div>
+
+                        <div class="section-label">Woning &amp; hypotheek</div>
+                        <div class="form-grid">
                             <div class="field">
                                 <label for="energyLabel">Energielabel woning</label>
+                                <span class="hint">Een beter energielabel kan leiden tot hogere leencapaciteit vanwege lagere energiekosten.</span>
                                 <select id="energyLabel" name="energyLabel">
                                     <option value="">Onbekend / niet van toepassing</option>
                                     <option value="A++++">A++++</option>
@@ -536,41 +684,63 @@
                                 </select>
                             </div>
                             <div class="field">
-                                <label for="interestRate">Rente (%)</label>
+                                <label for="interestRate">Hypotheekrente (%)</label>
+                                <span class="hint">Actueel rentepercentage voor een 10-jaars vaste rente. Pas aan naar je verwachte tarief.</span>
                                 <input id="interestRate" name="interestRate" type="number" min="0" max="15" step="0.01" value="4.0" />
                             </div>
                         </div>
 
-                        <div class="section-label">Opties</div>
+                        <div class="section-label">Kosten koper opties</div>
 
                         <div class="checkboxes">
                             <label class="check">
                                 <input type="checkbox" id="wantsNHG" name="wantsNHG" checked />
-                                <span>NHG meenemen</span>
+                                <span class="check__text">
+                                    <span class="check__title">NHG meenemen</span>
+                                    <span class="check__hint">Nationale Hypotheek Garantie. Geeft korting op de rente, kost eenmalig 0,6% van de hypotheek. Max. koopsom in 2026: ca. €435.000.</span>
+                                </span>
                             </label>
                             <label class="check">
                                 <input type="checkbox" id="intendsToOccupy" name="intendsToOccupy" checked />
-                                <span>Zelf bewonen</span>
+                                <span class="check__text">
+                                    <span class="check__title">Zelf bewonen</span>
+                                    <span class="check__hint">Koop je de woning om zelf in te wonen? Dan geldt een lager overdrachtsbelasting-tarief (2% i.p.v. 10,4%).</span>
+                                </span>
                             </label>
                             <label class="check">
                                 <input type="checkbox" id="canUseStarterExemption" name="canUseStarterExemption" checked />
-                                <span>Starter vrijstelling overdrachtsbelasting</span>
+                                <span class="check__text">
+                                    <span class="check__title">Startersvrijstelling</span>
+                                    <span class="check__hint">Tussen 18 en 35 jaar en eerste woning? Dan betaal je 0% overdrachtsbelasting tot ca. €510.000.</span>
+                                </span>
                             </label>
                             <label class="check">
                                 <input type="checkbox" id="includeInspection" name="includeInspection" checked />
-                                <span>Bouwkundige keuring meenemen</span>
+                                <span class="check__text">
+                                    <span class="check__title">Bouwkundige keuring</span>
+                                    <span class="check__hint">Laat de staat van de woning controleren. Kost ca. €350–€500. Sterk aanbevolen.</span>
+                                </span>
                             </label>
                             <label class="check">
                                 <input type="checkbox" id="includeMortgageAdvice" name="includeMortgageAdvice" checked />
-                                <span>Hypotheekadvies meenemen</span>
+                                <span class="check__text">
+                                    <span class="check__title">Hypotheekadvies</span>
+                                    <span class="check__hint">Kosten voor een onafhankelijke hypotheekadviseur. Meestal ca. €2.000–€3.500.</span>
+                                </span>
                             </label>
                             <label class="check">
                                 <input type="checkbox" id="includeValuation" name="includeValuation" checked />
-                                <span>Taxatie meenemen</span>
+                                <span class="check__text">
+                                    <span class="check__title">Taxatie</span>
+                                    <span class="check__hint">Verplicht voor de hypotheekaanvraag. Een gecertificeerd taxateur kost ca. €400–€750.</span>
+                                </span>
                             </label>
                             <label class="check">
                                 <input type="checkbox" id="includeBankGuarantee" name="includeBankGuarantee" checked />
-                                <span>Bankgarantie meenemen</span>
+                                <span class="check__text">
+                                    <span class="check__title">Bankgarantie</span>
+                                    <span class="check__hint">Garantie aan de verkoper voor de waarborgsom (10% van de koopsom). Kost ca. 1% van het gegarandeerde bedrag.</span>
+                                </span>
                             </label>
                         </div>
 
@@ -595,7 +765,10 @@
                     <h2>Resultaat</h2>
                 </div>
                 <div class="card__body" id="resultBody">
-                    <p class="placeholder-msg">Vul je gegevens in en klik op <strong>Bereken</strong> om je indicatieve maximale hypotheek en koopsom te zien.</p>
+                    <div class="placeholder-msg">
+                        <p style="margin-bottom: var(--space-md);">Vul je gegevens in en klik op <strong>Bereken</strong> om je indicatieve maximale hypotheek en koopsom te zien.</p>
+                        <p style="font-size: 13px; color: var(--ink-muted);">Je resultaat bevat je maximale hypotheek, maximale koopsom, een compleet overzicht van kosten koper, en indicatieve maandlasten. Vul je ook een gewenste koopsom in, dan toont de tool of dat bedrag haalbaar is.</p>
+                    </div>
 
                     <div id="results" class="hidden">
                         <div class="result-grid">
@@ -645,6 +818,20 @@
 
         </div>
     </div>
+
+    <!-- ══════════════════════════════════════
+         CTA
+    ══════════════════════════════════════ -->
+    <section class="cta-section">
+        <div class="cta-section__content">
+            <h2>Wil je persoonlijk advies?</h2>
+            <p>Deze tool geeft een indicatie. Een onafhankelijke hypotheekadviseur kan je situatie diepgaand analyseren en de beste hypotheek voor jou vinden.</p>
+            <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                <a href="contact.html" class="btn btn--primary">Vind een adviseur →</a>
+                <a href="index.html#calculator" class="btn" style="background:rgba(255,255,255,0.10);color:#fff;border:1px solid rgba(255,255,255,0.25);">Huren vs. kopen calculator</a>
+            </div>
+        </div>
+    </section>
 
     <!-- ══════════════════════════════════════
          FOOTER
