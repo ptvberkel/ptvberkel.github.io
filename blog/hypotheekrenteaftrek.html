@@ -22,6 +22,14 @@
 -->
 <html lang="nl">
 <head>
+            <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KNQ83F3G');</script>
+    <!-- End Google Tag Manager -->
+        
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <!-- ← REPLACE 1: meta title -->
@@ -230,8 +238,8 @@
 
         .prose strong { color: var(--ink); font-weight: 700; }
 
-        .prose a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
-        .prose a:hover { color: var(--brand-dark); }
+        .prose a:not(.btn) { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+        .prose a:not(.btn):hover { color: var(--brand-dark); }
 
         .prose ul, .prose ol {
             padding-left: var(--space-xl);
@@ -526,14 +534,14 @@
 <img alt="HuurOfKoopCheck.nl" class="nav__logo-img" src="../Huur-of-koop-check-logo.png"/>
 </a>
 <ul class="nav__links">
-<li><a href="../index.html#calculator">Calculator</a></li>
-<li><a href="../index.html#features">Kenmerken</a></li>
-<li><a href="../index.html#faq">FAQ</a></li>
 <li><a href="index.html">Blog</a></li>
-<li><a href="../contact.html">Expert Advies</a></li>
+<li><a href="../contact.html">Expert advies</a></li>                        <li><a href="../over.html">Over</a></li>
 <li><a href="../privacy.html">Privacy</a></li>
 </ul>
-<a class="btn btn--primary" href="../index.html#calculator" style="font-size:13px; padding: 9px 18px;">Calculator ↗</a>
+<div style="display:flex; align-items:center; gap:10px;">
+<a href="https://www.paypal.com/ncp/payment/BXCB3XFET46RC" target="_blank" rel="noopener" class="btn btn--outline" style="font-size:13px; padding: 9px 18px;">❤️ Steun dit project</a>
+<a href="../index.html#calculator" class="btn btn--primary" style="font-size:13px; padding: 9px 18px;">Start calculator ↓</a>
+</div>
 </div>
 </div>
 </nav>
@@ -571,12 +579,12 @@
 <!-- ── MAIN CONTENT ── -->
 <main class="article-body"><div class="prose"><div class="callout callout--green">
 <strong>Samengevat:</strong> Hypotheekrenteaftrek is een belastingaftrek waarmee je de rente die je aan de bank betaalt, aftrekt van je belastbaar inkomen. Dit resulteert in lagere inkomstenbelasting.
-                </div><h2 id="wat-is-hypotheekrenteaftrek-precies">Wat is Hypotheekrenteaftrek Precies?</h2><p>Hypotheekrenteaftrek is een belastingmaatregel die eigenaar-bewoners toestaat de betaalde hypotheekrente af te trekken van hun belastbaar inkomen. Dit werkt alleen voor je eigen woning, niet voor verhuurde eigendommen (die vallen onder Box 3).</p><p><strong>Voorbeeld:</strong> Je hebt een hypotheekschuld van €400.000 met een rente van 3,5%. Je betaalt dus €14.000 rente per jaar. Als je in de 37% belastingschijf zit, kun je €5.180 op je belasting besparen.</p><h3>Hoe Werkt de Berekening?</h3><p>De berekening is simpel:</p><ol>
+                </div><h2 id="wat-is-hypotheekrenteaftrek-precies">Wat is hypotheekrenteaftrek precies?</h2><p>Hypotheekrenteaftrek is een belastingmaatregel die eigenaar-bewoners toestaat de betaalde hypotheekrente af te trekken van hun belastbaar inkomen. Dit werkt alleen voor je eigen woning, niet voor verhuurde eigendommen (die vallen onder Box 3).</p><p><strong>Voorbeeld:</strong> Je hebt een hypotheekschuld van €400.000 met een rente van 3,5%. Je betaalt dus €14.000 rente per jaar. Als je in de 37% belastingschijf zit, kun je €5.180 op je belasting besparen.</p><h3>Hoe werkt de berekening?</h3><p>De berekening is simpel:</p><ol>
 <li><strong>Bepaal je jaarlijkse hypotheekrente</strong> – Dit staat op je hypotheekakkoord</li>
 <li><strong>Trek het af van je inkomen</strong> – Van je bruto inkomen voor Box 1</li>
 <li><strong>Bereken je belastingbesparing</strong> – Vermenigvuldig met je marginale belastingtarief</li>
 </ol><p><strong>Formule:</strong><br/>
-                Jaarlijkse rente × Marginale belastingschijf = Jaarlijkse besparing</p><h2 id="hypotheekrenteaftrek-in-2026-de-huidige-regels">Hypotheekrenteaftrek in 2026: De Huidige Regels</h2><p>Voor 2026 zijn de regels als volgt:</p><div class="compare-table-wrap"><table class="compare-table">
+                Jaarlijkse rente × Marginale belastingschijf = Jaarlijkse besparing</p><h2 id="hypotheekrenteaftrek-in-2026-de-huidige-regels">Hypotheekrenteaftrek in 2026: de huidige regels</h2><p>Voor 2026 zijn de regels als volgt:</p><div class="compare-table-wrap"><table class="compare-table">
 <tr>
 <th>Categorie</th>
 <th>Percentage</th>
@@ -584,7 +592,7 @@
 </tr>
 <tr>
 <td>Maximaal aftrekpercentage</td>
-<td>37,07%</td>
+<td>37,56%</td>
 <td>Dit is het hoogste percentage (zie belastingschijven)</td>
 </tr>
 <tr>
@@ -597,46 +605,46 @@
 <td>100%</td>
 <td>Alleen de rente, niet de aflossing</td>
 </tr>
-</table></div><h3>Belangrijk: Aflossing Telt Niet Mee</h3><p>Een veel gemaakte fout: mensen denken dat ze ook hun hypotheek-aflossing kunnen aftrekken. Dit is <strong>niet waar</strong>. Alleen de rente is aftrekbaar, niet de aflossing.</p><p><strong>Voorbeeld:</strong> Je betaalt €1.500 per maand aan hypotheek. Hiervan is €700 rente en €800 aflossing. Je mag alleen de €700 rente aftrekken—dus €8.400 per jaar.</p><h2 id="wanneer-is-hypotheekrenteaftrek-beter-dan-huren">Wanneer is Hypotheekrenteaftrek Beter dan Huren?</h2><p>Hypotheekrenteaftrek maakt kopen aantrekkelijker dan huren. Maar in welke situatie bespaart het je werkelijk geld?</p><h3>Kopen is Goedkoper door Hypotheekrenteaftrek Als:</h3><ul>
+</table></div><h3>Belangrijk: aflossing telt niet mee</h3><p>Een veel gemaakte fout: mensen denken dat ze ook hun hypotheek-aflossing kunnen aftrekken. Dit is <strong>niet waar</strong>. Alleen de rente is aftrekbaar, niet de aflossing.</p><p><strong>Voorbeeld:</strong> Je betaalt €1.500 per maand aan hypotheek. Hiervan is €700 rente en €800 aflossing. Je mag alleen de €700 rente aftrekken—dus €8.400 per jaar.</p><h2 id="wanneer-is-hypotheekrenteaftrek-beter-dan-huren">Wanneer is hypotheekrenteaftrek beter dan huren?</h2><p>Hypotheekrenteaftrek maakt kopen aantrekkelijker dan huren. Maar in welke situatie bespaart het je werkelijk geld?</p><h3>Kopen is goedkoper door hypotheekrenteaftrek als:</h3><ul>
 <li><strong>Je in een hoge belastingschijf zit</strong> (€75.000+ inkomen) – meer rente = meer besparing</li>
 <li><strong>Je een grote hypotheek hebt</strong> – meer schuld = meer rente</li>
 <li><strong>Je rente hoog is</strong> – bijvoorbeeld 4% of hoger</li>
 <li><strong>Je lang in je huis blijft</strong> – minimaal 10-15 jaar</li>
-</ul><h3>Huren is Beter dan Kopen Als:</h3><ul>
+</ul><h3>Huren is beter dan kopen als:</h3><ul>
 <li><strong>Je in een lage belastingschijf zit</strong> – minder rente = minder voordeel</li>
 <li><strong>Je veel kosten hebt</strong> – onderhoud, verzekering, belastingen</li>
 <li><strong>Je onzeker bent over je toekomst</strong> – flexibiliteit is waarde</li>
 <li><strong>Je kort in het huis blijft</strong> – minder tijd om voordeel in te halen</li>
-</ul><div class="inline-cta"><div class="inline-cta__text"><h4>Wil je Weten of Kopen of Huren Beter voor Jou Is?</h4><p>Gebruik onze gratis calculator die hypotheekrenteaftrek en alle andere factoren automatisch meeneemt.</p></div><a class="btn btn--primary" href="../index.html#calculator">Naar Calculator →</a></div><h2 id="eigenwoningforfait-de-andere-kant-van-het-verhaal">Eigenwoningforfait: De Andere Kant van het Verhaal</h2><p>Hypotheekrenteaftrek is niet gratis. Tegenover dit voordeel staat het <strong>eigenwoningforfait</strong>. Dit is een bedrag dat je jaarlijks als "inkomsten" moet aangerekend krijgen.</p><h3>Wat is Eigenwoningforfait?</h3><p><strong>Eigenwoningforfait</strong> is een fictieve huurwaarde die de belastingdienst berekent op basis van de WOZ-waarde van je huis. Dit bedrag telt als inkomsten en verhoogt je belastbare inkomen.</p><p><strong>Percentage voor 2026:</strong> 0,35% van je WOZ-waarde</p><p><strong>Voorbeeld:</strong> Je huis is WOZ-waarde €400.000. Het eigenwoningforfait is 0,35% × €400.000 = €1.400 per jaar. Dit bedrag verhoogt je belastbaar inkomen.</p><h3>Eigenwoningforfait vs. Hypotheekrenteaftrek</h3><p>Het netto voordeel van kopen hangt af van beide:</p><ul>
+</ul><div class="inline-cta"><div class="inline-cta__text"><h4>Zelf doorrekenen met hypotheekrenteaftrek</h4><p>De calculator neemt hypotheekrenteaftrek en eigenwoningforfait mee in de vergelijking huren vs. kopen. De uitkomst is een indicatie, geen advies.</p></div><a class="btn btn--primary" href="../index.html#calculator">Naar de calculator →</a></div><h2 id="eigenwoningforfait-de-andere-kant-van-het-verhaal">Eigenwoningforfait: de andere kant van het verhaal</h2><p>Hypotheekrenteaftrek is niet gratis. Tegenover dit voordeel staat het <strong>eigenwoningforfait</strong>. Dit is een bedrag dat je jaarlijks als "inkomsten" moet aangerekend krijgen.</p><h3>Wat is eigenwoningforfait?</h3><p><strong>Eigenwoningforfait</strong> is een fictieve huurwaarde die de belastingdienst berekent op basis van de WOZ-waarde van je huis. Dit bedrag telt als inkomsten en verhoogt je belastbare inkomen.</p><p><strong>Percentage voor 2026:</strong> 0,35% van je WOZ-waarde</p><p><strong>Voorbeeld:</strong> Je huis is WOZ-waarde €400.000. Het eigenwoningforfait is 0,35% × €400.000 = €1.400 per jaar. Dit bedrag verhoogt je belastbaar inkomen.</p><h3>Eigenwoningforfait vs. Hypotheekrenteaftrek</h3><p>Het netto voordeel van kopen hangt af van beide:</p><ul>
 <li><strong>Voordeel:</strong> Hypotheekrenteaftrek (rente × belastingschijf)</li>
 <li><strong>Nadeel:</strong> Eigenwoningforfait (WOZ × 0,35% × belastingschijf)</li>
-</ul><p>Als je hypotheek groot is en je rente hoog, wint de hypotheekrenteaftrek. Maar als je hypotheek klein is of je huis zeer waardevol, kan eigenwoningforfait groter zijn.</p><h2 id="voordelen-van-hypotheekrenteaftrek">Voordelen van Hypotheekrenteaftrek</h2><h3>1. Aanzienlijke Belastingbesparing</h3><p>Voor veel gezinnen bedraagt de jaarlijkse besparing €2.000-€6.000. Dat is echt geld dat je in je zak houdt.</p><h3>2. Maakt Kopen Aantrekkelijker</h3><p>Dankzij hypotheekrenteaftrek zijn je maandelijkse kosten voor kopen vaak lager dan voor huren—vooral in de eerste jaren.</p><h3>3. Werkt Samen met Aftrekposten</h3><p>Je kunt hypotheekrenteaftrek combineren met andere aftrekposten zoals studieschuld-rente en kindertoeslagen.</p><h3>4. Vastgesteld Voordeel</h3><p>Je rente is continu voor meerdere jaren (bij vaste rente), dus je weet zeker hoeveel je bespaart.</p><h2 id="nadelen-en-beperkingen">Nadelen en Beperkingen</h2><h3>1. Eigenwoningforfait Verkleint Voordeel</h3><p>Het eigenwoningforfait werkt in de tegengestelde richting, dus je werkelijke voordeel is kleiner dan alleen de hypotheekrenteaftrek.</p><h3>2. Geldt Niet voor Aflossing</h3><p>Je aflossing is niet aftrekbaar. Dit betekent dat in de tweede helft van je hypotheek, als je vooral aflost, het voordeel afneemt.</p><h3>3. Afhankelijk van Belastingschijf</h3><p>Hoe hoger je inkomen, hoe meer voordeel. Mensen met laag inkomen hebben veel minder voordeel.</p><h3>4. Veranderingen in Regelgeving</h3><p>De overheid werkt aan versobering van hypotheekrenteaftrek (geleidelijk lager percentage). Dit voordeel wordt langzaam kleiner.</p><h2 id="veelgemaakte-fouten-bij-hypotheekrenteaftrek">Veelgemaakte Fouten bij Hypotheekrenteaftrek</h2><h3>Fout 1: Aflossing Aftrekken</h3><p>Je mag ALLEEN rente aftrekken, niet aflossing. Dit is de meest gemaakte fout.</p><h3>Fout 2: Vergeten het Eigenwoningforfait Mee te Tellen</h3><p>Veel mensen tellen alleen het voordeel, niet het eigenwoningforfait. Dit geeft een onrealistisch beeld.</p><h3>Fout 3: Aannemen dat het voor Altijd Hetzelfde Blijft</h3><p>Je hypotheekrente verandert na afloop (herfinanciering), en het percentage kan door de regering worden verlaagd.</p><h3>Fout 4: Niet op Belastingaangifte Vermelden</h3><p>Je moet hypotheekrenteaftrek <strong>zelf invoeren</strong> op je belastingaangifte. Als je het vergeet, krijg je het voordeel niet!</p><h2 id="hoe-claim-je-hypotheekrenteaftrek">Hoe Claim je Hypotheekrenteaftrek?</h2><h3>Stap 1: Verzamel Je Documenten</h3><p>Je hebt nodig:</p><ul>
+</ul><p>Als je hypotheek groot is en je rente hoog, wint de hypotheekrenteaftrek. Maar als je hypotheek klein is of je huis zeer waardevol, kan eigenwoningforfait groter zijn.</p><h2 id="voordelen-van-hypotheekrenteaftrek">Voordelen van hypotheekrenteaftrek</h2><h3>1. Aanzienlijke belastingbesparing</h3><p>Voor veel gezinnen bedraagt de jaarlijkse besparing €2.000-€6.000. Dat is echt geld dat je in je zak houdt.</p><h3>2. Maakt kopen aantrekkelijker</h3><p>Dankzij hypotheekrenteaftrek zijn je maandelijkse kosten voor kopen vaak lager dan voor huren—vooral in de eerste jaren.</p><h3>3. Werkt samen met aftrekposten</h3><p>Je kunt hypotheekrenteaftrek combineren met andere aftrekposten zoals studieschuld-rente en kindertoeslagen.</p><h3>4. Vastgesteld voordeel</h3><p>Je rente is continu voor meerdere jaren (bij vaste rente), dus je weet zeker hoeveel je bespaart.</p><h2 id="nadelen-en-beperkingen">Nadelen en beperkingen</h2><h3>1. Eigenwoningforfait verkleint voordeel</h3><p>Het eigenwoningforfait werkt in de tegengestelde richting, dus je werkelijke voordeel is kleiner dan alleen de hypotheekrenteaftrek.</p><h3>2. Geldt niet voor aflossing</h3><p>Je aflossing is niet aftrekbaar. Dit betekent dat in de tweede helft van je hypotheek, als je vooral aflost, het voordeel afneemt.</p><h3>3. Afhankelijk van belastingschijf</h3><p>Hoe hoger je inkomen, hoe meer voordeel. Mensen met laag inkomen hebben veel minder voordeel.</p><h3>4. Veranderingen in regelgeving</h3><p>De overheid werkt aan versobering van hypotheekrenteaftrek (geleidelijk lager percentage). Dit voordeel wordt langzaam kleiner.</p><h2 id="veelgemaakte-fouten-bij-hypotheekrenteaftrek">Veelgemaakte fouten bij hypotheekrenteaftrek</h2><h3>Fout 1: aflossing aftrekken</h3><p>Je mag ALLEEN rente aftrekken, niet aflossing. Dit is de meest gemaakte fout.</p><h3>Fout 2: vergeten het eigenwoningforfait mee te tellen</h3><p>Veel mensen tellen alleen het voordeel, niet het eigenwoningforfait. Dit geeft een onrealistisch beeld.</p><h3>Fout 3: aannemen dat het voor altijd hetzelfde blijft</h3><p>Je hypotheekrente verandert na afloop (herfinanciering), en het percentage kan door de regering worden verlaagd.</p><h3>Fout 4: niet op belastingaangifte vermelden</h3><p>Je moet hypotheekrenteaftrek <strong>zelf invoeren</strong> op je belastingaangifte. Als je het vergeet, krijg je het voordeel niet!</p><h2 id="hoe-claim-je-hypotheekrenteaftrek">Hoe claim je hypotheekrenteaftrek?</h2><h3>Stap 1: verzamel je documenten</h3><p>Je hebt nodig:</p><ul>
 <li>Je hypotheekakkoord (voor de schuld en rente)</li>
 <li>Je jaarlijkse renteopgave van de bank</li>
 <li>Je WOZ-beschikking (voor eigenwoningforfait)</li>
-</ul><h3>Stap 2: Vul je Aangifte In</h3>Op belastingaangifte:
+</ul><h3>Stap 2: vul je aangifte in</h3>Op belastingaangifte:
 
                 <ul>
 <li>Voer je hypotheekrente in onder "Aftrekposten"</li>
 <li>Voer je eigenwoningforfait in onder "Inkomsten"</li>
 </ul>
-<h3>Stap 3: Controleer</h3>
+<h3>Stap 3: controleer</h3>
 <p>De Belastingdienst checkt automatisch. Zorg dat je bedragen kloppen met je bankafschriften.</p>
-<h2 id="faq-veel-gestelde-vragen-over-hypotheekrenteaftrek">FAQ: Veel Gestelde Vragen over Hypotheekrenteaftrek</h2>
+<h2 id="faq-veel-gestelde-vragen-over-hypotheekrenteaftrek">FAQ: veelgestelde vragen over hypotheekrenteaftrek</h2>
 <div class="callout callout--orange"><p><strong>Kan ik hypotheekrenteaftrek krijgen voor een verhuurde woning?</strong></p><p>Nee. Hypotheekrenteaftrek is alleen voor je eigen woning. Voor verhuurde eigendommen valt je rente onder Box 3 (rendement inzake roerende goederen), met andere regels.</p></div>
 <div class="callout callout--orange"><p><strong>Wat als ik mijn hypotheek vervroegd aflost?</strong></p><p>Je kan je hypotheek altijd vervroegd aflossen. Je zult minder rente betalen (goed voor je portemonnee), maar ook minder hypotheekrenteaftrek krijgen (minder goed voor belasting).</p></div>
 <div class="callout callout--orange"><p><strong>Kan ik hypotheekrenteaftrek krijgen als ik part-owner ben?</strong></p><p>Ja, maar alleen voor je aandeel. Als je huis samen met iemand anders in eigendom is, mag je alleen de rente aftrekken voor jouw deel van de schuld.</p></div>
 <div class="callout callout--orange"><p><strong>Wat gebeurt er met hypotheekrenteaftrek als ik ga verhuizen?</strong></p><p>Hypotheekrenteaftrek geldt alleen voor je hoofdwoning. Als je verhuist en je vorige huis verhuurt, kun je de rente niet meer aftrekken als hypotheekrenteaftrek (het wordt Box 3).</p></div>
-<h2 id="conclusie-is-hypotheekrenteaftrek-waard">Conclusie: Is Hypotheekrenteaftrek Waard?</h2>
+<h2 id="conclusie-is-hypotheekrenteaftrek-waard">Conclusie: is hypotheekrenteaftrek waard?</h2>
 <p>Hypotheekrenteaftrek is een significant voordeel voor huizenbezitters in Nederland—vooral voor mensen met hoger inkomen en grote hypotheken. Het kan je duizenden euro's per jaar besparen.</p>
 <p>Echter: het voordeel wordt kleiner door eigenwoningforfait, en het wordt langzaam afgebouwd door de regering. En het helpt alleen als je inderdaad rente betaalt (dus niet bij aflossing).</p>
 <p>Het blijft echter een van de redenen waarom kopen in Nederland aantrekkelijker is dan huren—vooral voor gezinnen in stabiliteit.</p>
 <p><strong>Volgende stap:</strong> Gebruik onze calculator om exact uit te rekenen hoeveel hypotheekrenteaftrek je bespaard, en vergelijk dit met de kosten van huren.</p>
-<div class="inline-cta"><div class="inline-cta__text"><h4>Klaar om je Voordeel te Berekenen?</h4><p>Onze gratis calculator rekent hypotheekrenteaftrek en eigenwoningforfait automatisch uit.</p></div><a class="btn btn--primary" href="../index.html#calculator">Probeer Calculator →</a></div>
-</div><div class="callout" style="margin-top: var(--space-2xl);"><p>📚 <strong>Lees ook:</strong></p><ul style="margin-top: var(--space-sm); padding-left: var(--space-lg);"><li><a href="eigenwoningforfait.html">Eigenwoningforfait — wat betaalt u echt in 2026?</a></li><li><a href="rentetarieven.html">Hypotheek rentetarieven 2026 — vaste of variabele rente?</a></li><li><a href="transactiekosten.html">Transactiekosten huis kopen — alle posten op een rij</a></li></ul></div><div class="sources"><h4>Bronnen</h4><ol><li>Belastingdienst, hypotheekrente en eigen woning — <a href="https://www.belastingdienst.nl/" rel="noopener" target="_blank">belastingdienst.nl</a></li><li>Rijksoverheid, belastingregels rond de eigen woning — <a href="https://www.rijksoverheid.nl/" rel="noopener" target="_blank">rijksoverheid.nl</a></li><li>Vereniging Eigen Huis, dossier hypotheekrenteaftrek — <a href="https://www.eigenhuis.nl/" rel="noopener" target="_blank">eigenhuis.nl</a></li></ol></div></main>
+<div class="inline-cta"><div class="inline-cta__text"><h4>Zelf doorrekenen</h4><p>Vul je eigen situatie in en bekijk hoe hypotheekrenteaftrek en eigenwoningforfait je netto woonlasten beïnvloeden.</p></div><a class="btn btn--primary" href="../index.html#calculator">Naar de calculator →</a></div>
+</div><div class="callout" style="margin-top: var(--space-2xl);"><p><strong>Lees ook:</strong></p><ul style="margin-top: var(--space-sm); padding-left: var(--space-lg);"><li><a href="eigenwoningforfait.html">Eigenwoningforfait — wat betaalt u echt in 2026?</a></li><li><a href="rentetarieven.html">Hypotheek rentetarieven 2026 — vaste of variabele rente?</a></li><li><a href="transactiekosten.html">Transactiekosten huis kopen — alle posten op een rij</a></li></ul></div><div class="sources"><h4>Bronnen</h4><ol><li>Belastingdienst, hypotheekrente en eigen woning — <a href="https://www.belastingdienst.nl/" rel="noopener" target="_blank">belastingdienst.nl</a></li><li>Rijksoverheid, belastingregels rond de eigen woning — <a href="https://www.rijksoverheid.nl/" rel="noopener" target="_blank">rijksoverheid.nl</a></li><li>Vereniging Eigen Huis, dossier hypotheekrenteaftrek — <a href="https://www.eigenhuis.nl/" rel="noopener" target="_blank">eigenhuis.nl</a></li></ol></div></main>
 <!-- end main -->
 <!-- ── SIDEBAR ── -->
-<aside class="sidebar"><div class="sidebar-card"><div class="sidebar-card__head">Inhoudsopgave</div><div class="toc"><ul class="toc__list" id="toc-list"><li><a href="#wat-is-hypotheekrenteaftrek-precies">Wat is Hypotheekrenteaftrek Precies?</a></li><li><a href="#hypotheekrenteaftrek-in-2026-de-huidige-regels">Hypotheekrenteaftrek in 2026: De Huidige Regels</a></li><li><a href="#wanneer-is-hypotheekrenteaftrek-beter-dan-huren">Wanneer is Hypotheekrenteaftrek Beter dan Huren?</a></li><li><a href="#eigenwoningforfait-de-andere-kant-van-het-verhaal">Eigenwoningforfait: De Andere Kant van het Verhaal</a></li><li><a href="#voordelen-van-hypotheekrenteaftrek">Voordelen van Hypotheekrenteaftrek</a></li><li><a href="#nadelen-en-beperkingen">Nadelen en Beperkingen</a></li><li><a href="#veelgemaakte-fouten-bij-hypotheekrenteaftrek">Veelgemaakte Fouten bij Hypotheekrenteaftrek</a></li><li><a href="#hoe-claim-je-hypotheekrenteaftrek">Hoe Claim je Hypotheekrenteaftrek?</a></li><li><a href="#faq-veel-gestelde-vragen-over-hypotheekrenteaftrek">FAQ: Veel Gestelde Vragen over Hypotheekrenteaftrek</a></li><li><a href="#conclusie-is-hypotheekrenteaftrek-waard">Conclusie: Is Hypotheekrenteaftrek Waard?</a></li></ul></div></div><div class="sidebar-card"><div class="sidebar-card__head">Kerncijfers 2026</div><div class="sidebar-card__body"><div class="sidebar-stat"><div class="sidebar-stat__value mono">37,07%</div><div class="sidebar-stat__label">Max. aftrek</div><div class="sidebar-stat__sub">Volgens de uitleg in het artikel</div></div><div class="sidebar-stat"><div class="sidebar-stat__value mono">€ 5.180</div><div class="sidebar-stat__label">Belastingvoordeel</div><div class="sidebar-stat__sub">Bij € 14.000 rente en 37% schijf</div></div><div class="sidebar-stat"><div class="sidebar-stat__value mono">0,35%</div><div class="sidebar-stat__label">Eigenwoningforfait</div><div class="sidebar-stat__sub">Verkleint het netto voordeel</div></div></div></div><div class="sidebar-cta sidebar-cta-wrap"><div class="sidebar-cta__title">Huren of<br/>Kopen?</div><p class="sidebar-cta__sub">Vergelijk renteaftrek, eigenwoningforfait en totale woonlasten in onze calculator.</p><a class="btn btn--primary" href="../index.html#calculator">Start Calculator ↗</a></div></aside>
+<aside class="sidebar"><div class="sidebar-card"><div class="sidebar-card__head">Inhoudsopgave</div><div class="toc"><ul class="toc__list" id="toc-list"><li><a href="#wat-is-hypotheekrenteaftrek-precies">Wat is hypotheekrenteaftrek precies?</a></li><li><a href="#hypotheekrenteaftrek-in-2026-de-huidige-regels">Hypotheekrenteaftrek in 2026: de huidige regels</a></li><li><a href="#wanneer-is-hypotheekrenteaftrek-beter-dan-huren">Wanneer is hypotheekrenteaftrek beter dan huren?</a></li><li><a href="#eigenwoningforfait-de-andere-kant-van-het-verhaal">Eigenwoningforfait: de andere kant van het verhaal</a></li><li><a href="#voordelen-van-hypotheekrenteaftrek">Voordelen van hypotheekrenteaftrek</a></li><li><a href="#nadelen-en-beperkingen">Nadelen en beperkingen</a></li><li><a href="#veelgemaakte-fouten-bij-hypotheekrenteaftrek">Veelgemaakte fouten bij hypotheekrenteaftrek</a></li><li><a href="#hoe-claim-je-hypotheekrenteaftrek">Hoe claim je hypotheekrenteaftrek?</a></li><li><a href="#faq-veel-gestelde-vragen-over-hypotheekrenteaftrek">FAQ: veelgestelde vragen over hypotheekrenteaftrek</a></li><li><a href="#conclusie-is-hypotheekrenteaftrek-waard">Conclusie: is hypotheekrenteaftrek waard?</a></li></ul></div></div><div class="sidebar-card"><div class="sidebar-card__head">Kerncijfers 2026</div><div class="sidebar-card__body"><div class="sidebar-stat"><div class="sidebar-stat__value mono">37,56%</div><div class="sidebar-stat__label">Max. aftrek</div><div class="sidebar-stat__sub">Volgens de uitleg in het artikel</div></div><div class="sidebar-stat"><div class="sidebar-stat__value mono">€ 5.180</div><div class="sidebar-stat__label">Belastingvoordeel</div><div class="sidebar-stat__sub">Bij € 14.000 rente en 37% schijf</div></div><div class="sidebar-stat"><div class="sidebar-stat__value mono">0,35%</div><div class="sidebar-stat__label">Eigenwoningforfait</div><div class="sidebar-stat__sub">Verkleint het netto voordeel</div></div></div></div><div class="sidebar-cta sidebar-cta-wrap"><div class="sidebar-cta__title">Huren of<br/>Kopen?</div><p class="sidebar-cta__sub">Vergelijk renteaftrek, eigenwoningforfait en totale woonlasten in onze calculator.</p><a class="btn btn--primary" href="../index.html#calculator">Start calculator ↗</a></div></aside>
 </div>
 </div>
 <!-- ══════════════════════════════════════
@@ -659,7 +667,7 @@
     ══════════════════════════════════════ -->
 <div class="disclaimer">
 <div class="container">
-<p>⚠️ <strong>Disclaimer:</strong> De informatie op HuurOfKoopCheck.nl is informatief van aard en geen fiscaal of financieel advies. Belastingtarieven en -wetgeving kunnen jaarlijks wijzigen. Raadpleeg de Belastingdienst of een erkend adviseur voor uw persoonlijke situatie.</p>
+<p><strong>Disclaimer:</strong> De informatie op HuurOfKoopCheck.nl is informatief van aard en geen fiscaal of financieel advies. Belastingtarieven en -wetgeving kunnen jaarlijks wijzigen. Raadpleeg de Belastingdienst of een erkend adviseur voor uw persoonlijke situatie.</p>
 </div>
 </div>
 <!-- ══════════════════════════════════════
@@ -679,8 +687,8 @@
 <li><a href="../index.html#features">Kenmerken</a></li>
 <li><a href="../index.html#faq">FAQ</a></li>
 <li><a href="index.html">Blog</a></li>
-<li><a href="../contact.html">Expert Advies</a></li>
-</ul>
+<li><a href="../contact.html">Expert advies</a></li><li><a href="../over.html">Over</a></li>
+                </ul>
 </div>
 <div class="footer-col">
 <h4>Bronnen</h4>
