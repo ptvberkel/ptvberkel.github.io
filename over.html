@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KNQ83F3G');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Over HuurOfKoopCheck.nl — wie heeft deze tool gemaakt en waarom">
+    <meta name="author" content="HuurOfKoopCheck.nl">
+    <title>Over - HuurOfKoopCheck.nl</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,700;1,9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ═══════════════════════════════════════════
+           TOKENS
+        ═══════════════════════════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --ink:           #0F172A;
+            --ink-light:     #475569;
+            --ink-muted:     #94A3B8;
+            --brand:         #1D4ED8;
+            --brand-dark:    #1E3A8A;
+            --brand-light:   #EFF6FF;
+            --bg:            #F8F7F4;
+            --bg-soft:       #F1EFE9;
+            --card:          #FFFFFF;
+            --border:        #E5E7EB;
+            --border-soft:   #F0EDE8;
+            --warn:          #D97706;
+            --warn-light:    #FFFBEB;
+            --font-body:     'Inter', system-ui, sans-serif;
+            --font-display:  'Fraunces', Georgia, serif;
+            --font-mono:     'JetBrains Mono', monospace;
+            --r-sm: 4px; --r-md: 8px; --r-lg: 12px; --r-xl: 16px;
+            --shadow-md: 0 4px 16px rgba(15,23,42,0.08), 0 2px 6px rgba(15,23,42,0.04);
+            --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
+            --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════════════════════════════════
+           UTILITY
+        ═══════════════════════════════════════════ */
+        .container         { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-lg); }
+        .container--narrow { max-width: 960px;  margin: 0 auto; padding: 0 var(--space-lg); }
+        .container--text   { max-width: 720px;  margin: 0 auto; padding: 0 var(--space-lg); }
+        .kicker {
+            display: inline-block; font-size: 11px; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--ink-muted); margin-bottom: var(--space-sm);
+        }
+
+        /* ═══════════════════════════════════════════
+           BUTTONS
+        ═══════════════════════════════════════════ */
+        .btn {
+            display: inline-flex; align-items: center; gap: var(--space-sm);
+            padding: 11px 22px; border-radius: var(--r-md); border: none;
+            font-family: var(--font-body); font-size: 14px; font-weight: 600;
+            cursor: pointer; text-decoration: none; transition: all 0.18s ease;
+        }
+        .btn--primary { background: var(--brand); color: #fff; }
+        .btn--primary:hover { background: var(--brand-dark); box-shadow: 0 4px 16px rgba(29,78,216,0.35); transform: translateY(-1px); }
+        .btn--outline { background: transparent; color: var(--brand); border: 1.5px solid var(--brand); }
+        .btn--outline:hover { background: var(--brand-light); }
+
+        /* ═══════════════════════════════════════════
+           NAV
+        ═══════════════════════════════════════════ */
+        .nav {
+            background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px);
+        }
+        .nav__inner { display: flex; justify-content: space-between; align-items: center; height: 68px; }
+        .nav__logo { display: flex; align-items: center; gap: var(--space-sm); text-decoration: none; }
+        .nav__logo-img { height: 52px; width: auto; }
+        .nav__links { display: flex; list-style: none; gap: var(--space-xl); align-items: center; }
+        .nav__links a { text-decoration: none; color: var(--ink-light); font-size: 14px; font-weight: 500; transition: color 0.15s; }
+        .nav__links a:hover { color: var(--brand); }
+
+        /* ═══════════════════════════════════════════
+           HERO / PAGE HEADER
+        ═══════════════════════════════════════════ */
+        .page-hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 45%, #1D4ED8 100%);
+            color: #fff;
+            padding: 56px var(--space-lg) 64px;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none;
+            background: radial-gradient(ellipse 60% 60% at 10% 100%, rgba(29,78,216,0.30) 0%, transparent 70%);
+        }
+        .page-hero__content { position: relative; z-index: 1; }
+        .page-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.8px;
+            margin-bottom: var(--space-md);
+        }
+        .page-hero p {
+            font-size: 16px; line-height: 1.75;
+            color: rgba(255,255,255,0.78);
+            max-width: 560px;
+        }
+
+        /* ═══════════════════════════════════════════
+           CONTENT
+        ═══════════════════════════════════════════ */
+        .about-body {
+            padding: var(--space-3xl) 0;
+        }
+
+        .prose {
+            font-size: 16px;
+            line-height: 1.85;
+            color: var(--ink-light);
+        }
+
+        .prose h2 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--ink);
+            letter-spacing: -0.3px;
+            margin: var(--space-2xl) 0 var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--border-soft);
+        }
+        .prose h2:first-child { margin-top: 0; }
+
+        .prose p { margin-bottom: var(--space-md); }
+        .prose strong { color: var(--ink); font-weight: 700; }
+        .prose a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+        .prose a:hover { color: var(--brand-dark); }
+
+        .callout {
+            background: var(--warn-light);
+            border-left: 3px solid var(--warn);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: 0 var(--r-md) var(--r-md) 0;
+            margin: var(--space-lg) 0;
+            font-size: 14px;
+            color: var(--ink);
+        }
+        .callout strong { color: var(--warn); }
+
+        /* ═══════════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════════ */
+        footer { background: var(--ink); color: rgba(255,255,255,0.70); padding: var(--space-3xl) 0 var(--space-xl); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-2xl); margin-bottom: var(--space-2xl); }
+        .footer-brand__logo { font-family: var(--font-display); font-size: 18px; font-weight: 900; color: #fff; }
+        .footer-brand p { font-size: 13px; line-height: 1.75; color: rgba(255,255,255,0.55); margin-top: var(--space-md); max-width: 300px; }
+        .footer-col h4 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.40); margin-bottom: var(--space-md); }
+        .footer-col ul { list-style: none; }
+        .footer-col a { display: block; color: rgba(255,255,255,0.60); text-decoration: none; font-size: 13px; line-height: 2.2; transition: color 0.15s; }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: var(--space-lg); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-md); }
+        .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); }
+        .footer-bottom a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 12px; }
+        .footer-bottom a:hover { color: rgba(255,255,255,0.75); }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav__links { display: none; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KNQ83F3G"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- ══════════════════════════════════════
+         NAV
+    ══════════════════════════════════════ -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav__inner">
+                <a href="index.html" class="nav__logo">
+                    <img src="../Huur-of-koop-check-logo.png" alt="HuurOfKoopCheck.nl" class="nav__logo-img">
+                </a>
+                <ul class="nav__links">
+                        <li><a href="methodologie.html">Methodologie</a></li>
+                        <li><a href="blog/index.html">Blog</a></li>
+                        <li><a href="contact.html">Expert advies</a></li>
+                        <li><a href="over.html">Over</a></li>
+                </ul>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <a href="https://www.paypal.com/ncp/payment/BXCB3XFET46RC" target="_blank" rel="noopener" class="btn btn--outline" style="font-size:13px; padding: 9px 18px;">❤️ Steun dit project</a>
+                    <a href="index.html#calculator" class="btn btn--primary" style="font-size:13px; padding: 9px 18px;">Start calculator ↓</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════
+         PAGE HERO
+    ══════════════════════════════════════ -->
+    <section class="page-hero">
+        <div class="container--text">
+            <div class="page-hero__content">
+                <h1>Over dit project</h1>
+                <p>Wie zit erachter, waarom bestaat deze tool, en wat je moet weten over de beperkingen</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CONTENT
+    ══════════════════════════════════════ -->
+    <div class="container--text">
+        <div class="about-body">
+            <div class="prose">
+
+                <h2 id="wie">Over de maker</h2>
+                <p><strong>Pieter van Berkel</strong> &mdash; MSc-student aan de TU Delft met ervaring als Platform Development Manager bij <a href="https://www.linkedin.com/in/pieter-van-berkel-nl" target="_blank" rel="noopener">Quriocare</a>. Ik combineer een achtergrond in technologie met een persoonlijke interesse in de Nederlandse woningmarkt.</p>
+
+                <h2 id="waarom">Waarom deze tool?</h2>
+                <p>HuurOfKoopCheck.nl is ontstaan uit een persoonlijke situatie: als iemand die in Amsterdam samenwoont en de mogelijkheden van co-ownership onderzocht, miste ik een transparante, onafhankelijke tool die de keuze tussen huren en kopen eerlijk doorrekent met de juiste Nederlandse belastingregels. Bestaande tools waren vaak te simplistisch, commercieel gekleurd, of hielden geen rekening met specifieke fiscale constructies zoals de familiehypotheek of gedeeld eigendom.</p>
+                <p>Dit project is gebouwd om die leemte te vullen: een gratis, open tool die je helpt de financiele gevolgen van huren versus kopen realistisch in te schatten.</p>
+
+                <h2 id="disclaimer">Belangrijk: geen financieel advies</h2>
+                <div class="callout">
+                    <strong>Let op:</strong> HuurOfKoopCheck.nl is een hobbyproject en geen financieel adviseur in de zin van de Wet financieel toezicht (Wft). De maker beschikt niet over een AFM-vergunning. Deze tool biedt educatieve berekeningen op basis van openbaar beschikbare belastingtarieven en formules, maar geeft geen persoonlijk financieel, fiscaal of hypotheekadvies. Voor een officieel advies raadpleeg een onafhankelijke adviseur met AFM-vergunning (bijv. via <a href="https://www.adfiz.nl" target="_blank" rel="noopener">Adfiz.nl</a> of <a href="https://www.kifid.nl" target="_blank" rel="noopener">KiFiD.nl</a>).
+                </div>
+
+                <h2 id="contact">Contact</h2>
+                <p>Vragen, opmerkingen of fouten gevonden? Stuur een e-mail naar <strong><a href="mailto:info@huurofkoopcheck.nl">info@huurofkoopcheck.nl</a></strong>.</p>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-brand__logo">HuurOfKoopCheck.nl</div>
+                    <p>Een gratis, onafhankelijke calculator die huizenkopers en huurders helpt een weloverwogen financiele beslissing te nemen. Gebaseerd op actuele Nederlandse belastingwetgeving.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigatie</h4>
+                    <ul>
+                        <li><a href="index.html#calculator">Calculator</a></li>
+                        <li><a href="methodologie.html">Methodologie</a></li>
+                        <li><a href="blog/index.html">Blog</a></li>
+                        <li><a href="contact.html">Expert advies</a></li>
+                        <li><a href="over.html">Over</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Bronnen</h4>
+                    <ul>
+                        <li><a href="https://www.belastingdienst.nl/" target="_blank" rel="noopener">Belastingdienst</a></li>
+                        <li><a href="https://www.cbs.nl/" target="_blank" rel="noopener">CBS</a></li>
+                        <li><a href="https://www.nvm.nl/" target="_blank" rel="noopener">NVM</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Juridisch</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacyverklaring</a></li>
+                        <li><a href="mailto:info@huurofkoopcheck.nl">Contact</a></li>
+                        <li><a href="https://www.paypal.com/ncp/payment/BXCB3XFET46RC" target="_blank" rel="noopener">Steun dit project</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HuurOfKoopCheck.nl &mdash; Alle rechten voorbehouden.</p>
+                <a href="privacy.html">Privacyverklaring</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
