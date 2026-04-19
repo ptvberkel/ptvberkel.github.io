@@ -20,6 +20,14 @@
 -->
 <html lang="nl">
 <head>
+     <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KNQ83F3G');</script>
+    <!-- End Google Tag Manager -->
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -234,8 +242,8 @@
 
         .prose strong { color: var(--ink); font-weight: 700; }
 
-        .prose a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
-        .prose a:hover { color: var(--brand-dark); }
+        .prose a:not(.btn) { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+        .prose a:not(.btn):hover { color: var(--brand-dark); }
 
         .prose ul, .prose ol {
             padding-left: var(--space-xl);
@@ -531,14 +539,14 @@
                     <img src="../Huur-of-koop-check-logo.png" alt="HuurOfKoopCheck.nl" class="nav__logo-img">
                 </a>
                 <ul class="nav__links">
-                    <li><a href="../index.html#calculator">Calculator</a></li>
-                    <li><a href="../index.html#features">Kenmerken</a></li>
-                    <li><a href="../index.html#faq">FAQ</a></li>
                     <li><a href="index.html">Blog</a></li>
-                    <li><a href="../contact.html">Expert Advies</a></li>
+                    <li><a href="../contact.html">Expert advies</a></li>                        <li><a href="../over.html">Over</a></li>
                     <li><a href="../privacy.html">Privacy</a></li>
                 </ul>
-                <a href="../index.html#calculator" class="btn btn--primary" style="font-size:13px; padding: 9px 18px;">Calculator ↗</a>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <a href="https://www.paypal.com/ncp/payment/BXCB3XFET46RC" target="_blank" rel="noopener" class="btn btn--outline" style="font-size:13px; padding: 9px 18px;">❤️ Steun dit project</a>
+                    <a href="../index.html#calculator" class="btn btn--primary" style="font-size:13px; padding: 9px 18px;">Start calculator ↓</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -672,10 +680,10 @@
 
                     <div class="inline-cta">
     <div class="inline-cta__text">
-        <h4>Benieuwd wat in uw situatie slimmer is?</h4>
-        <p>Gebruik de Huur vs Koop-check en vergelijk direct uw woonlasten, belastingen en fiscale voordelen.</p>
+        <h4>Zelf doorrekenen met huurverhoging</h4>
+        <p>De calculator houdt rekening met jaarlijkse huurverhogingen en vergelijkt het met de kostenontwikkeling bij kopen.</p>
     </div>
-    <a href="../index.html#calculator" class="btn btn--primary">Open Calculator ↗</a>
+    <a href="../index.html#calculator" class="btn btn--primary">Naar de calculator →</a>
 </div>
 
                     <h2 id="tips-om-uw-huurkosten-in-de-hand-te-houden">Tips om uw huurkosten in de hand te houden</h2>
@@ -697,7 +705,7 @@
                 <!-- ── INTERNAL LINKS ── -->
                 <!-- ← REPLACE 10: related/internal links -->
                 <div class="callout" style="margin-top: var(--space-2xl);">
-                    <p>📚 <strong>Lees ook:</strong></p>
+                    <p><strong>Lees ook:</strong></p>
                     <ul style="margin-top: var(--space-sm); padding-left: var(--space-lg);">
                         <li>Bekijk ook onze gids over <strong><a href="huurtoeslag-2026.html">huurtoeslag 2026</a></strong> voor informatie over wie recht heeft op huurtoeslag en hoe u dit aanvraagt.</li>
                         <li>Lees ons artikel <strong><a href="voordelen-nadelen-huren-kopen.html">voordelen en nadelen van huren versus kopen</a></strong> om alle voor- en nadelen op een rij te zetten.</li>
@@ -764,7 +772,7 @@
                 <div class="sidebar-cta sidebar-cta-wrap">
                     <div class="sidebar-cta__title">Huren of<br>Kopen?</div>
                     <p class="sidebar-cta__sub">Vergelijk direct huren en kopen op basis van woonlasten, belastingen en fiscale voordelen in onze gratis calculator.</p>
-                    <a href="../index.html#calculator" class="btn btn--primary">Start Calculator ↗</a>
+                    <a href="../index.html#calculator" class="btn btn--primary">Start calculator ↗</a>
                 </div>
 
             </aside>
@@ -809,7 +817,7 @@
     ══════════════════════════════════════ -->
     <div class="disclaimer">
         <div class="container">
-            <p>⚠️ <strong>Disclaimer:</strong> De informatie op HuurOfKoopCheck.nl is informatief van aard en geen fiscaal of financieel advies. Belastingtarieven en -wetgeving kunnen jaarlijks wijzigen. Raadpleeg de Belastingdienst of een erkend adviseur voor uw persoonlijke situatie.</p>
+            <p><strong>Disclaimer:</strong> De informatie op HuurOfKoopCheck.nl is informatief van aard en geen fiscaal of financieel advies. Belastingtarieven en -wetgeving kunnen jaarlijks wijzigen. Raadpleeg de Belastingdienst of een erkend adviseur voor uw persoonlijke situatie.</p>
         </div>
     </div>
 
@@ -830,8 +838,8 @@
                         <li><a href="../index.html#features">Kenmerken</a></li>
                         <li><a href="../index.html#faq">FAQ</a></li>
                         <li><a href="index.html">Blog</a></li>
-                        <li><a href="../contact.html">Expert Advies</a></li>
-                    </ul>
+                        <li><a href="../contact.html">Expert advies</a></li>                    <li><a href="../over.html">Over</a></li>
+                </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Bronnen</h4>
