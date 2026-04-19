@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Expert advies van gekwalificeerde hypotheekadviseurs — gratis en zonder verplichtingen">
     <meta name="author" content="HuurOfKoopCheck.nl">
-    <title>Expert Advies - HuurOfKoopCheck.nl</title>
+    <title>Expert advies - HuurOfKoopCheck.nl</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,9 +81,13 @@
             font-family: var(--font-body); font-size: 14px; font-weight: 600;
             cursor: pointer; text-decoration: none; transition: all 0.18s ease;
         }
-        .btn--primary { background: var(--brand); color: #fff; width: 100%; justify-content: center; }
+        .btn--primary { background: var(--brand); color: #fff; }
+        .btn--outline { background: transparent; color: var(--brand); border: 1.5px solid var(--brand); }
+        .btn--outline:hover { background: var(--brand-light); }
         .btn--primary:hover { background: var(--brand-dark); box-shadow: 0 4px 16px rgba(29,78,216,0.35); transform: translateY(-1px); }
         .btn--primary:disabled { background: #999; cursor: not-allowed; transform: none; }
+
+        .form-section .btn--primary { width: 100%; justify-content: center; }
 
         /* ═══════════════════════════════════════════
            NAV
@@ -439,14 +443,14 @@
                     <img src="../Huur-of-koop-check-logo.png" alt="HuurOfKoopCheck.nl" class="nav__logo-img">
                 </a>
                 <ul class="nav__links">
-                        <li><a href="#calculator">Calculator</a></li>
                         <li><a href="methodologie.html">Methodologie</a></li>
                         <li><a href="blog/index.html">Blog</a></li>
-                        <li><a href="contact.html">Expert Advies</a></li>
+                        <li><a href="contact.html">Expert advies</a></li>
+                        <li><a href="over.html">Over</a></li>
                 </ul>
                 <div style="display:flex; align-items:center; gap:10px;">
                     <a href="https://www.paypal.com/ncp/payment/BXCB3XFET46RC" target="_blank" rel="noopener" class="btn btn--outline" style="font-size:13px; padding: 9px 18px;">❤️ Steun dit project</a>
-                    <a href="index.html#calculator" class="btn btn--primary" style="font-size:13px; padding: 9px 18px;">Start Calculator ↓</a>
+                    <a href="index.html#calculator" class="btn btn--primary" style="font-size:13px; padding: 9px 18px;">Start calculator ↓</a>
                 </div>
             </div>
         </div>
@@ -457,8 +461,8 @@
     ══════════════════════════════════════ -->
     <section class="page-hero">
         <div class="page-hero__content">
-            <h1>Expert Advies van Hypotheekadviseurs</h1>
-            <p>Ontvang persoonlijke begeleiding van gekwalificeerde professionals. Gratis en zonder verplichtingen.</p>
+            <h1>Onafhankelijk hypotheekadvies zoeken</h1>
+            <p>HuurOfKoopCheck.nl geeft zelf geen financieel advies. Op deze pagina vind je informatie over hoe je een gekwalificeerde, onafhankelijke hypotheekadviseur kunt vinden.</p>
         </div>
     </section>
 
@@ -470,25 +474,25 @@
 
             <!-- Why Expert Advice -->
             <div class="content-section">
-                <h2>Waarom expert advies?</h2>
-                <p>Hoewel de calculator je een uitstekend overzicht geeft van kopen versus huren, kan een gecertificeerde hypotheekadviseur je helpen met:</p>
+                <div style="background: #FFFBEB; border-left: 3px solid #D97706; padding: var(--space-md) var(--space-lg); border-radius: 0 var(--r-md) var(--r-md) 0; margin-bottom: var(--space-xl); font-size: 14px; color: var(--ink); line-height: 1.7;">
+                    <strong style="color: #D97706;">Belangrijk:</strong> HuurOfKoopCheck.nl is een hobbyproject en geeft zelf geen financieel, fiscaal of hypotheekadvies. De maker beschikt niet over een Wft-vergunning. Onderstaand formulier verbindt je met externe, onafhankelijke hypotheekadviseurs die wel over de juiste vergunningen beschikken.
+                </div>
+                <h2>Wanneer is professioneel advies zinvol?</h2>
+                <p>De calculator geeft een indicatie, maar een gecertificeerde hypotheekadviseur kan je helpen met zaken die de tool niet kan bieden:</p>
                 <ul class="benefit-list">
-                    <li>Persoonlijke situatie analyse (je specifieke financiën)</li>
-                    <li>Beste hypotheekopties voor jouw profiel</li>
-                    <li>Geldende rentetarieven en actuele voorwaarden</li>
-                    <li>Belastingvoordelen maximaliseren</li>
-                    <li>Hypotheekafsluitingsproces begeleiden</li>
-                    <li>Antwoorden op specifieke vragen</li>
+                    <li>Analyse van jouw persoonlijke financiele situatie en leencapaciteit</li>
+                    <li>Vergelijking van actuele hypotheekproducten en rentetarieven bij meerdere aanbieders</li>
+                    <li>Advies over fiscale constructies (familiehypotheek, NHG, starterslening)</li>
+                    <li>Begeleiding bij het volledige hypotheekproces</li>
                 </ul>
-                <p style="margin-top: var(--space-lg); font-style: italic; color: var(--ink-muted); font-size: 14px;">
-                    Onze partners zijn onafhankelijk, NRVT-geregistreerd en voldoen aan alle regelgeving.
-                </p>
+                <h2>Hoe vind je een betrouwbare adviseur?</h2>
+                <p>Controleer altijd of een adviseur geregistreerd staat in het <a href="https://www.afm.nl/nl-nl/sector/registers" target="_blank" rel="noopener" style="color: var(--brand); font-weight: 600;">AFM-register</a>. Onafhankelijke adviseurs vergelijken producten van meerdere aanbieders. Je kunt een adviseur vinden via <a href="https://www.adfiz.nl" target="_blank" rel="noopener" style="color: var(--brand); font-weight: 600;">Adfiz.nl</a> of bij klachten terecht bij <a href="https://www.kifid.nl" target="_blank" rel="noopener" style="color: var(--brand); font-weight: 600;">KiFiD.nl</a>.</p>
             </div>
 
             <!-- Contact Form -->
             <form id="contactForm" class="form-section">
-                <h3>Verbinding met Expert</h3>
-                <p>Vul het formulier in en ontvang binnen 24 uur contact van een adviseur</p>
+                <h3>Adviesaanvraag bij externe adviseur</h3>
+                <p>Via dit formulier kun je een aanvraag indienen bij onafhankelijke hypotheekadviseurs (niet bij HuurOfKoopCheck.nl zelf)</p>
 
                 <div class="success-message" id="successMessage">
                     ✓ Bedankt! Je aanvraag is verzonden. Je hoort snel van een adviseur.
@@ -543,7 +547,7 @@
                     </label>
                 </div>
 
-                <button type="submit" class="btn btn--primary">Ontvang Expert Advies</button>
+                <button type="submit" class="btn btn--primary">Verstuur aanvraag naar adviseur</button>
             </form>
 
         </div>
@@ -554,12 +558,12 @@
     ══════════════════════════════════════ -->
     <div class="container">
         <section class="faq-section">
-            <h2>Veelgestelde Vragen</h2>
+            <h2>Veelgestelde vragen</h2>
             <div class="faq-list">
                 <details class="faq-item">
                     <summary>Hoe verdienen de adviseurs geld?</summary>
                     <div class="faq-item__body">
-                        <p>Onze adviseurs ontvangen een vergoeding van kredietverstrekkers voor bemiddeling. Deze kosten zijn doorgaans verwerkt in het product. Wij informeren je transparant over onze beloning en werkwijze. Je bent vrij om een aanbod te accepteren. Onze adviseurs handelen volgens de regels en onder toezicht van de AFM.</p>
+                        <p>HuurOfKoopCheck.nl verdient hier niets aan en heeft geen commerciele relatie met hypotheekadviseurs. De adviseurs waar je mee in contact komt, ontvangen doorgaans een vergoeding van kredietverstrekkers voor bemiddeling. Deze kosten zijn verwerkt in het product. Je bent vrij om een aanbod te accepteren of af te wijzen.</p>
                     </div>
                 </details>
 
@@ -587,7 +591,7 @@
                 <details class="faq-item">
                     <summary>Wie zijn deze adviseurs?</summary>
                     <div class="faq-item__body">
-                        <p>Onze partners zijn NRVT-geregistreerd, onafhankelijk en aan alle regelgeving onderworpen. Ze zijn niet gebonden aan één bank.</p>
+                        <p>Het gaat om externe, onafhankelijke hypotheekadviseurs die niet aan HuurOfKoopCheck.nl verbonden zijn. Controleer altijd zelf of een adviseur geregistreerd staat in het <a href="https://www.afm.nl/nl-nl/sector/registers" target="_blank" rel="noopener">AFM-register</a> voordat je een adviesgesprek aangaat.</p>
                     </div>
                 </details>
 
@@ -608,7 +612,7 @@
                 <details class="faq-item">
                     <summary>Kan ik mijn adviseur vertrouwen als hij commissie krijgt?</summary>
                     <div class="faq-item__body">
-                        <p>Dit is een terechte vraag. Daarom zijn adviseurs wettelijk verplicht door de AFM om volledig onafhankelijk te werken, belangenconflicten te vermijden en in jouw belang te handelen — niet in hun eigen. De commissiestructuur is gelijk voor alle kredietverstrekkers, dus er is geen financieel voordeel om je naar één bank te sturen.</p>
+                        <p>Dit is een terechte vraag. Adviseurs zijn wettelijk verplicht door de AFM om in jouw belang te handelen en belangenconflicten te vermijden. De commissiestructuur is doorgaans gelijk voor alle kredietverstrekkers. Controleer zelf altijd de AFM-registratie van je adviseur via het <a href="https://www.afm.nl/nl-nl/sector/registers" target="_blank" rel="noopener">AFM-register</a>.</p>
                     </div>
                 </details>
             </div>
@@ -632,7 +636,8 @@
                         <li><a href="index.html#features">Kenmerken</a></li>
                         <li><a href="index.html#faq">FAQ</a></li>
                         <li><a href="blog/index.html">Blog</a></li>
-                        <li><a href="contact.html">Expert Advies</a></li>
+                        <li><a href="contact.html">Expert advies</a></li>
+                        <li><a href="over.html">Over</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
