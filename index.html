@@ -14,7 +14,7 @@
     <meta name="description" content="Huren of Kopen? - De Nederlandse calculator voor kopen vs huren. Vergelijk financiële resultaten met hypotheekrenteaftrek en eigenwoningforfait.">
     <meta name="keywords" content="huur, koop, calculator, hypotheek, eigenwoningforfait, Nederland">
     <meta name="author" content="HuurOfKoopCheck.nl">
-    <title>Huren of Kopen? — Nederlandse Huisvestings Calculator</title>
+    <title>Huren of Kopen? — Nederlandse huisvestingscalculator</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -376,58 +376,105 @@
             margin: 0 auto;
         }
 
-        .feature-grid {
+        /* ── Zo werkt het ── */
+        .steps {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: var(--space-lg);
+            margin-bottom: var(--space-2xl);
         }
 
-        .feature-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--r-lg);
-            padding: var(--space-xl) var(--space-lg);
-            position: relative;
-            overflow: hidden;
-            transition: box-shadow 0.2s, transform 0.2s;
+        .step {
+            display: flex;
+            gap: var(--space-md);
+            align-items: flex-start;
         }
-        .feature-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-3px);
-        }
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 100%;
+
+        .step__num {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             background: var(--brand);
-        }
-
-        .feature-card__icon {
-            width: 40px;
-            height: 40px;
-            background: var(--brand-light);
-            border-radius: var(--r-md);
+            color: #fff;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            margin-bottom: var(--space-md);
         }
 
-        .feature-card h3 {
-            font-size: 16px;
+        .step__body h3 {
+            font-size: 15px;
             font-weight: 700;
             color: var(--ink);
-            margin-bottom: var(--space-sm);
+            margin-bottom: 4px;
         }
 
-        .feature-card p {
+        .step__body p {
             font-size: 14px;
             color: var(--ink-light);
-            line-height: 1.7;
+            line-height: 1.65;
+        }
+
+        /* ── Wat wordt meegenomen ── */
+        .scenario-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+        }
+
+        .scenario-card {
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+        }
+
+        .scenario-card__head {
+            background: var(--bg-soft);
+            padding: var(--space-sm) var(--space-lg);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ink-light);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .scenario-card__list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .scenario-card__list li {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: flex-start;
+            padding: 9px var(--space-lg);
+            font-size: 14px;
+            color: var(--ink);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .scenario-card__list li:last-child {
+            border-bottom: none;
+        }
+
+        .scenario-card__list li::before {
+            content: "✓";
+            color: #16a34a;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .scenario-card__list .note {
+            font-size: 12px;
+            color: var(--ink-light);
+            display: block;
+            margin-top: 1px;
         }
 
         /* ═══════════════════════════════════════════
@@ -760,7 +807,7 @@
            RESPONSIVE
         ═══════════════════════════════════════════ */
         @media (max-width: 1024px) {
-            .feature-grid { grid-template-columns: repeat(2, 1fr); }
+            .steps { grid-template-columns: repeat(2, 1fr); }
             .stats-strip__grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
@@ -768,7 +815,7 @@
         @media (max-width: 768px) {
             .nav__links { display: none; }
             .hero { padding: 56px var(--space-lg) 48px; }
-            .feature-grid { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; } .scenario-cards { grid-template-columns: 1fr; }
             .blog-grid { grid-template-columns: 1fr; }
             .stats-strip__grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr; gap: var(--space-xl); }
@@ -801,14 +848,14 @@
                     <img src="../Huur-of-koop-check-logo.png" alt="HuurOfKoopCheck.nl" class="nav__logo-img">
                 </a>
                 <ul class="nav__links">
-                        <li><a href="#calculator">Calculator</a></li>
                         <li><a href="methodologie.html">Methodologie</a></li>
                         <li><a href="blog/index.html">Blog</a></li>
-                        <li><a href="contact.html">Expert Advies</a></li>
+                        <li><a href="contact.html">Expert advies</a></li>
+                        <li><a href="over.html">Over</a></li>
                 </ul>
                 <div style="display:flex; align-items:center; gap:10px;">
                     <a href="https://www.paypal.com/ncp/payment/BXCB3XFET46RC" target="_blank" rel="noopener" class="btn btn--outline" style="font-size:13px; padding: 9px 18px;">❤️ Steun dit project</a>
-                    <a href="#calculator" class="btn btn--primary" style="font-size:13px; padding: 9px 18px;">Start Calculator ↓</a>
+                    <a href="#calculator" class="btn btn--primary" style="font-size:13px; padding: 9px 18px;">Start calculator ↓</a>
                 </div>
             </div>
         </div>
@@ -819,15 +866,15 @@
     ══════════════════════════════════════ -->
     <section class="hero">
         <div class="hero__content">
-            <div class="hero__badge">🇳🇱 Nederlandse Huisvestings Calculator</div>
+            <div class="hero__badge">Gratis · Zonder advertenties · Nederlandse belastingregels 2026</div>
             <h1 class="hero__title">
                 Huren <em>of</em> Kopen?
             </h1>
             <p class="hero__sub">
-                Vergelijk de financiële gevolgen van kopen versus huren — met ingebouwde Nederlandse belastingregels: hypotheekrenteaftrek, eigenwoningforfait en overdrachtsbelasting.
+                Vergelijk de financiele gevolgen van kopen versus huren over de lange termijn, met Nederlandse belastingregels: hypotheekrenteaftrek, eigenwoningforfait en overdrachtsbelasting.
             </p>
             <div class="hero__actions">
-                <a href="#calculator" class="btn btn--primary">Start Calculator ↓</a>
+                <a href="#calculator" class="btn btn--primary">Start calculator ↓</a>
                 <button class="btn btn--ghost" onclick="document.getElementById('help-modal').classList.add('is-open')">Hoe werkt het? ℹ️</button>
             </div>
         </div>
@@ -845,8 +892,8 @@
                     <div class="stat-card__sub">Jaar-voor-jaar modellering</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-card__value mono">100%</div>
-                    <div class="stat-card__label">Gratis te gebruiken</div>
+                    <div class="stat-card__value mono">Gratis</div>
+                    <div class="stat-card__label">Zonder advertenties</div>
                     <div class="stat-card__sub">Geen registratie vereist</div>
                 </div>
                 <div class="stat-card">
@@ -864,45 +911,72 @@
     </div>
 
     <!-- ══════════════════════════════════════
+         AFM/WFT DISCLAIMER
+    ══════════════════════════════════════ -->
+    <div style="background: var(--bg-soft); border-bottom: 1px solid var(--border);">
+        <div class="container--narrow" style="padding-top: var(--space-lg); padding-bottom: var(--space-lg);">
+            <div style="background: #FFFBEB; border-left: 3px solid #D97706; padding: var(--space-md) var(--space-lg); border-radius: 0 var(--r-md) var(--r-md) 0; font-size: 14px; color: var(--ink); line-height: 1.7;">
+                <strong style="color: #D97706;">Let op:</strong> HuurOfKoopCheck.nl is geen financieel adviseur in de zin van de Wet financieel toezicht (Wft). Deze tool biedt educatieve berekeningen, geen persoonlijk advies. Voor een officieel hypotheek- of financieel advies raadpleeg een onafhankelijke adviseur met AFM-vergunning (bijv. via <a href="https://www.adfiz.nl" target="_blank" rel="noopener" style="color: #1D4ED8;">Adfiz.nl</a> of <a href="https://www.kifid.nl" target="_blank" rel="noopener" style="color: #1D4ED8;">KiFiD.nl</a>).
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
          FEATURES
     ══════════════════════════════════════ -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-header">
-                <span class="kicker">Waarom deze calculator?</span>
-                <h2>Alles wat je nodig hebt</h2>
-                <p>Een complete Nederlandse tool die de echte kosten van kopen en huren naast elkaar zet.</p>
+                <span class="kicker">Zo werkt het</span>
+                <h2>Zelf doorrekenen in drie stappen</h2>
+                <p>Vul je eigen situatie in en bekijk hoe kopen en huren financieel uitpakken over de komende jaren.</p>
             </div>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-card__icon">📊</div>
-                    <h3>Gedetailleerde analyse</h3>
-                    <p>Jaar-voor-jaar vergelijking van alle kosten en voordelen voor beide scenario's, inclusief vermogensopbouw.</p>
+
+            <!-- Stappen -->
+            <div class="steps">
+                <div class="step">
+                    <div class="step__num">1</div>
+                    <div class="step__body">
+                        <h3>Vul je situatie in</h3>
+                        <p>Woningwaarde, hypotheek, verwachte huur en inkomen — de calculator gebruikt alleen wat je invult.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">🇳🇱</div>
-                    <h3>Nederlandse belastingen</h3>
-                    <p>Ingebouwde hypotheekrenteaftrek (Box 1), eigenwoningforfait, OZB en overdrachtsbelasting conform 2026-tarieven.</p>
+                <div class="step">
+                    <div class="step__num">2</div>
+                    <div class="step__body">
+                        <h3>De calculator rekent</h3>
+                        <p>Alle kosten, belastingen en vermogensopbouw worden jaar voor jaar doorgerekend op basis van Nederlandse tarieven 2026.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">📈</div>
-                    <h3>Beleggingsgroei</h3>
-                    <p>Voor huurders: modelleer het rendement op de spaargelden die niet in stenen zitten.</p>
+                <div class="step">
+                    <div class="step__num">3</div>
+                    <div class="step__body">
+                        <h3>Vergelijk de uitkomsten</h3>
+                        <p>Zie per jaar wat financieel gunstiger is en wanneer het omslagpunt tussen huren en kopen ligt.</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">🔄</div>
-                    <h3>Scenario's vergelijken</h3>
-                    <p>Sla meerdere scenario's op en vergelijk ze naast elkaar — handig bij verschillende hypotheekvormen.</p>
+            </div>
+
+            <!-- Wat wordt meegenomen per scenario -->
+            <div class="scenario-cards">
+                <div class="scenario-card">
+                    <div class="scenario-card__head">Bij huren</div>
+                    <ul class="scenario-card__list">
+                        <li>Maandelijkse huurprijs</li>
+                        <li>Jaarlijkse huurverhoging</li>
+                        <li>Rendement op niet-geïnvesteerd spaargeld</li>
+                    </ul>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">📉</div>
-                    <h3>Interactieve grafieken</h3>
-                    <p>Visualiseer vermogen, maandlasten en belastingvoordelen over de volledige tijdshorizon.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">📥</div>
-                    <h3>Exporteren</h3>
-                    <p>Download de jaarlijkse data als CSV voor verdere analyse in Excel of Google Sheets.</p>
+                <div class="scenario-card">
+                    <div class="scenario-card__head">Bij kopen</div>
+                    <ul class="scenario-card__list">
+                        <li>Hypotheekrente en aflossing</li>
+                        <li>Hypotheekrenteaftrek</li>
+                        <li>Eigenwoningforfait</li>
+                        <li>Overdrachtsbelasting en notariskosten</li>
+                        <li>OZB en overige eigenaarslasten</li>
+                        <li>Overwaarde woningopbouw</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -915,14 +989,14 @@
         <div class="container--narrow">
             <div class="section-header">
                 <span class="kicker">Bereken jouw situatie</span>
-                <h2>De Calculator</h2>
-                <p>Vul jouw parameters in en zie direct wanneer kopen financieel gunstiger wordt.</p>
+                <h2>De calculator</h2>
+                <p>Vul je gegevens in en bekijk het verschil tussen kopen en huren over de door jou gekozen periode.</p>
             </div>
             <div class="calc-frame-wrap">
                 <iframe
                     src="https://buy-vs-rent-tool-edsf.vercel.app/buy-vs-rent"
-                    height="1380"
-                    width="100%"
+                    height="690"
+                    width="120%"
                     title="Koop vs Huur Calculator">
                 </iframe>
             </div>
@@ -936,8 +1010,8 @@
         <div class="container--narrow">
             <div class="section-header">
                 <span class="kicker">Veelgestelde vragen</span>
-                <h2>Heb je nog vragen?</h2>
-                <p>De meest gestelde vragen over de calculator en de Nederlandse huisvestingsmarkt.</p>
+                <h2>Veelgestelde vragen</h2>
+                <p>Uitleg over de werking van de calculator en de achterliggende aannames.</p>
             </div>
             <div class="faq-list">
                 <details class="faq-item">
@@ -986,9 +1060,9 @@
     <section class="cta-section">
         <div class="container--text">
             <div class="cta-section__content">
-                <h2>Klaar om je beslissing te nemen?</h2>
-                <p>Gebruik de interactieve calculator om precies te zien hoe kopen versus huren voor jouw situatie uitpakt over de komende jaren.</p>
-                <a href="#calculator" class="btn btn--primary">Bereken nu</a>
+                <h2>Zelf doorrekenen</h2>
+                <p>Vul je eigen situatie in en bekijk hoe kopen versus huren financieel uitpakt over de komende jaren. De uitkomst is een indicatie, geen advies.</p>
+                <a href="#calculator" class="btn btn--primary">Naar de calculator</a>
             </div>
         </div>
     </section>
@@ -1025,7 +1099,7 @@
     ══════════════════════════════════════ -->
     <div class="disclaimer">
         <div class="container--text">
-            <p>⚠️ <strong>Disclaimer:</strong> HuurOfKoopCheck.nl biedt een educatief model gebaseerd op vereenvoudigde aannames. De uitkomsten zijn indicatief en geen financieel advies. Raadpleeg altijd een erkend financieel adviseur of hypotheekadviseur voor persoonlijk advies. Belastingtarieven en wetgeving kunnen jaarlijks wijzigen.</p>
+            <p><strong>Disclaimer:</strong> HuurOfKoopCheck.nl biedt een educatief model gebaseerd op vereenvoudigde aannames. De uitkomsten zijn indicatief en geen financieel advies. Raadpleeg altijd een erkend financieel adviseur of hypotheekadviseur voor persoonlijk advies. Belastingtarieven en wetgeving kunnen jaarlijks wijzigen.</p>
         </div>
     </div>
 
@@ -1043,10 +1117,11 @@
                     <h4>Navigatie</h4>
                     <ul>
                         <li><a href="#calculator">Calculator</a></li>
-                        <li><a href="blog/methodologie.html">Methodologie</a></li>
+                        <li><a href="methodologie.html">Methodologie</a></li>
                         <li><a href="#faq">Veelgestelde vragen</a></li>
                         <li><a href="blog/index.html">Blog</a></li>
-                        <li><a href="contact.html">Expert Advies</a></li>
+                        <li><a href="contact.html">Expert advies</a></li>
+                        <li><a href="over.html">Over</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1060,9 +1135,10 @@
                 <div class="footer-col">
                     <h4>Juridisch</h4>
                     <ul>
-                        <li><a href="test.html">test !! Privacyverklaring</a></li>
-                        <li><a href="#" onclick="alert('Dit is educatief materiaal, geen financieel advies.'); return false;">Disclaimer</a></li>
-                        <li><a href="mailto:info@huurofkoopcheck.nl">info@huurofkoopcheck.nl</a></li>
+                        <li><a href="privacy.html">Privacyverklaring</a></li>
+                        <li><a href="over.html">Over</a></li>
+                        <li><a href="mailto:info@huurofkoopcheck.nl">Contact</a></li>
+                        <li><a href="https://www.paypal.com/ncp/payment/BXCB3XFET46RC" target="_blank" rel="noopener">Steun dit project</a></li>
                     </ul>
                 </div>
             </div>
@@ -1096,7 +1172,7 @@
                     <strong>De vergelijking:</strong> Vermogen koper = woningwaarde − restschuld + eventuele extra beleggingen. Vermogen huurder = totale beleggingsportefeuille. Het break-evenpunt is het jaar waarin kopen financieel beter uitpakt.
                 </p>
                 <p style="color: var(--ink-muted); font-style: italic; font-size: 13px;">
-                    ⚠️ Dit is een vereenvoudigd model. Werkelijke uitkomsten hangen af van veel factoren. Raadpleeg een financieel adviseur voor persoonlijk advies.
+                    Dit is een vereenvoudigd model. Werkelijke uitkomsten hangen af van veel factoren. Raadpleeg een financieel adviseur voor persoonlijk advies.
                 </p>
             </div>
         </div>
